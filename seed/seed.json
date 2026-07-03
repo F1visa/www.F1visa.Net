@@ -1,0 +1,272 @@
+{
+	"$schema": "https://emdashcms.com/seed.schema.json",
+	"version": "1",
+	"meta": {
+		"name": "F1visa.Net",
+		"description": "A conversion-focused marketing site with landing pages",
+		"author": "EmDash"
+	},
+	"settings": {
+		"title": "F1visa.Net",
+		"tagline": "Your F1 Journey, Together."
+	},
+	"collections": [
+		{
+			"slug": "pages",
+			"label": "Pages",
+			"labelSingular": "Page",
+			"supports": ["drafts", "revisions", "seo"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText"
+				}
+			]
+		}
+	],
+	"menus": [
+		{
+			"name": "primary",
+			"label": "Primary Navigation",
+			"items": [
+				{
+					"type": "custom",
+					"label": "Community",
+					"url": "https://community.f1visa.net",
+					"target": "_blank"
+				},
+				{
+					"type": "custom",
+					"label": "Resources",
+					"url": "/resources"
+				},
+				{
+					"type": "custom",
+					"label": "About",
+					"url": "/about"
+				},
+				{
+					"type": "custom",
+					"label": "Contact",
+					"url": "/contact"
+				}
+			]
+		},
+		{
+			"name": "footer_product",
+			"label": "Footer: Community",
+			"items": [
+				{ "type": "custom", "label": "Forum", "url": "https://community.f1visa.net", "target": "_blank" },
+				{ "type": "custom", "label": "Resources", "url": "/resources" },
+				{ "type": "custom", "label": "Success Stories", "url": "/success-stories" },
+				{ "type": "custom", "label": "FAQ", "url": "/#faq" }
+			]
+		},
+		{
+			"name": "footer_company",
+			"label": "Footer: About",
+			"items": [
+				{ "type": "custom", "label": "Our Mission", "url": "/about" },
+				{ "type": "custom", "label": "How It Works", "url": "/#features" },
+				{ "type": "custom", "label": "Contact", "url": "/contact" }
+			]
+		},
+		{
+			"name": "footer_support",
+			"label": "Footer: Legal",
+			"items": [
+				{ "type": "custom", "label": "Privacy Policy", "url": "/privacy" },
+				{ "type": "custom", "label": "Terms of Use", "url": "/terms" },
+				{ "type": "custom", "label": "Disclaimer", "url": "/disclaimer" }
+			]
+		}
+	],
+	"content": {
+		"pages": [
+			{
+				"id": "home",
+				"slug": "home",
+				"status": "published",
+				"data": {
+					"title": "Home",
+					"content": [
+						{
+							"_type": "marketing.hero",
+							"_key": "hero",
+							"headline": "Your F1 Journey, Together.",
+							"subheadline": "The community-powered platform that helps international students navigate the US F1 visa process — transparently, affordably, together.",
+							"primaryCtaLabel": "Join the Community",
+							"primaryCtaUrl": "https://community.f1visa.net",
+							"secondaryCtaLabel": "Learn More",
+							"secondaryCtaUrl": "/about"
+						},
+						{
+							"_type": "marketing.features",
+							"_key": "features",
+							"headline": "Why F1visa.Net?",
+							"subheadline": "Built by students who've been there. Free at point of need. Owned by the community.",
+							"features": [
+								{
+									"icon": "shield",
+									"title": "Verified Community Guidance",
+									"description": "Every piece of information reviewed by students who've successfully navigated the F1 visa process."
+								},
+								{
+									"icon": "users",
+									"title": "Real Peer Support",
+									"description": "Connect with current F1 students from your country, your university, your program."
+								},
+								{
+									"icon": "heart",
+									"title": "Member-Owned Cooperative",
+									"description": "Not a paid consultancy. Owned by members. Free at point of need."
+								}
+							]
+						},
+						{
+							"_type": "marketing.testimonials",
+							"_key": "testimonials",
+							"headline": "Students Helping Students",
+							"testimonials": [
+								{
+									"quote": "The community helped me prepare for my visa interview in ways no lawyer could. Real students, real experiences.",
+									"author": "Priya S.",
+									"role": "F1 Student",
+									"company": "University of Texas Austin"
+								},
+								{
+									"quote": "I was terrified about the SEVIS process. Someone in the community walked me through it step by step. Got approved!",
+									"author": "Carlos M.",
+									"role": "F1 Student",
+									"company": "Georgia Tech"
+								},
+								{
+									"quote": "Finally a free resource that actually understands what international students go through. This community is gold.",
+									"author": "Aisha K.",
+									"role": "F1 Student",
+									"company": "UCLA"
+								}
+							]
+						},
+						{
+							"_type": "marketing.faq",
+							"_key": "faq",
+							"headline": "Common Questions",
+							"items": [
+								{
+									"question": "Is F1visa.Net free?",
+									"answer": "Yes — completely free at point of need. F1visa.Net is a member-owned cooperative. No paywalls, no consultancy fees."
+								},
+								{
+									"question": "Who can join the community?",
+									"answer": "Anyone navigating the F1 visa process — whether you're applying from abroad or already studying in the US."
+								},
+								{
+									"question": "How is the information verified?",
+									"answer": "Every guide and resource is reviewed by students who have successfully completed the F1 visa process. Community-sourced, peer-reviewed."
+								},
+								{
+									"question": "Is this a replacement for an immigration lawyer?",
+									"answer": "No. F1visa.Net provides community-sourced guidance for educational purposes. For your specific case, always consult a qualified immigration attorney."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pricing",
+				"slug": "pricing",
+				"status": "published",
+				"data": {
+					"title": "Pricing",
+					"content": [
+						{
+							"_type": "marketing.hero",
+							"_key": "pricing-hero",
+							"headline": "Simple, transparent pricing",
+							"subheadline": "No hidden fees. No surprises. Start free and scale as you grow.",
+							"centered": true
+						},
+						{
+							"_type": "marketing.pricing",
+							"_key": "pricing-plans",
+							"plans": [
+								{
+									"name": "Starter",
+									"price": "$0",
+									"period": "/month",
+									"description": "Perfect for trying things out",
+									"features": "Up to 3 team members\n5 projects\nBasic analytics\nCommunity support\n1GB storage",
+									"ctaLabel": "Get Started",
+									"ctaUrl": "/signup"
+								},
+								{
+									"name": "Pro",
+									"price": "$29",
+									"period": "/user/month",
+									"description": "For growing teams",
+									"features": "Unlimited team members\nUnlimited projects\nAdvanced analytics\nPriority support\n100GB storage\nCustom integrations\nAPI access",
+									"ctaLabel": "Start Free Trial",
+									"ctaUrl": "/signup?plan=pro",
+									"highlighted": true
+								},
+								{
+									"name": "Enterprise",
+									"price": "Custom",
+									"description": "For large organizations",
+									"features": "Everything in Pro\nDedicated support\nCustom contracts\nSLA guarantee\nUnlimited storage",
+									"ctaLabel": "Contact Sales",
+									"ctaUrl": "/contact"
+								}
+							]
+						},
+						{
+							"_type": "marketing.faq",
+							"_key": "pricing-faq",
+							"headline": "Pricing FAQ",
+							"items": [
+								{
+									"question": "Can I change plans later?",
+									"answer": "Yes, you can upgrade or downgrade at any time. Changes take effect immediately and we'll prorate your billing."
+								},
+								{
+									"question": "What payment methods do you accept?",
+									"answer": "We accept all major credit cards, and Enterprise customers can pay via invoice with NET 30 terms."
+								},
+								{
+									"question": "Is there a discount for annual billing?",
+									"answer": "Yes, annual plans receive a 20% discount compared to monthly billing."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "contact",
+				"slug": "contact",
+				"status": "published",
+				"data": {
+					"title": "Contact",
+					"content": [
+						{
+							"_type": "marketing.hero",
+							"_key": "contact-hero",
+							"headline": "Get in touch",
+							"subheadline": "Have questions? We'd love to hear from you.",
+							"centered": true
+						}
+					]
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,224 @@
+---
+import Base from "../layouts/Base.astro";
+
+const upcoming = [
+	{
+		icon: "📋",
+		title: "Visa Checklists",
+		description: "Step-by-step document checklists for every visa stage",
+	},
+	{
+		icon: "💬",
+		title: "Interview Prep Guides",
+		description: "Real questions from real interviews, shared by the community",
+	},
+	{
+		icon: "🎓",
+		title: "University Guides",
+		description: "F1 experience at 100+ US universities",
+	},
+	{
+		icon: "🏆",
+		title: "Success Stories",
+		description: "Approved students sharing their full journey",
+	},
+];
+---
+
+<Base
+	title="Resources"
+	description="Guides, checklists, visa timelines, and tools for every stage of your F1 journey. Being built by the community, for the community."
+>
+	<section class="resources-hero section">
+		<div class="container">
+			<span class="coming-soon-badge">Coming Soon</span>
+			<h1 class="resources-headline">
+				<span class="gradient-text">Resources — Coming Soon</span> <span aria-hidden="true">🛂</span>
+			</h1>
+			<p class="resources-subheadline">
+				Guides, checklists, visa timelines, and tools for every stage of
+				your F1 journey. Being built by the community, for the community.
+			</p>
+		</div>
+	</section>
+
+	<section class="upcoming section">
+		<div class="container">
+			<header class="section-header">
+				<h2 class="section-headline">What's Coming</h2>
+			</header>
+			<div class="upcoming-grid">
+				{
+					upcoming.map((item) => (
+						<div class="upcoming-card">
+							<div class="upcoming-icon" aria-hidden="true">{item.icon}</div>
+							<h3 class="upcoming-title">{item.title}</h3>
+							<p class="upcoming-description">{item.description}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="resources-cta section">
+		<div class="container">
+			<div class="cta-card">
+				<h2 class="cta-headline">Don't wait — the community is already live.</h2>
+				<a
+					href="https://community.f1visa.net"
+					class="btn btn-primary btn-lg"
+					target="_blank"
+					rel="noopener noreferrer">
+					Join the Community
+				</a>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.resources-hero {
+		text-align: center;
+		padding-top: var(--spacing-3xl);
+		padding-bottom: var(--spacing-2xl);
+	}
+
+	.coming-soon-badge {
+		display: inline-block;
+		padding: var(--spacing-xs) var(--spacing-md);
+		margin-bottom: var(--spacing-md);
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.resources-headline {
+		max-width: var(--max-width);
+		margin: 0 auto var(--spacing-md);
+		font-size: var(--font-size-5xl);
+		font-weight: 800;
+		line-height: 1.1;
+		letter-spacing: -0.03em;
+	}
+
+	.resources-headline .gradient-text {
+		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-muted) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.resources-subheadline {
+		max-width: 640px;
+		margin: 0 auto;
+		font-size: var(--font-size-base);
+		line-height: 1.6;
+		color: var(--color-muted);
+	}
+
+	.section-header {
+		text-align: center;
+		max-width: var(--max-width);
+		margin: 0 auto var(--spacing-xl);
+	}
+
+	.section-headline {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+	}
+
+	.upcoming {
+		padding-top: 0;
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.upcoming-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: var(--spacing-lg);
+	}
+
+	.upcoming-card {
+		padding: var(--spacing-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		transition:
+			transform var(--transition-base),
+			box-shadow var(--transition-base),
+			border-color var(--transition-base);
+	}
+
+	.upcoming-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-lg);
+		border-color: var(--color-primary-light);
+	}
+
+	.upcoming-icon {
+		width: 48px;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.5rem;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.upcoming-title {
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.upcoming-description {
+		font-size: var(--font-size-base);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.resources-cta {
+		padding-top: 0;
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.cta-card {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+		text-align: center;
+		padding: var(--spacing-3xl) var(--spacing-xl);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+	}
+
+	.cta-headline {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-lg);
+	}
+
+	@media (max-width: 900px) {
+		.upcoming-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.upcoming-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.resources-headline {
+			font-size: var(--font-size-4xl);
+		}
+	}
+</style>

@@ -1,0 +1,326 @@
+---
+import Base from "../layouts/Base.astro";
+
+const steps = [
+	{
+		number: "01",
+		title: "Join",
+		description: "Create your free account and introduce yourself to the community",
+	},
+	{
+		number: "02",
+		title: "Connect",
+		description: "Find students from your country, your university, your program",
+	},
+	{
+		number: "03",
+		title: "Share",
+		description: "Your approved visa becomes knowledge for the next student",
+	},
+];
+
+const values = [
+	{
+		icon: "🌍",
+		title: "Global Community",
+		description: "Built by and for international students worldwide",
+	},
+	{
+		icon: "🛡️",
+		title: "Trust & Accuracy",
+		description: "Every piece of information verified by students who've been there",
+	},
+	{
+		icon: "🤝",
+		title: "Cooperative Ownership",
+		description: "Member-owned. Not a corporation. Not a consultancy.",
+	},
+];
+---
+
+<Base
+	title="About"
+	description="F1visa.Net was built because the F1 visa process is confusing, expensive, and isolating. We believe the collective wisdom of students who've been through it is more valuable than any paid consultancy."
+>
+	<section class="about-hero section">
+		<div class="container">
+			<h1 class="about-headline">Built by Students, for Students</h1>
+			<p class="about-subheadline">
+				F1visa.Net was built because the F1 visa process is confusing,
+				expensive, and isolating. We believe the collective wisdom of
+				students who've been through it is more valuable than any paid
+				consultancy.
+			</p>
+		</div>
+	</section>
+
+	<section class="mission section">
+		<div class="container">
+			<div class="mission-card">
+				<h2 class="mission-eyebrow">Our Mission</h2>
+				<p class="mission-statement">
+					To make the US F1 visa journey clear, connected, and
+					community-powered — so every international student can
+					navigate it with confidence.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="how-it-works section">
+		<div class="container">
+			<header class="section-header">
+				<h2 class="section-headline">How It Works</h2>
+			</header>
+			<div class="steps-grid">
+				{
+					steps.map((step) => (
+						<div class="step-card">
+							<div class="step-number">{step.number}</div>
+							<h3 class="step-title">{step.title}</h3>
+							<p class="step-description">{step.description}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="values section">
+		<div class="container">
+			<header class="section-header">
+				<h2 class="section-headline">Core Values</h2>
+			</header>
+			<div class="values-grid">
+				{
+					values.map((value) => (
+						<div class="value-card">
+							<div class="value-icon" aria-hidden="true">{value.icon}</div>
+							<h3 class="value-title">{value.title}</h3>
+							<p class="value-description">{value.description}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="about-cta section">
+		<div class="container">
+			<div class="cta-card">
+				<h2 class="cta-headline">Ready to Start Your Journey?</h2>
+				<a
+					href="https://community.f1visa.net"
+					class="btn btn-primary btn-lg"
+					target="_blank"
+					rel="noopener noreferrer">
+					Join the Community
+				</a>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.about-hero {
+		text-align: center;
+		padding-top: var(--spacing-3xl);
+		padding-bottom: var(--spacing-2xl);
+	}
+
+	.about-headline {
+		max-width: var(--max-width);
+		margin: 0 auto var(--spacing-md);
+		font-size: var(--font-size-5xl);
+		font-weight: 800;
+		line-height: 1.1;
+		letter-spacing: -0.03em;
+		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-muted) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.about-subheadline {
+		max-width: 640px;
+		margin: 0 auto;
+		font-size: var(--font-size-base);
+		line-height: 1.6;
+		color: var(--color-muted);
+	}
+
+	.mission {
+		padding-top: 0;
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.mission-card {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		text-align: center;
+		padding: var(--spacing-2xl) var(--spacing-xl);
+		border-radius: var(--radius-lg);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.mission-eyebrow {
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-accent-light);
+		margin-bottom: var(--spacing-md);
+	}
+
+	.mission-statement {
+		font-size: var(--font-size-base);
+		font-weight: 600;
+		line-height: 1.4;
+		color: white;
+	}
+
+	.section-header {
+		text-align: center;
+		max-width: var(--max-width);
+		margin: 0 auto var(--spacing-xl);
+	}
+
+	.section-headline {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+	}
+
+	.how-it-works {
+		padding-top: 0;
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.steps-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-lg);
+	}
+
+	.step-card {
+		position: relative;
+		padding: var(--spacing-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.step-number {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.step-title {
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.step-description {
+		font-size: var(--font-size-base);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.values {
+		padding-top: 0;
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.values-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-lg);
+	}
+
+	.value-card {
+		padding: var(--spacing-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		transition:
+			transform var(--transition-base),
+			box-shadow var(--transition-base),
+			border-color var(--transition-base);
+	}
+
+	.value-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-lg);
+		border-color: var(--color-primary-light);
+	}
+
+	.value-icon {
+		width: 48px;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.5rem;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.value-title {
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.value-description {
+		font-size: var(--font-size-base);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.about-cta {
+		padding-top: 0;
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.cta-card {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+		text-align: center;
+		padding: var(--spacing-3xl) var(--spacing-xl);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+	}
+
+	.cta-headline {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-lg);
+	}
+
+	@media (max-width: 900px) {
+		.steps-grid,
+		.values-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.steps-grid,
+		.values-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.about-headline {
+			font-size: var(--font-size-4xl);
+		}
+	}
+</style>
