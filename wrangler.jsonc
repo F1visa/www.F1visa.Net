@@ -1,25 +1,20 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "my-marketing-site",
+	"name": "f1visa-www",
 	"main": "./src/worker.ts",
 	"compatibility_date": "2026-02-24",
 	"compatibility_flags": ["nodejs_compat"],
 	"d1_databases": [
 		{
 			"binding": "DB",
-			"database_name": "my-marketing-site",
+			"database_name": "f1visa-www",
+			"database_id": "5208bf64-fc6d-42d1-b9f6-dc76c70812ac",
 		},
 	],
-	"r2_buckets": [
+	"kv_namespaces": [
 		{
-			"binding": "MEDIA",
-			"bucket_name": "my-marketing-media",
-		},
-	],
-	// Worker Loader for plugin sandboxing
-	"worker_loaders": [
-		{
-			"binding": "LOADER",
+			"binding": "SESSION",
+			"id": "99e45407659445d59efb494b8d8b619b",
 		},
 	],
 	// Drives scheduled publishing, plugin cron, and maintenance (see src/worker.ts)

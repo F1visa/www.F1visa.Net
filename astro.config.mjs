@@ -1,9 +1,9 @@
 import cloudflare from "@astrojs/cloudflare";
 import react from "@astrojs/react";
-import { d1, r2 } from "@emdash-cms/cloudflare";
+import { d1 } from "@emdash-cms/cloudflare";
 import icon from "astro-iconset";
 import { defineConfig, fontProviders } from "astro/config";
-import emdash from "emdash/astro";
+import emdash, { local } from "emdash/astro";
 
 export default defineConfig({
 	output: "server",
@@ -51,7 +51,13 @@ export default defineConfig({
 		}),
 		emdash({
 			database: d1({ binding: "DB", session: "auto" }),
-			storage: r2({ binding: "MEDIA" }),
+			// R2 isn't enabled on the Cloudflare account yet; local storage is a
+			// placeholder so the build/deploy works. It doesn't persist on
+			// Workers, so media uploads won't work until this is swapped for r2().
+			storage: local({
+				directory: "./uploads",
+				baseUrl: "/_emdash/api/media/file",
+			}),
 			plugins: [
 				{
 					id: "marketing-blocks",
