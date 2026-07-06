@@ -22,7 +22,6 @@ A conversion-focused landing page template built with [EmDash](https://github.co
 | Page | Route |
 |---|---|
 | Homepage | `/` |
-| Pricing | `/pricing` |
 | Contact | `/contact` |
 | 404 | fallback |
 
