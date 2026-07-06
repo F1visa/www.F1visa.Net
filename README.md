@@ -1,62 +1,65 @@
-# EmDash Marketing Template (Cloudflare)
+# F1visa.Net
 
-A conversion-focused landing page template built with [EmDash](https://github.com/emdash-cms/emdash) and deployed on Cloudflare Workers with D1 and R2. Modular content blocks let you assemble pages from reusable sections without touching code.
-
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/emdash-cms/templates/tree/main/marketing-cloudflare)
-
-![Marketing template homepage](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/marketing/latest/homepage-light-desktop.jpg)
-
-## What's Included
-
-- Hero section with CTAs
-- Feature grid
-- Testimonials
-- Pricing cards
-- FAQ accordion
-- Contact form with validation
-- SEO metadata and JSON-LD
-- Dark/light mode
+The marketing/community site for [F1visa.Net](https://f1visa.net) — "Your F1 Journey, Together." A community-owned resource that connects F1 visa applicants with students who've been through the process, built with [EmDash](https://github.com/emdash-cms/emdash) and deployed on Cloudflare Workers with D1.
 
 ## Pages
 
-| Page | Route |
-|---|---|
-| Homepage | `/` |
-| Contact | `/contact` |
-| 404 | fallback |
-
-## Screenshots
-
-| | Desktop | Mobile |
+| Page | Route | Status |
 |---|---|---|
-| Light | ![homepage light desktop](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/marketing/latest/homepage-light-desktop.jpg) | ![homepage light mobile](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/marketing/latest/homepage-light-mobile.jpg) |
-| Dark | ![homepage dark desktop](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/marketing/latest/homepage-dark-desktop.jpg) | ![homepage dark mobile](https://raw.githubusercontent.com/emdash-cms/emdash/main/assets/templates/marketing/latest/homepage-dark-mobile.jpg) |
+| Homepage | `/` | Live — hero, features, testimonials, FAQ |
+| About | `/about` | Live — mission, how it works, core values |
+| Resources | `/resources` | Live — "coming soon" placeholder for guides/checklists |
+| Contact | `/contact` | Live — working contact form (name, email, university, message) |
+| 404 | fallback | Live |
+
+The footer also links to `/success-stories`, `/privacy`, `/terms`, and `/disclaimer`, but none of these pages exist yet — they currently return 404. `/#faq` and `/#features` are anchors into homepage sections and work correctly.
+
+## Navigation
+
+- **Top nav:** Community (external), Resources, About, Contact
+- **"Join the Community" CTA:** links out to [community.f1visa.net](https://community.f1visa.net), a separate FluentCommunity-powered forum (membership, social feed, discussion spaces)
+- **Footer columns:** Community (Forum, Resources, Success Stories, FAQ), About (Our Mission, How It Works, Contact), Legal (Privacy Policy, Terms of Use, Disclaimer) — see the broken-link note above
+
+Nav and footer menus are content-managed (EmDash `menus`), not hardcoded in `src/layouts/Base.astro` — edit them via the admin panel or `seed/seed.json`.
+
+## Admin
+
+The EmDash admin panel is at [`/_emdash/admin`](https://f1visa.net/_emdash/admin) for managing pages, menus, and media.
+
+## Features
+
+- Hero, feature grid, testimonials, and FAQ blocks on the homepage
+- Contact form with validation
+- SEO metadata and JSON-LD
+- Dark/light mode
+- Content-managed pages and navigation via EmDash
 
 ## Infrastructure
 
 - **Runtime:** Cloudflare Workers
-- **Database:** D1
-- **Storage:** R2
-- **Framework:** Astro with `@astrojs/cloudflare`
+- **Framework:** Astro (`output: "server"`) with `@astrojs/cloudflare`
+- **Database:** D1 (`f1visa-www`), bound as `DB`
+- **Sessions:** Cloudflare KV, bound as `SESSION`
+- **Scheduled tasks:** Cron Trigger (`* * * * *`) drives scheduled publishing and plugin maintenance
+- **Media storage:** local filesystem adapter (placeholder) — R2 isn't enabled on the Cloudflare account yet, so media uploads won't persist in production until this is swapped for `r2()` in `astro.config.mjs`
 
 ## Local Development
 
 ```bash
-pnpm install
-pnpm bootstrap
-pnpm dev
+npm install
+npm run dev
 ```
 
 ## Deploying
 
 ```bash
-pnpm deploy
+npm run build
+npx wrangler deploy
 ```
 
-Or click the deploy button above to set up the project in your Cloudflare account.
+## Related Links
 
-## See Also
-
-- [Node.js variant](../marketing) -- same template using SQLite and local file storage
-- [All templates](../)
+- Live site: https://f1visa.net
+- Community forum: https://community.f1visa.net
+- Admin panel: https://f1visa.net/_emdash/admin
 - [EmDash documentation](https://github.com/emdash-cms/emdash/tree/main/docs)
