@@ -12,13 +12,15 @@ The marketing/community site for [F1visa.Net](https://f1visa.net) — "Your F1 J
 | Contact | `/contact` | Live — working contact form (name, email, university, message) |
 | 404 | fallback | Live |
 
-The footer also links to `/success-stories`, `/privacy`, `/terms`, and `/disclaimer`, but none of these pages exist yet — they currently return 404. `/#faq` and `/#features` are anchors into homepage sections and work correctly.
+`/#faq` and `/#features` are anchors into homepage sections and work correctly.
 
 ## Navigation
 
 - **Top nav:** Community (external), Resources, About, Contact
 - **"Join the Community" CTA:** links out to [community.f1visa.net](https://community.f1visa.net), a separate FluentCommunity-powered forum (membership, social feed, discussion spaces)
-- **Footer columns:** Community (Forum, Resources, Success Stories, FAQ), About (Our Mission, How It Works, Contact), Legal (Privacy Policy, Terms of Use, Disclaimer) — see the broken-link note above
+- **Footer columns:** Community (Forum, Resources, FAQ), About (Our Mission, How It Works, Contact)
+
+Links to `/success-stories`, `/privacy`, `/terms`, and `/disclaimer` were removed from the footer menus until those pages are built — see `seed/seed.json`.
 
 Nav and footer menus are content-managed (EmDash `menus`), not hardcoded in `src/layouts/Base.astro` — edit them via the admin panel or `seed/seed.json`.
 
