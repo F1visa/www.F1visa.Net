@@ -103,6 +103,12 @@
 							"secondaryCtaUrl": "/about"
 						},
 						{
+							"_type": "marketing.text",
+							"_key": "what-is",
+							"headline": "What is F1visa.Net?",
+							"body": "F1visa.Net is an online community, forum, and resource hub built by international students for international students. We also host in-person events and meetups where available — connecting F1 visa holders across the US to share knowledge, support each other, and navigate the visa journey together."
+						},
+						{
 							"_type": "marketing.features",
 							"_key": "features",
 							"headline": "Why F1visa.Net?",
