@@ -1,49 +1,1288 @@
 ---
-import { getEmDashEntry } from "emdash";
 import Base from "../layouts/Base.astro";
-import MarketingBlocks from "../components/MarketingBlocks.astro";
 
-const { entry: page, cacheHint } = await getEmDashEntry("pages", "home");
+const stats = [
+	{ value: "1.5M", label: "Active F-1 students in the US" },
+	{ value: "$300+", label: "Lawyer cost per hour (we're free)" },
+	{ value: "1:1,200", label: "Advisor-to-student ratio at universities" },
+	{ value: "100", label: "Founding Member slots — one-time" },
+];
 
-if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+const problems = [
+	{
+		icon: "📄",
+		title: "Complexity & Fear of Denial",
+		description:
+			"The visa process is opaque and high-stakes. One I-20 or DS-160 error triggers delays. Lawyers cost $300-500/hr. Forums give conflicting advice.",
+	},
+	{
+		icon: "🧍",
+		title: "Isolation",
+		description:
+			"Students arrive without family or local networks. University international offices are understaffed — 1 advisor per 1,200 students.",
+	},
+	{
+		icon: "🤖",
+		title: "AI Literacy Gap",
+		description:
+			"The job market demands AI skills, but F-1 students face expensive bootcamps and work restrictions. No structured pathway to build AI readiness.",
+	},
+];
 
-const pageTitle = page?.data.title;
-const pageContent = page?.data.content;
+const solutions = [
+	{
+		icon: "⚡",
+		title: "AI-Guided Visa Application",
+		description:
+			"A dedicated AI agent validates forms, tracks deadlines, and catches errors before submission. Trained specifically on F-1 regulations with real-time policy updates.",
+		tag: "Powered by WeOwnLLM",
+		href: "/weownllm",
+	},
+	{
+		icon: "🤝",
+		title: "Community-First Architecture",
+		description:
+			"Live chat, peer forums, and mentor matching. Students don't just use the platform — they own it. 100 Founding Cooperative Members shape our future.",
+		tag: "Member-Owned Cooperative",
+		href: "/oca",
+	},
+	{
+		icon: "🎓",
+		title: "AI Readiness Pathway",
+		description:
+			"Tiered membership with a proprietary AI Readiness Assessment. Students build career-ready AI skills while navigating their visa journey.",
+		tag: "Career-Transferable Credential",
+		href: "/join",
+	},
+];
+
+const journey = [
+	{
+		num: "1",
+		title: "Discover",
+		quote: '"Wait, I can OWN the platform that helps me?"',
+		desc: "You see F1Visa.Net content and realize it's a cooperative you can own.",
+	},
+	{
+		num: "2",
+		title: "Explore",
+		quote: '"This looks legit. Cooperative? AI-guided?"',
+		desc: "You visit F1Visa.Net, see the cooperative model, the AI assistant, the community.",
+	},
+	{
+		num: "3",
+		title: "Experience",
+		quote: '"This AI actually understands visas."',
+		desc: "Take the free 5-minute AI Readiness Assessment. Get a personalized score and path.",
+	},
+	{
+		num: "4",
+		title: "Commit",
+		quote: '"I\'m in. What\'s this Founding Member thing?"',
+		desc: "Sign up as a Member. Full AI assistant, community access, mentor matching.",
+	},
+	{
+		num: "5",
+		title: "Own",
+		quote: '"I don\'t just use F1Visa. I own it."',
+		desc: "Become a Founding Cooperative Member. Voting rights. Profit-share. Shape the future.",
+	},
+];
+
+const tiers = [
+	{
+		name: "Explorer",
+		price: "Free",
+		period: "",
+		description: "Start your journey — no cost, no commitment.",
+		features: [
+			"Basic AI visa assistant",
+			"Read-only community forums",
+			"Weekly newsletter with visa tips",
+			"AI Readiness Assessment",
+			"Resource library access",
+		],
+		cta: "Start Free",
+		href: "/join",
+		highlighted: false,
+	},
+	{
+		name: "Member",
+		price: "$9.99",
+		period: "/month",
+		description: "Full access to AI guidance + community + mentors.",
+		features: [
+			"Full AI visa assistant (unlimited)",
+			"Post + reply in forums",
+			"1 mentor session per month",
+			"Live chat (AI + human)",
+			"Weekly virtual events",
+			"SEVIS & CPT/OPT tracking",
+		],
+		cta: "Become a Member",
+		href: "/join",
+		highlighted: true,
+	},
+	{
+		name: "Owner",
+		price: "$99",
+		period: "one-time",
+		description: "Founding Cooperative Member — own the platform.",
+		features: [
+			"Everything in Member",
+			"Voting rights on platform direction",
+			"Profit-share distributions",
+			"Unlimited mentor sessions",
+			"Founding Member badge",
+			"Exclusive events + retreats",
+		],
+		cta: "Become an Owner",
+		href: "/oca",
+		highlighted: false,
+	},
+];
+
+const differentiators = [
+	{
+		icon: "🏛️",
+		title: "Cooperative Ownership",
+		description: "Not subscriptions. 100 Founding Members become owners — when the platform succeeds, they succeed.",
+	},
+	{
+		icon: "🧠",
+		title: "AI-First, Human-Enhanced",
+		description: "A dedicated F-1 AI agent paired with human mentors and peer forums. Not static guides. Not pure AI alone.",
+	},
+	{
+		icon: "🌐",
+		title: "Bilingual by Design",
+		description: "English and Chinese (Mandarin) via Z.ai GLM 5.2. No other F-1 platform offers native bilingual capability.",
+	},
+	{
+		icon: "📜",
+		title: "AI Literacy Credential",
+		description: "Students earn certified AI readiness — transferable to careers, internships, and grad school applications.",
+	},
+	{
+		icon: "🔒",
+		title: "Decentralized Infrastructure",
+		description: "Built on DigitalOcean and Cloudflare. Student-owned, not VC-funded. Cannot be sold or shut down by investors.",
+	},
+	{
+		icon: "⚖️",
+		title: "Legal Infrastructure",
+		description: "WeOwnClaw handles KYC, digital signing, and cooperative governance. Powered by OpenClaw, hardened by Minimus.io.",
+	},
+];
+
+const testimonials = [
+	{
+		quote:
+			"The community helped me prepare for my visa interview in ways no lawyer could. Real students, real experiences.",
+		author: "Priya S.",
+		role: "F1 Student",
+		company: "University of Texas Austin",
+	},
+	{
+		quote:
+			"I was terrified about the SEVIS process. Someone in the community walked me through it step by step. Got approved!",
+		author: "Carlos M.",
+		role: "F1 Student",
+		company: "Georgia Tech",
+	},
+	{
+		quote:
+			"Finally a free resource that actually understands what international students go through. This community is gold.",
+		author: "Aisha K.",
+		role: "F1 Student",
+		company: "UCLA",
+	},
+];
+
+const faqs = [
+	{
+		question: "Is F1visa.Net free?",
+		answer:
+			"Yes — completely free at point of need. F1visa.Net is a member-owned cooperative. No paywalls, no consultancy fees. The Explorer tier gives you basic AI assistance, forums, and resources at no cost.",
+	},
+	{
+		question: "What is cooperative ownership?",
+		answer:
+			"F1Visa.Net operates as an Onchain Cooperative Association (.OCA). Our 100 Founding Cooperative Members become member-owners — not just customers. They get voting rights on platform direction, profit-share distributions, and a say in what we build next.",
+	},
+	{
+		question: "How does the AI assistant work?",
+		answer:
+			"Our AI is powered by WeOwnLLM — built on AnythingLLM.com and hardened by Minimus.io. It's trained specifically on F-1 visa regulations with real-time policy updates. Unlike generic AI tools, it understands visa forms, SEVIS compliance, and CPT/OPT guidance. It's also bilingual — English and Chinese (Mandarin).",
+	},
+	{
+		question: "Who can join the community?",
+		answer:
+			"Anyone navigating the F1 visa process — whether you're applying from abroad or already studying in the US. Our community at community.f1Visa.Net runs on WordPress with the Fluent Community plugin.",
+	},
+	{
+		question: "How is the information verified?",
+		answer:
+			"Every guide and resource is reviewed by students who have successfully completed the F1 visa process. Community-sourced, peer-reviewed. Our AI assistant is also trained on verified, up-to-date visa regulations.",
+	},
+	{
+		question: "Is this a replacement for an immigration lawyer?",
+		answer:
+			"No. F1visa.Net provides community-sourced guidance and AI-assisted tools for educational purposes. For your specific case, always consult a qualified immigration attorney.",
+	},
+	{
+		question: "What are the 100 Founding Cooperative Members?",
+		answer:
+			"The first 100 members who join as Owners become Founding Cooperative Members. This is a limited, one-time opportunity. Founding Members get a tokenized membership certificate, voting rights, profit-share, and exclusive access to events and retreats.",
+	},
+];
 ---
 
 <Base
-	title={pageTitle !== "Home" ? pageTitle : undefined}
-	description="The community-powered platform that helps international students navigate the US F1 visa process — transparently, affordably, together."
+	description="AI-guided. Community-powered. Member-owned. The platform that helps international students navigate the US F1 visa process — and own it together."
 >
-	{
-		pageContent ? (
-			<MarketingBlocks value={pageContent} />
-		) : (
-			<div class="empty-state">
-				<h1>Welcome to F1visa.Net</h1>
-				<p>Edit the home page content in the admin to get started.</p>
-				<a href="/_emdash/admin" class="btn btn-primary">
-					Open Admin
+	<!-- ============ HERO ============ -->
+	<section class="hero">
+		<div class="hero-bg" aria-hidden="true">
+			<div class="hero-glow hero-glow-1"></div>
+			<div class="hero-glow hero-glow-2"></div>
+			<div class="hero-grid-pattern"></div>
+		</div>
+		<div class="hero-container">
+			<div class="hero-badge">
+				<span class="hero-badge-dot"></span>
+				Now accepting 100 Founding Cooperative Members
+			</div>
+			<h1 class="hero-title">
+				Your F1 Journey,
+				<span class="hero-title-accent">Together.</span>
+			</h1>
+			<p class="hero-subtitle">
+				<strong>AI-guided.</strong> <strong>Community-powered.</strong>
+				<strong>Member-owned.</strong> The platform that helps international
+				students navigate the US F1 visa process — transparently, affordably,
+				together. Not just a resource. A cooperative you can own.
+			</p>
+			<div class="hero-actions">
+				<a href="/join" class="btn btn-primary btn-lg">
+					Become a Member-Owner
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+				</a>
+				<a href="https://community.f1visa.net" class="btn btn-ghost btn-lg" target="_blank" rel="noopener noreferrer">
+					Join the Community
 				</a>
 			</div>
-		)
-	}
+			<div class="hero-stats">
+				{stats.map((s) => (
+					<div class="hero-stat">
+						<span class="hero-stat-value">{s.value}</span>
+						<span class="hero-stat-label">{s.label}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ PROBLEM ============ -->
+	<section class="section section-problem">
+		<div class="container">
+			<div class="section-eyebrow">The Problem</div>
+			<h2 class="section-title">The F1 Visa Journey is Broken</h2>
+			<p class="section-subtitle">
+				International students face three interconnected problems that no single
+				platform solves — until now.
+			</p>
+			<div class="problem-grid">
+				{problems.map((p) => (
+					<div class="problem-card">
+						<div class="problem-icon">{p.icon}</div>
+						<h3>{p.title}</h3>
+						<p>{p.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ SOLUTION ============ -->
+	<section class="section section-solution">
+		<div class="container">
+			<div class="section-eyebrow">The Solution</div>
+			<h2 class="section-title">One Platform. Three Solutions.</h2>
+			<p class="section-subtitle">
+				F1Visa.Net solves all three problems through a single, integrated platform —
+				built on decentralized, student-owned infrastructure.
+			</p>
+			<div class="solution-grid">
+				{solutions.map((s) => (
+					<a href={s.href} class="solution-card">
+						<div class="solution-icon">{s.icon}</div>
+						<h3>{s.title}</h3>
+						<p>{s.description}</p>
+						<span class="solution-tag">{s.tag} →</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ JOURNEY ============ -->
+	<section class="section section-journey">
+		<div class="container">
+			<div class="section-eyebrow">How It Works</div>
+			<h2 class="section-title">From Discovery to Ownership</h2>
+			<p class="section-subtitle">
+				Five stages take you from first ad impression to cooperative ownership.
+				Every step adds value while building trust.
+			</p>
+			<div class="journey-flow">
+				{journey.map((stage, i) => (
+					<div class="journey-step">
+						<div class="journey-number">{stage.num}</div>
+						<div class="journey-content">
+							<h3>{stage.title}</h3>
+							<p class="journey-quote">{stage.quote}</p>
+							<p class="journey-desc">{stage.desc}</p>
+						</div>
+						{i < journey.length - 1 && <div class="journey-arrow">→</div>}
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ DIFFERENTIATORS ============ -->
+	<section class="section section-diff">
+		<div class="container">
+			<div class="section-eyebrow">Why F1Visa.Net</div>
+			<h2 class="section-title">Six Ways We're Different</h2>
+			<p class="section-subtitle">
+				Not another visa forum. Not another AI chatbot. Not another consultancy.
+			</p>
+			<div class="diff-grid">
+				{differentiators.map((d) => (
+					<div class="diff-card">
+						<div class="diff-icon">{d.icon}</div>
+						<h3>{d.title}</h3>
+						<p>{d.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ PRICING ============ -->
+	<section class="section section-pricing" id="pricing">
+		<div class="container">
+			<div class="section-eyebrow">Membership</div>
+			<h2 class="section-title">Three Paths to Participation</h2>
+			<p class="section-subtitle">
+				Everyone starts free. Everyone can become an owner.
+			</p>
+			<div class="pricing-grid">
+				{tiers.map((tier) => (
+					<div class:list={["pricing-card", { "pricing-highlighted": tier.highlighted }]}>
+						{tier.highlighted && <div class="pricing-badge">Most Popular</div>}
+						<div class="pricing-header">
+							<h3>{tier.name}</h3>
+							<div class="pricing-price">
+								<span class="pricing-amount">{tier.price}</span>
+								{tier.period && <span class="pricing-period">{tier.period}</span>}
+							</div>
+							<p class="pricing-description">{tier.description}</p>
+						</div>
+						<ul class="pricing-features">
+							{tier.features.map((f) => (
+								<li>
+									<svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+									</svg>
+									{f}
+								</li>
+							))}
+						</ul>
+						<a
+							href={tier.href}
+							class:list={["btn", "btn-lg", "pricing-cta", { "btn-primary": tier.highlighted, "btn-secondary": !tier.highlighted }]}
+						>
+							{tier.cta}
+						</a>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ TESTIMONIALS ============ -->
+	<section class="section section-testimonials">
+		<div class="container">
+			<div class="section-eyebrow">Social Proof</div>
+			<h2 class="section-title">Students Helping Students</h2>
+			<p class="section-subtitle">
+				Real students. Real experiences. Real visa approvals.
+			</p>
+			<div class="testimonials-grid">
+				{testimonials.map((t) => (
+					<div class="testimonial-card">
+						<div class="testimonial-stars">★★★★★</div>
+						<blockquote>"{t.quote}"</blockquote>
+						<div class="testimonial-author">
+							<div class="testimonial-avatar">{t.author.charAt(0)}</div>
+							<div class="testimonial-info">
+								<span class="testimonial-name">{t.author}</span>
+								<span class="testimonial-role">
+									{t.role}{t.company && ` · ${t.company}`}
+								</span>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ FAQ ============ -->
+	<section class="section section-faq" id="faq">
+		<div class="container container-narrow">
+			<div class="section-eyebrow">FAQ</div>
+			<h2 class="section-title">Common Questions</h2>
+			<p class="section-subtitle">
+				Everything you need to know about F1Visa.Net, cooperative ownership, and the AI assistant.
+			</p>
+			<div class="faq-list">
+				{faqs.map((item) => (
+					<details class="faq-item">
+						<summary class="faq-question">
+							<span>{item.question}</span>
+							<svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M6 9l6 6 6-6" />
+							</svg>
+						</summary>
+						<div class="faq-answer">
+							<p>{item.answer}</p>
+						</div>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ============ FINAL CTA ============ -->
+	<section class="section section-cta">
+		<div class="container">
+			<div class="cta-banner">
+				<div class="cta-glow" aria-hidden="true"></div>
+				<h2>100 Founding Members. One-time opportunity.</h2>
+				<p>
+					Once the 100 Founding Cooperative Member slots are filled, the program
+					closes. Early members get voting rights, profit-share, and a permanent
+					role in shaping F1Visa.Net's future.
+				</p>
+				<div class="cta-actions">
+					<a href="/join" class="btn btn-white btn-lg">Apply Now</a>
+					<a href="/oca" class="btn btn-outline-white btn-lg">Learn About .OCA</a>
+				</div>
+			</div>
+		</div>
+	</section>
 </Base>
 
 <style>
-	.empty-state {
-		text-align: center;
-		padding: var(--spacing-5xl) var(--spacing-lg);
-		max-width: var(--max-width);
+	/* ============ BASE LAYOUT ============ */
+	.container {
+		max-width: var(--wide-width);
 		margin: 0 auto;
+		padding: 0 var(--spacing-lg);
 	}
 
-	.empty-state h1 {
+	.container-narrow {
+		max-width: var(--max-width);
+	}
+
+	.section {
+		padding: var(--spacing-5xl) var(--spacing-lg);
+	}
+
+	.section-eyebrow {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--color-primary);
+		text-align: center;
 		margin-bottom: var(--spacing-md);
 	}
 
-	.empty-state p {
+	.section-title {
+		font-size: var(--font-size-4xl);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		text-align: center;
+		margin-bottom: var(--spacing-md);
+		line-height: 1.1;
+	}
+
+	.section-subtitle {
+		font-size: var(--font-size-xl);
+		line-height: 1.6;
 		color: var(--color-muted);
+		text-align: center;
+		max-width: 640px;
+		margin: 0 auto var(--spacing-4xl);
+	}
+
+	/* ============ HERO ============ */
+	.hero {
+		position: relative;
+		overflow: hidden;
+		padding: var(--spacing-5xl) var(--spacing-lg) var(--spacing-4xl);
+	}
+
+	.hero-bg {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+	}
+
+	.hero-glow {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(80px);
+		opacity: 0.15;
+	}
+
+	.hero-glow-1 {
+		top: -10%;
+		left: -5%;
+		width: 500px;
+		height: 500px;
+		background: var(--color-primary);
+	}
+
+	.hero-glow-2 {
+		bottom: -10%;
+		right: -5%;
+		width: 400px;
+		height: 400px;
+		background: var(--color-accent);
+	}
+
+	.hero-grid-pattern {
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(var(--color-border) 1px, transparent 1px),
+			linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+		background-size: 48px 48px;
+		mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 70%);
+		opacity: 0.4;
+	}
+
+	.hero-container {
+		max-width: 880px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-sm);
+		padding: var(--spacing-xs) var(--spacing-md);
 		margin-bottom: var(--spacing-xl);
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-text);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-full);
+	}
+
+	.hero-badge-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--color-success);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-success) 20%, transparent);
+		animation: pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes pulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.5; }
+	}
+
+	.hero-title {
+		font-size: clamp(2.5rem, 6vw, var(--font-size-6xl));
+		font-weight: 800;
+		letter-spacing: -0.04em;
+		line-height: 1.05;
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.hero-title-accent {
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		display: inline-block;
+	}
+
+	.hero-subtitle {
+		font-size: var(--font-size-xl);
+		line-height: 1.6;
+		color: var(--color-muted);
+		max-width: 680px;
+		margin: 0 auto var(--spacing-2xl);
+	}
+
+	.hero-subtitle strong {
+		color: var(--color-text);
+		font-weight: 700;
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: var(--spacing-md);
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-bottom: var(--spacing-4xl);
+	}
+
+	.btn-ghost {
+		background: transparent;
+		color: var(--color-text);
+		border: 1px solid var(--color-border);
+	}
+
+	.btn-ghost:hover {
+		background: var(--color-surface);
+		border-color: var(--color-muted);
+	}
+
+	.hero-stats {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: var(--spacing-lg);
+		padding: var(--spacing-xl) 0;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.hero-stat {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xs);
+	}
+
+	.hero-stat-value {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.hero-stat-label {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		line-height: 1.4;
+	}
+
+	/* ============ PROBLEM ============ */
+	.section-problem {
+		background: var(--color-surface);
+	}
+
+	.problem-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+	}
+
+	.problem-card {
+		padding: var(--spacing-xl);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		transition: transform var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.problem-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.problem-icon {
+		font-size: 2.5rem;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.problem-card h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.problem-card p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	/* ============ SOLUTION ============ */
+	.solution-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+	}
+
+	.solution-card {
+		display: flex;
+		flex-direction: column;
+		padding: var(--spacing-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		text-decoration: none;
+		color: inherit;
+		transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+	}
+
+	.solution-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-lg);
+		border-color: var(--color-primary-light);
+	}
+
+	.solution-icon {
+		font-size: 2.5rem;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.solution-card h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.solution-card p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+		flex: 1;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.solution-tag {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		color: var(--color-primary);
+	}
+
+	/* ============ JOURNEY ============ */
+	.section-journey {
+		background: var(--color-surface);
+	}
+
+	.journey-flow {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.journey-step {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-lg);
+	}
+
+	.journey-number {
+		flex-shrink: 0;
+		width: 56px;
+		height: 56px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-size-xl);
+		font-weight: 800;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+		box-shadow: var(--shadow);
+	}
+
+	.journey-content {
+		flex: 1;
+		padding: var(--spacing-lg);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.journey-content h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.journey-quote {
+		font-size: var(--font-size-sm);
+		font-style: italic;
+		color: var(--color-primary);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.journey-desc {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.5;
+	}
+
+	.journey-arrow {
+		flex-shrink: 0;
+		font-size: var(--font-size-xl);
+		color: var(--color-muted);
+		opacity: 0.4;
+		align-self: center;
+	}
+
+	/* ============ DIFFERENTIATORS ============ */
+	.diff-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+	}
+
+	.diff-card {
+		padding: var(--spacing-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		transition: transform var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.diff-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.diff-icon {
+		font-size: 2rem;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.diff-card h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.diff-card p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	/* ============ PRICING ============ */
+	.section-pricing {
+		background: var(--color-surface);
+	}
+
+	.pricing-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+		align-items: start;
+	}
+
+	.pricing-card {
+		position: relative;
+		padding: var(--spacing-xl);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-lg);
+		transition: transform var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.pricing-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.pricing-highlighted {
+		background: var(--color-bg);
+		border-color: var(--color-primary);
+		box-shadow: var(--shadow-xl);
+		transform: scale(1.02);
+	}
+
+	.pricing-highlighted:hover {
+		transform: scale(1.02) translateY(-4px);
+	}
+
+	.pricing-badge {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: var(--spacing-xs) var(--spacing-md);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		border-radius: var(--radius-full);
+		white-space: nowrap;
+	}
+
+	.pricing-header {
+		text-align: center;
+		padding-bottom: var(--spacing-lg);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.pricing-header h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.pricing-price {
+		display: flex;
+		align-items: baseline;
+		justify-content: center;
+		gap: var(--spacing-xs);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.pricing-amount {
+		font-size: var(--font-size-5xl);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+	}
+
+	.pricing-period {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.pricing-description {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.pricing-features {
+		list-style: none;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.pricing-features li {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-sm);
+		font-size: var(--font-size-sm);
+	}
+
+	.check-icon {
+		width: 18px;
+		height: 18px;
+		flex-shrink: 0;
+		color: var(--color-success);
+		margin-top: 2px;
+	}
+
+	.pricing-cta {
+		width: 100%;
+		text-align: center;
+	}
+
+	/* ============ TESTIMONIALS ============ */
+	.testimonials-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+	}
+
+	.testimonial-card {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-lg);
+		padding: var(--spacing-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.testimonial-stars {
+		font-size: var(--font-size-lg);
+		color: var(--color-accent);
+		letter-spacing: 2px;
+	}
+
+	.testimonial-card blockquote {
+		font-size: var(--font-size-base);
+		line-height: 1.6;
+		color: var(--color-text);
+		flex: 1;
+	}
+
+	.testimonial-author {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-md);
+	}
+
+	.testimonial-avatar {
+		width: 44px;
+		height: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-size-base);
+		font-weight: 700;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.testimonial-info {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.testimonial-name {
+		font-weight: 600;
+		font-size: var(--font-size-sm);
+	}
+
+	.testimonial-role {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+	}
+
+	/* ============ FAQ ============ */
+	.section-faq {
+		background: var(--color-surface);
+	}
+
+	.faq-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+	}
+
+	.faq-item {
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		overflow: hidden;
+		transition: border-color var(--transition-fast);
+	}
+
+	.faq-item:hover {
+		border-color: var(--color-muted);
+	}
+
+	.faq-item[open] {
+		border-color: var(--color-primary-light);
+	}
+
+	.faq-question {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--spacing-md);
+		padding: var(--spacing-lg);
+		font-size: var(--font-size-base);
+		font-weight: 600;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	.faq-question::-webkit-details-marker {
+		display: none;
+	}
+
+	.faq-icon {
+		width: 20px;
+		height: 20px;
+		flex-shrink: 0;
+		color: var(--color-muted);
+		transition: transform var(--transition-base);
+	}
+
+	.faq-item[open] .faq-icon {
+		transform: rotate(180deg);
+	}
+
+	.faq-answer {
+		padding: 0 var(--spacing-lg) var(--spacing-lg);
+	}
+
+	.faq-answer p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.7;
+	}
+
+	/* ============ FINAL CTA ============ */
+	.section-cta {
+		padding: var(--spacing-4xl) var(--spacing-lg);
+	}
+
+	.cta-banner {
+		position: relative;
+		overflow: hidden;
+		text-align: center;
+		padding: var(--spacing-4xl) var(--spacing-2xl);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		border-radius: var(--radius-lg);
+		color: white;
+	}
+
+	.cta-glow {
+		position: absolute;
+		top: -50%;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 600px;
+		height: 600px;
+		border-radius: 50%;
+		background: white;
+		opacity: 0.1;
+		filter: blur(60px);
+	}
+
+	.cta-banner h2 {
+		position: relative;
+		font-size: var(--font-size-4xl);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.cta-banner p {
+		position: relative;
+		font-size: var(--font-size-lg);
+		line-height: 1.6;
+		opacity: 0.9;
+		max-width: 560px;
+		margin: 0 auto var(--spacing-xl);
+	}
+
+	.cta-actions {
+		position: relative;
+		display: flex;
+		gap: var(--spacing-md);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.btn-white {
+		background: white;
+		color: var(--color-primary);
+		border: none;
+		font-weight: 700;
+	}
+
+	.btn-white:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.btn-outline-white {
+		background: transparent;
+		color: white;
+		border: 2px solid rgba(255, 255, 255, 0.4);
+	}
+
+	.btn-outline-white:hover {
+		border-color: white;
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	/* ============ RESPONSIVE ============ */
+	@media (max-width: 1024px) {
+		.hero-stats {
+			grid-template-columns: repeat(2, 1fr);
+			gap: var(--spacing-xl);
+		}
+	}
+
+	@media (max-width: 900px) {
+		.section-title {
+			font-size: var(--font-size-3xl);
+		}
+
+		.section-subtitle {
+			font-size: var(--font-size-lg);
+		}
+
+		.problem-grid,
+		.solution-grid,
+		.diff-grid,
+		.pricing-grid,
+		.testimonials-grid {
+			grid-template-columns: 1fr;
+			max-width: 480px;
+			margin: 0 auto;
+		}
+
+		.pricing-highlighted {
+			transform: none;
+		}
+
+		.pricing-highlighted:hover {
+			transform: translateY(-4px);
+		}
+
+		.journey-step {
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.journey-arrow {
+			transform: rotate(90deg);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.hero {
+			padding: var(--spacing-4xl) var(--spacing-md) var(--spacing-3xl);
+		}
+
+		.hero-title {
+			font-size: var(--font-size-4xl);
+		}
+
+		.hero-subtitle {
+			font-size: var(--font-size-base);
+		}
+
+		.hero-stats {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-lg);
+		}
+
+		.section {
+			padding: var(--spacing-4xl) var(--spacing-md);
+		}
+
+		.cta-banner {
+			padding: var(--spacing-3xl) var(--spacing-lg);
+		}
+
+		.cta-banner h2 {
+			font-size: var(--font-size-3xl);
+		}
 	}
 </style>

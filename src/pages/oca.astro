@@ -1,0 +1,502 @@
+---
+import Base from "../layouts/Base.astro";
+
+const principles = [
+	{
+		icon: "🗳️",
+		title: "One Member, One Vote",
+		description: "Every Founding Cooperative Member has an equal voice in platform direction, feature prioritization, and community fund allocation. No shareholder overrides.",
+	},
+	{
+		icon: "💰",
+		title: "Profit-Share Distributions",
+		description: "When the platform succeeds, members succeed. Revenue surplus is distributed quarterly to cooperative members — not extracted by investors.",
+	},
+	{
+		icon: "📜",
+		title: "Transparent Governance",
+		description: "All decisions, financials, and governance records are publicly auditable. Built on the #FedArch governance framework — verified by 9 independent AI agents.",
+	},
+	{
+		icon: "🔒",
+		title: "Student-Owned Infrastructure",
+		description: "Built on DigitalOcean and Cloudflare, not VC-funded servers. The platform cannot be sold to a competitor or shut down by investors. It belongs to the students.",
+	},
+];
+
+const tiers = [
+	{
+		name: "Explorer",
+		price: "Free",
+		role: "Participant",
+		perks: [
+			"Basic AI visa assistant",
+			"Read-only community forums",
+			"Weekly newsletter",
+			"AI Readiness Assessment",
+		],
+	},
+	{
+		name: "Member",
+		price: "$9.99/mo",
+		role: "Contributor",
+		perks: [
+			"Full AI visa assistant (unlimited)",
+			"Post + reply in forums",
+			"1 mentor session / month",
+			"Live chat (AI + human)",
+			"Weekly virtual events",
+		],
+	},
+	{
+		name: "Owner",
+		price: "$99 one-time",
+		role: "Governance",
+		perks: [
+			"Everything in Member",
+			"Voting rights on platform direction",
+			"Quarterly profit-share distributions",
+			"Unlimited mentor sessions",
+			"Founding Member badge",
+			"Exclusive events + retreats",
+			"Eligible to become paid mentor",
+		],
+		highlighted: true,
+	},
+];
+
+const timeline = [
+	{ step: "01", title: "Apply", description: "Submit a short application — what excites you about F1Visa, what you'd build for the community." },
+	{ step: "02", title: "KYC", description: "Complete identity verification via Persona.com — a necessary compliance step for cooperative membership." },
+	{ step: "03", title: "Deposit", description: "Pay the $99 founding deposit. This signals commitment and funds the cooperative treasury." },
+	{ step: "04", title: "Sign", description: "Digital signing via KeyCloak + Supabase. Receive your tokenized membership certificate." },
+	{ step: "05", title: "Govern", description: "Vote on the Q3 roadmap. Join monthly cooperative calls. Start shaping the ecosystem." },
+];
+---
+
+<Base
+	title="Onchain Cooperative Association (.OCA)"
+	description="F1Visa.Net operates as an Onchain Cooperative Association — member-owned, democratically governed, and built on decentralized infrastructure. Not a corporation. Not a subscription. A cooperative you can own."
+>
+	<!-- Hero -->
+	<section class="oca-hero section">
+		<div class="container">
+			<span class="badge">♾️ (.OCA)</span>
+			<h1>Onchain Cooperative Association</h1>
+			<p class="lead">
+				F1Visa.Net isn't a company you subscribe to. It's a cooperative you
+				own. Our 100 Founding Cooperative Members don't just use the
+				platform — they govern it, profit from it, and shape its future.
+			</p>
+			<div class="hero-actions">
+				<a href="/join" class="btn btn-primary btn-lg">Become a Founding Member</a>
+				<a href="#how-it-works" class="btn btn-secondary btn-lg">How It Works</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- What is .OCA -->
+	<section class="section">
+		<div class="container narrow">
+			<h2>What is an .OCA?</h2>
+			<p>
+				An <strong>Onchain Cooperative Association (.OCA)</strong> is a
+				governance model where ownership, voting, and profit distribution
+				are recorded on-chain — transparent, auditable, and immutable.
+				Unlike a traditional corporation where shareholders hold power
+				proportional to investment, an .OCA gives every member an equal
+				voice.
+			</p>
+			<p>
+				F1Visa.Net's .OCA is part of the broader
+				<strong>♾️ WeOwnNet 🌐 ecosystem</strong> — a network of
+				cooperatives built on the #FedArch governance framework. This means
+				our governance isn't experimental. It's been verified by 9
+				independent AI agents across 6 model families, with 100% VSA pass
+				rates on governance documents.
+			</p>
+		</div>
+	</section>
+
+	<!-- Principles -->
+	<section class="section alt-bg">
+		<div class="container">
+			<header class="section-header">
+				<h2>Four Cooperative Principles</h2>
+				<p>What makes .OCA different from a corporation or subscription.</p>
+			</header>
+			<div class="principles-grid">
+				{principles.map((p) => (
+					<div class="principle-card">
+						<div class="principle-icon">{p.icon}</div>
+						<h3>{p.title}</h3>
+						<p>{p.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Membership Tiers -->
+	<section class="section">
+		<div class="container">
+			<header class="section-header">
+				<h2>Three Paths to Participation</h2>
+				<p>Everyone starts free. Everyone can become an owner.</p>
+			</header>
+			<div class="tiers-grid">
+				{tiers.map((tier) => (
+					<div class:list={["tier-card", { highlighted: tier.highlighted }]}>
+						{tier.highlighted && <div class="tier-badge">Founding</div>}
+						<div class="tier-header">
+							<h3>{tier.name}</h3>
+							<div class="tier-price">{tier.price}</div>
+							<span class="tier-role">{tier.role}</span>
+						</div>
+						<ul class="tier-perks">
+							{tier.perks.map((perk) => (
+								<li>
+									<svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+									</svg>
+									{perk}
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- How It Works -->
+	<section id="how-it-works" class="section alt-bg">
+		<div class="container">
+			<header class="section-header">
+				<h2>How to Become a Founding Member</h2>
+				<p>Five steps from application to governance.</p>
+			</header>
+			<div class="timeline">
+				{timeline.map((item) => (
+					<div class="timeline-item">
+						<div class="timeline-number">{item.step}</div>
+						<div class="timeline-content">
+							<h3>{item.title}</h3>
+							<p>{item.description}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Scarcity CTA -->
+	<section class="section">
+		<div class="container">
+			<div class="cta-banner">
+				<h2>100 Founding Members. One-time opportunity.</h2>
+				<p>
+					Once the 100 Founding Cooperative Member slots are filled, the
+					program closes. Early members get voting rights, profit-share,
+					and a permanent role in shaping F1Visa.Net's future.
+				</p>
+				<a href="/join" class="btn btn-primary btn-lg">Apply Now</a>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.oca-hero {
+		text-align: center;
+		padding-top: var(--spacing-5xl);
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.badge {
+		display: inline-block;
+		padding: var(--spacing-xs) var(--spacing-md);
+		margin-bottom: var(--spacing-md);
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.oca-hero h1 {
+		font-size: var(--font-size-5xl);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		margin-bottom: var(--spacing-lg);
+		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.oca-hero .lead {
+		font-size: var(--font-size-xl);
+		line-height: 1.6;
+		color: var(--color-muted);
+		max-width: 720px;
+		margin: 0 auto var(--spacing-2xl);
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: var(--spacing-md);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.narrow {
+		max-width: 720px;
+	}
+
+	.narrow h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.narrow p {
+		font-size: var(--font-size-lg);
+		line-height: 1.7;
+		color: var(--color-muted);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.narrow strong {
+		color: var(--color-text);
+	}
+
+	.section-header {
+		text-align: center;
+		max-width: var(--max-width);
+		margin: 0 auto var(--spacing-4xl);
+	}
+
+	.section-header h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.section-header p {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+	}
+
+	.alt-bg {
+		background: var(--color-surface);
+	}
+
+	.principles-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--spacing-xl);
+	}
+
+	.principle-card {
+		padding: var(--spacing-xl);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.principle-icon {
+		font-size: 2rem;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.principle-card h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.principle-card p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.tiers-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+		align-items: start;
+	}
+
+	.tier-card {
+		position: relative;
+		padding: var(--spacing-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-lg);
+	}
+
+	.tier-card.highlighted {
+		background: var(--color-bg);
+		border-color: var(--color-primary);
+		box-shadow: var(--shadow-xl);
+		transform: scale(1.02);
+	}
+
+	.tier-badge {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: var(--spacing-xs) var(--spacing-md);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		border-radius: var(--radius-full);
+	}
+
+	.tier-header {
+		text-align: center;
+		padding-bottom: var(--spacing-lg);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.tier-header h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.tier-price {
+		font-size: var(--font-size-4xl);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.tier-role {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-muted);
+	}
+
+	.tier-perks {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.tier-perks li {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-sm);
+		font-size: var(--font-size-sm);
+	}
+
+	.check-icon {
+		width: 18px;
+		height: 18px;
+		flex-shrink: 0;
+		color: var(--color-success);
+		margin-top: 2px;
+	}
+
+	.timeline {
+		max-width: 640px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xl);
+	}
+
+	.timeline-item {
+		display: flex;
+		gap: var(--spacing-lg);
+		align-items: flex-start;
+	}
+
+	.timeline-number {
+		flex-shrink: 0;
+		width: 48px;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-size-sm);
+		font-weight: 800;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.timeline-content h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.timeline-content p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.cta-banner {
+		text-align: center;
+		padding: var(--spacing-3xl) var(--spacing-2xl);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		border-radius: var(--radius-lg);
+		color: white;
+	}
+
+	.cta-banner h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.cta-banner p {
+		font-size: var(--font-size-lg);
+		line-height: 1.6;
+		opacity: 0.9;
+		max-width: 600px;
+		margin: 0 auto var(--spacing-xl);
+	}
+
+	.cta-banner .btn {
+		background: white;
+		color: var(--color-primary);
+		border: none;
+	}
+
+	.cta-banner .btn:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+	}
+
+	@media (max-width: 900px) {
+		.principles-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.tiers-grid {
+			grid-template-columns: 1fr;
+			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		.oca-hero h1 {
+			font-size: var(--font-size-4xl);
+		}
+	}
+</style>

@@ -1,0 +1,417 @@
+---
+import Base from "../layouts/Base.astro";
+
+const features = [
+	{
+		icon: "🧠",
+		title: "Trained on F-1 Visa Regulations",
+		description: "Not a generic chatbot. WeOwnLLM is fine-tuned specifically on F-1 visa rules, SEVIS compliance, CPT/OPT guidance, and real-time policy changes. It catches errors before submission.",
+	},
+	{
+		icon: "🌐",
+		title: "Bilingual by Design",
+		description: "Operates natively in English and Chinese (Mandarin) via Z.ai GLM 5.2 technology. The same engine that powers our verified bilingual governance agents — Sage 🪷 and DRP.bot 🌿 Sprout.",
+	},
+	{
+		icon: "🔒",
+		title: "Student-Owned, Not Corporate",
+		description: "Your data doesn't go to a Big Tech AI lab. WeOwnLLM runs on infrastructure owned by the cooperative — not OpenAI, not Google, not Anthropic. Your visa data stays yours.",
+	},
+	{
+		icon: "⚡",
+		title: "Hardened by Minimus.io",
+		description: "Security-hardened via Minimus.io — a minimal attack surface framework. No unnecessary dependencies, no data leakage, no prompt injection vulnerabilities left unpatched.",
+	},
+	{
+		icon: "🏗️",
+		title: "Powered by AnythingLLM",
+		description: "Built on AnythingLLM.com — an open-source, self-hosted LLM framework. This means full control over the model, the training data, and the deployment. No vendor lock-in.",
+	},
+	{
+		icon: "📊",
+		title: "AI Readiness Certification",
+		description: "WeOwnLLM doesn't just answer visa questions — it builds your AI literacy. Complete the AI Readiness Assessment and earn a credential transferable to your career.",
+	},
+];
+
+const comparison = [
+	{ feature: "Trained on F-1 visa regulations", weown: true, generic: false },
+	{ feature: "Bilingual EN / ZH (Mandarin)", weown: true, generic: false },
+	{ feature: "Student-owned infrastructure", weown: true, generic: false },
+	{ feature: "Data sovereignty — your data stays yours", weown: true, generic: false },
+	{ feature: "Open-source, self-hosted", weown: true, generic: false },
+	{ feature: "Security-hardened (Minimus.io)", weown: true, generic: false },
+	{ feature: "AI literacy credential", weown: true, generic: false },
+	{ feature: "Free tier available", weown: true, generic: "limited" },
+];
+---
+
+<Base
+	title="WeOwnLLM — AI Engine"
+	description="WeOwnLLM powers F1Visa.Net's AI assistant. Built on AnythingLLM.com, hardened by Minimus.io, and trained specifically on F-1 visa regulations. Bilingual. Student-owned. Not ChatGPT for visas."
+>
+	<section class="llm-hero section">
+		<div class="container">
+			<span class="badge">🧠 WeOwnLLM</span>
+			<h1>The AI That Actually Understands Visas</h1>
+			<p class="lead">
+				Not ChatGPT for visas. Not a generic chatbot. WeOwnLLM is a
+				purpose-built AI engine — trained on F-1 regulations, hardened for
+				security, and owned by the students who use it.
+			</p>
+			<div class="hero-actions">
+				<a href="/join" class="btn btn-primary btn-lg">Try the AI Assistant</a>
+				<a href="#how-it-works" class="btn btn-secondary btn-lg">How It Works</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Powered by -->
+	<section class="section">
+		<div class="container">
+			<header class="section-header">
+				<h2>Built on Proven Infrastructure</h2>
+				<p>Two open-source powerhouses. One hardened AI engine.</p>
+			</header>
+			<div class="powered-grid">
+				<div class="powered-card">
+					<div class="powered-icon">🏗️</div>
+					<h3>AnythingLLM.com</h3>
+					<p class="powered-role">Engine</p>
+					<p>
+						An open-source, self-hosted LLM framework. Full control over
+						the model, training data, and deployment. No vendor lock-in,
+						no API dependency, no corporate data harvesting.
+					</p>
+				</div>
+				<div class="powered-card">
+					<div class="powered-icon">🛡️</div>
+					<h3>Minimus.io</h3>
+					<p class="powered-role">Hardening</p>
+					<p>
+						A minimal attack surface framework. Strips unnecessary
+						dependencies, prevents data leakage, and patches prompt
+						injection vulnerabilities. Security-first by design.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Features -->
+	<section id="how-it-works" class="section alt-bg">
+		<div class="container">
+			<header class="section-header">
+				<h2>What WeOwnLLM Does</h2>
+				<p>Six capabilities that make it different from every other AI tool.</p>
+			</header>
+			<div class="features-grid">
+				{features.map((f) => (
+					<div class="feature-card">
+						<div class="feature-icon">{f.icon}</div>
+						<h3>{f.title}</h3>
+						<p>{f.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Comparison -->
+	<section class="section">
+		<div class="container narrow">
+			<header class="section-header">
+				<h2>WeOwnLLM vs. Generic AI</h2>
+				<p>Why "just use ChatGPT" isn't enough for your visa journey.</p>
+			</header>
+			<table class="comparison-table">
+				<thead>
+					<tr>
+						<th>Capability</th>
+						<th class="col-weown">WeOwnLLM</th>
+						<th class="col-generic">Generic AI</th>
+					</tr>
+				</thead>
+				<tbody>
+					{comparison.map((row) => (
+						<tr>
+							<td>{row.feature}</td>
+							<td class="col-weown">
+								{row.weown === true ? (
+									<svg class="icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+								) : (
+									<span>{row.weown}</span>
+								)}
+							</td>
+							<td class="col-generic">
+								{row.generic === false ? (
+									<svg class="icon-no" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+								) : (
+									<span class="partial">{row.generic}</span>
+								)}
+							</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="section alt-bg">
+		<div class="container">
+			<div class="cta-banner">
+				<h2>Experience WeOwnLLM</h2>
+				<p>
+					Start free with the Explorer tier. Get full unlimited access with
+					Member. Or own the platform as a Founding Cooperative Member.
+				</p>
+				<a href="/join" class="btn btn-primary btn-lg">Get Started</a>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.llm-hero {
+		text-align: center;
+		padding-top: var(--spacing-5xl);
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.badge {
+		display: inline-block;
+		padding: var(--spacing-xs) var(--spacing-md);
+		margin-bottom: var(--spacing-md);
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.llm-hero h1 {
+		font-size: var(--font-size-5xl);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		margin-bottom: var(--spacing-lg);
+		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.llm-hero .lead {
+		font-size: var(--font-size-xl);
+		line-height: 1.6;
+		color: var(--color-muted);
+		max-width: 720px;
+		margin: 0 auto var(--spacing-2xl);
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: var(--spacing-md);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.section-header {
+		text-align: center;
+		max-width: var(--max-width);
+		margin: 0 auto var(--spacing-4xl);
+	}
+
+	.section-header h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.section-header p {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+	}
+
+	.alt-bg {
+		background: var(--color-surface);
+	}
+
+	.narrow {
+		max-width: 800px;
+	}
+
+	.powered-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--spacing-xl);
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.powered-card {
+		padding: var(--spacing-2xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		text-align: center;
+	}
+
+	.powered-icon {
+		font-size: 2.5rem;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.powered-card h3 {
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.powered-role {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-primary);
+		margin-bottom: var(--spacing-md);
+	}
+
+	.powered-card > p:last-child {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+	}
+
+	.feature-card {
+		padding: var(--spacing-xl);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.feature-icon {
+		font-size: 2rem;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.feature-card h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.feature-card p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.comparison-table {
+		width: 100%;
+		border-collapse: collapse;
+		background: var(--color-surface);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+	}
+
+	.comparison-table th,
+	.comparison-table td {
+		padding: var(--spacing-md);
+		text-align: left;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.comparison-table th {
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		background: var(--color-bg);
+	}
+
+	.comparison-table td {
+		font-size: var(--font-size-sm);
+	}
+
+	.col-weown {
+		text-align: center;
+		width: 120px;
+	}
+
+	.col-generic {
+		text-align: center;
+		width: 120px;
+	}
+
+	.icon-yes {
+		width: 20px;
+		height: 20px;
+		color: var(--color-success);
+	}
+
+	.icon-no {
+		width: 20px;
+		height: 20px;
+		color: var(--color-muted);
+		opacity: 0.4;
+	}
+
+	.partial {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		font-style: italic;
+	}
+
+	.cta-banner {
+		text-align: center;
+		padding: var(--spacing-3xl) var(--spacing-2xl);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		border-radius: var(--radius-lg);
+		color: white;
+	}
+
+	.cta-banner h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.cta-banner p {
+		font-size: var(--font-size-lg);
+		line-height: 1.6;
+		opacity: 0.9;
+		max-width: 600px;
+		margin: 0 auto var(--spacing-xl);
+	}
+
+	.cta-banner .btn {
+		background: white;
+		color: var(--color-primary);
+		border: none;
+	}
+
+	@media (max-width: 900px) {
+		.powered-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.features-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.llm-hero h1 {
+			font-size: var(--font-size-4xl);
+		}
+
+		.comparison-table {
+			font-size: var(--font-size-xs);
+		}
+	}
+</style>

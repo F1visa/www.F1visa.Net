@@ -1,0 +1,363 @@
+---
+import Base from "../layouts/Base.astro";
+
+const stewards = [
+	{
+		initials: "JY",
+		handle: "@GTM 🎯",
+		name: "Jason Younker",
+		role: "Founder & Go-To-Market",
+		bio: "StoryBrand Certified Guide. Serial entrepreneur. Architect of the #FedArch governance framework. Leads growth, brand, and cooperative strategy for F1Visa.Net.",
+		tags: ["StoryBrand Certified", "#FedArch Architect", "GTM"],
+	},
+	{
+		initials: "CT",
+		handle: "@CTO 🏛️",
+		name: "Chief Technology Officer",
+		role: "Technology & Infrastructure",
+		bio: "Leads the technical architecture — KeyCloak auth, Supabase data layer, Cloudflare deployment. Ensures the platform is built on decentralized, student-owned infrastructure.",
+		tags: ["KeyCloak", "Supabase", "Cloudflare"],
+	},
+	{
+		initials: "PL",
+		handle: "@PLT 🛠️",
+		name: "Platform Lead",
+		role: "Platform & Data",
+		bio: "Owns the Supabase.WeOwn.Tools data layer. Ensures student data sovereignty, API integrations, and the technical foundation of the cooperative.",
+		tags: ["Supabase", "Data Layer", "APIs"],
+	},
+	{
+		initials: "MW",
+		handle: "@MWK 💻",
+		name: "Member Experience Lead",
+		role: "Community & Platform",
+		bio: "Bridges community and technology. Manages the F1Visa platform dashboard, community integration, and the member experience from signup to governance.",
+		tags: ["Community", "Dashboard", "Member Experience"],
+	},
+	{
+		initials: "SH",
+		handle: "@SHD ⚡",
+		name: "Infrastructure & Observability",
+		role: "DevOps & Monitoring",
+		bio: "Runs SigNoz observability, infrastructure monitoring, and platform reliability. Ensures the cooperative's infrastructure stays up, fast, and transparent.",
+		tags: ["SigNoz", "Observability", "DevOps"],
+	},
+	{
+		initials: "NM",
+		handle: "@NIK 🛂",
+		name: "Nikhil Mahana",
+		role: "Product & KYC Integration",
+		bio: "Leads Persona.com KYC integration and product development. Ensures the cooperative membership flow is compliant, smooth, and student-friendly.",
+		tags: ["Persona.com", "KYC", "Product"],
+	},
+];
+
+const credentials = [
+	{ label: "9-Agent MetaCouncil", value: "Verified across 6 model families with 100% VSA pass rates" },
+	{ label: "Bilingual AI Governance", value: "Sage 🪷 + Sprout 🌿 — 28 ZH/EN terms verified" },
+	{ label: "D-468 Canonical Glossary", value: "Passed 9-agent VSA at 92.6/100 average" },
+	{ label: "Public Auditability", value: "All governance docs on GitHub under s004_fedarch" },
+];
+---
+
+<Base
+	title="Founding Stewards"
+	description="The founding stewards of F1Visa.Net — a team building a student-owned cooperative on proven governance infrastructure. Part of the ♾️ WeOwnNet 🌐 ecosystem."
+>
+	<section class="team-hero section">
+		<div class="container">
+			<span class="badge">🛂 F1Visa.Net ♾️ (.OCA)</span>
+			<h1>Founding Stewards</h1>
+			<p class="lead">
+				We're not a VC-funded startup. We're a team of builders, governance
+				architects, and community organizers building a student-owned
+				cooperative — on proven infrastructure from the
+				<strong>♾️ WeOwnNet 🌐 ecosystem</strong>.
+			</p>
+		</div>
+	</section>
+
+	<!-- Stewards Grid -->
+	<section class="section">
+		<div class="container">
+			<div class="stewards-grid">
+				{stewards.map((s) => (
+					<div class="steward-card">
+						<div class="steward-avatar">
+							<span>{s.initials}</span>
+						</div>
+						<div class="steward-info">
+							<span class="steward-handle">{s.handle}</span>
+							<h3>{s.name}</h3>
+							<p class="steward-role">{s.role}</p>
+							<p class="steward-bio">{s.bio}</p>
+							<div class="steward-tags">
+								{s.tags.map((tag) => (
+									<span class="tag">{tag}</span>
+								))}
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Ecosystem Credentials -->
+	<section class="section alt-bg">
+		<div class="container">
+			<header class="section-header">
+				<h2>Built on Proven Governance</h2>
+				<p>Our authority comes from the WeOwnNet ecosystem — not from claims, but from verified track records.</p>
+			</header>
+			<div class="credentials-grid">
+				{credentials.map((c) => (
+					<div class="credential-card">
+						<h3>{c.label}</h3>
+						<p>{c.value}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Join CTA -->
+	<section class="section">
+		<div class="container">
+			<div class="cta-banner">
+				<h2>Want to Join the Team?</h2>
+				<p>
+					We're looking for mentors, community builders, and contributors
+					who believe in student-owned infrastructure. Founding
+					Cooperative Members can grow into leadership roles — including
+					MetaCouncil and C-Suite positions.
+				</p>
+				<a href="/join" class="btn btn-primary btn-lg">Become a Founding Member</a>
+				<a href="/contact" class="btn btn-secondary btn-lg" style="margin-left: var(--spacing-md)">Contact the Team</a>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.team-hero {
+		text-align: center;
+		padding-top: var(--spacing-5xl);
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.badge {
+		display: inline-block;
+		padding: var(--spacing-xs) var(--spacing-md);
+		margin-bottom: var(--spacing-md);
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.team-hero h1 {
+		font-size: var(--font-size-5xl);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		margin-bottom: var(--spacing-lg);
+		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.team-hero .lead {
+		font-size: var(--font-size-xl);
+		line-height: 1.6;
+		color: var(--color-muted);
+		max-width: 720px;
+		margin: 0 auto;
+	}
+
+	.team-hero .lead strong {
+		color: var(--color-text);
+	}
+
+	.section-header {
+		text-align: center;
+		max-width: var(--max-width);
+		margin: 0 auto var(--spacing-4xl);
+	}
+
+	.section-header h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.section-header p {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+	}
+
+	.alt-bg {
+		background: var(--color-surface);
+	}
+
+	.stewards-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--spacing-xl);
+	}
+
+	.steward-card {
+		display: flex;
+		gap: var(--spacing-lg);
+		padding: var(--spacing-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		transition: border-color var(--transition-base), box-shadow var(--transition-base);
+	}
+
+	.steward-card:hover {
+		border-color: var(--color-primary-light);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.steward-avatar {
+		flex-shrink: 0;
+		width: 64px;
+		height: 64px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-size-xl);
+		font-weight: 800;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.steward-info {
+		flex: 1;
+	}
+
+	.steward-handle {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		color: var(--color-primary);
+	}
+
+	.steward-info h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.steward-role {
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-muted);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.steward-bio {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.steward-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-xs);
+	}
+
+	.tag {
+		padding: var(--spacing-xs) var(--spacing-sm);
+		font-size: var(--font-size-xs);
+		font-weight: 500;
+		color: var(--color-primary);
+		background: var(--color-primary-light);
+		opacity: 0.15;
+		border-radius: var(--radius-full);
+	}
+
+	.credentials-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--spacing-xl);
+	}
+
+	.credential-card {
+		padding: var(--spacing-xl);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.credential-card h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.credential-card p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.cta-banner {
+		text-align: center;
+		padding: var(--spacing-3xl) var(--spacing-2xl);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		border-radius: var(--radius-lg);
+		color: white;
+	}
+
+	.cta-banner h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.cta-banner p {
+		font-size: var(--font-size-lg);
+		line-height: 1.6;
+		opacity: 0.9;
+		max-width: 600px;
+		margin: 0 auto var(--spacing-xl);
+	}
+
+	.cta-banner .btn-primary {
+		background: white;
+		color: var(--color-primary);
+		border: none;
+	}
+
+	.cta-banner .btn-secondary {
+		background: transparent;
+		color: white;
+		border: 2px solid rgba(255, 255, 255, 0.4);
+	}
+
+	.cta-banner .btn-secondary:hover {
+		border-color: white;
+	}
+
+	@media (max-width: 900px) {
+		.stewards-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.credentials-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.team-hero h1 {
+			font-size: var(--font-size-4xl);
+		}
+	}
+</style>

@@ -30,7 +30,7 @@ const [menu, footerProduct, footerCompany, footerSupport] = await Promise.all([
 ]);
 
 const footerColumns = [
-	{ heading: "Community", menu: footerProduct },
+	{ heading: "Platform", menu: footerProduct },
 	{ heading: "About", menu: footerCompany },
 	{ heading: "Legal", menu: footerSupport },
 ].filter((col) => col.menu && col.menu.items.length > 0);
@@ -90,7 +90,7 @@ const pageCtx = createPublicPageContext({
 					}
 				</div>
 				<div class="nav-actions">
-					<a href="https://community.f1visa.net" class="nav-cta" target="_blank" rel="noopener noreferrer">Join the Community</a>
+					<a href="/join" class="nav-cta">Become a Member-Owner</a>
 				</div>
 			</nav>
 		</header>
