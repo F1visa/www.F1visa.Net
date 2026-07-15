@@ -49,8 +49,13 @@
 				},
 				{
 					"type": "custom",
-					"label": "AI Tools",
+					"label": "WeOwnLLM",
 					"url": "/weownllm"
+				},
+				{
+					"type": "custom",
+					"label": "WeOwnClaw",
+					"url": "/weownclaw"
 				},
 				{
 					"type": "custom",
