@@ -284,7 +284,7 @@ F-1 visa students face **three interconnected problems** that no single solution
        ↓
 5. ENGAGEMENT
    └─ Receives weekly visa tips + community stories via email
-   └─ Can comment on forum posts after 1 week
+   └─ Can comment on forum posts for 1 week, then prompted to upgrade to a Member
    └─ Upgrade prompt after 3 interactions
 ```
 
@@ -293,11 +293,11 @@ F-1 visa students face **three interconnected problems** that no single solution
 ```
 1. UPGRADE
    └─ Pays $48/year (includes ♾️ We Own AI 🤖 BOOK 📚)
-   └─ Completes KYC + CCC-ID registration (PRJ-036 + PRJ-039)
+   └─ Completes KYC + CCC-ID registration (PRJ-036 + PRJ-039) + WeOwnChat onboarding too
        ↓
 2. FULL ACCESS UNLOCKED
    └─ AI Visa Assistant — full form validation + deadline tracking
-   └─ Live chat with AI agent + human mentors
+   └─ Live chat with AI agent + human mentors (Stewards)
    └─ Full forum access + ability to post
    └─ Weekly virtual events
        ↓
@@ -306,7 +306,7 @@ F-1 visa students face **three interconnected problems** that no single solution
    └─ Accesses AI literacy curriculum
    └─ Works toward Responsible Agentic AI certification
        ↓
-4. APPLY FOR FOUNDING MEMBERSHIP
+4. APPLY FOR FOUNDING COOPERATIVE MEMBERSHIP
    └─ 100 Founding Cooperative Member slots (first-come)
    └─ Application + review process
 ```
