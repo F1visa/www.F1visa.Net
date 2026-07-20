@@ -269,16 +269,20 @@ F-1 visa students face **three interconnected problems** that no single solution
    └─ Arrives via Instagram, YouTube, or search
    └─ Lands on F1Visa.Net landing page
        ↓
-2. FREE ASSESSMENT
+2. (non-MVP)FREE AI-Powered ASSESSMENT
    └─ Takes AI Readiness Assessment (5-min quiz)
    └─ Gets matched with resources based on visa stage + AI level
        ↓
-3. COMMUNITY ACCESS
+3. 1-1 integration & Proposal to become an Ambassador
+   └─ Have a chat with a mentor (a core team member or cooperative memeber who has successfully passed through the F-1 visa process)
+   └─ Optionally become an F1Visa.Net ambassador on campus (NEEDS APPROVAL as an initiative)
+       ↓
+4. COMMUNITY ACCESS
    └─ Creates free account
    └─ Accesses basic forum (read-only for first week)
    └─ Subscribes to weekly newsletter
        ↓
-4. ENGAGEMENT
+5. ENGAGEMENT
    └─ Receives weekly visa tips + community stories via email
    └─ Can comment on forum posts after 1 week
    └─ Upgrade prompt after 3 interactions
