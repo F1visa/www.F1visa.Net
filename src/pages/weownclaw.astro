@@ -1,0 +1,457 @@
+---
+import Base from "../layouts/Base.astro";
+
+const capabilities = [
+	{
+		icon: "🪪",
+		title: "KYC & Identity Verification",
+		description: "Identity verification via Persona.com — a necessary compliance step for cooperative membership. Ensures every Founding Member is a real, verified person.",
+	},
+	{
+		icon: "✍️",
+		title: "Digital Signing",
+		description: "Legally binding digital signatures via KeyCloak authentication + Supabase data layer. Your cooperative membership agreement is signed, stored, and verifiable.",
+	},
+	{
+		icon: "🔐",
+		title: "Data Sovereignty",
+		description: "Your personal data — visa documents, identity records, financial information — is stored on cooperative-owned infrastructure. Not on a corporate server. Not in a data broker's warehouse.",
+	},
+	{
+		icon: "⚖️",
+		title: "Cooperative Legal Framework",
+		description: "WeOwnClaw encodes the cooperative governance structure — voting rights, profit-share schedules, membership terms — into enforceable digital agreements.",
+	},
+	{
+		icon: "🛡️",
+		title: "Hardened by Minimus.io",
+		description: "Same security hardening as WeOwnLLM. Minimal attack surface, no unnecessary dependencies, no data leakage. Legal infrastructure that's as secure as it is enforceable.",
+	},
+	{
+		icon: "🔗",
+		title: "Powered by OpenClaw",
+		description: "Built on OpenClaw — an open-source legal tech framework for digital agreements and cooperative governance. No proprietary legal tech lock-in.",
+	},
+];
+
+const flow = [
+	{ step: "01", title: "Identity", description: "Persona.com verifies your identity — name, date of birth, government ID. Required for cooperative membership compliance." },
+	{ step: "02", title: "Agreement", description: "WeOwnClaw generates your cooperative membership agreement — voting rights, profit-share terms, governance obligations." },
+	{ step: "03", title: "Signing", description: "Digital signing via KeyCloak auth. Your signature is cryptographically verified and stored in Supabase." },
+	{ step: "04", title: "Certificate", description: "Receive your tokenized membership certificate — on-chain proof of cooperative ownership. Portable, verifiable, immutable." },
+];
+---
+
+<Base
+	title="WeOwnClaw — Legal & Compliance"
+	description="WeOwnClaw handles KYC, digital signing, and cooperative legal framework for F1Visa.Net. Powered by OpenClaw, hardened by Minimus.io. Student data stays student-owned."
+>
+	<section class="claw-hero section">
+		<div class="container">
+			<span class="badge">⚖️ WeOwnClaw</span>
+			<h1>Legal Infrastructure for the Cooperative</h1>
+			<p class="lead">
+				WeOwnClaw handles the legal and compliance layer of F1Visa.Net —
+				KYC verification, digital signing, cooperative governance
+				agreements, and data sovereignty. Powered by OpenClaw. Hardened by
+				Minimus.io. Owned by you.
+			</p>
+			<div class="hero-actions">
+				<a href="/oca" class="btn btn-primary btn-lg">Learn About .OCA</a>
+				<a href="#how-it-works" class="btn btn-secondary btn-lg">How It Works</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Powered by -->
+	<section class="section">
+		<div class="container">
+			<header class="section-header">
+				<h2>Built on Open Legal Tech</h2>
+				<p>Two open-source frameworks. One hardened legal layer.</p>
+			</header>
+			<div class="powered-grid">
+				<div class="powered-card">
+					<div class="powered-icon">🔗</div>
+					<h3>OpenClaw</h3>
+					<p class="powered-role">Framework</p>
+					<p>
+						An open-source legal tech framework for digital agreements
+						and cooperative governance. Encodes membership terms, voting
+						rights, and profit-share schedules into enforceable digital
+						contracts. No proprietary legal tech lock-in.
+					</p>
+				</div>
+				<div class="powered-card">
+					<div class="powered-icon">🛡️</div>
+					<h3>Minimus.io</h3>
+					<p class="powered-role">Hardening</p>
+					<p>
+						Security hardening for legal infrastructure. Minimal attack
+						surface, encrypted data storage, no unnecessary
+						dependencies. Your legal documents are as secure as they are
+						enforceable.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Capabilities -->
+	<section id="how-it-works" class="section alt-bg">
+		<div class="container">
+			<header class="section-header">
+				<h2>What WeOwnClaw Handles</h2>
+				<p>Six legal and compliance capabilities for the cooperative.</p>
+			</header>
+			<div class="features-grid">
+				{capabilities.map((c) => (
+					<div class="feature-card">
+						<div class="feature-icon">{c.icon}</div>
+						<h3>{c.title}</h3>
+						<p>{c.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Flow -->
+	<section class="section">
+		<div class="container">
+			<header class="section-header">
+				<h2>The Membership Legal Flow</h2>
+				<p>From identity verification to tokenized ownership certificate.</p>
+			</header>
+			<div class="flow-grid">
+				{flow.map((item) => (
+					<div class="flow-card">
+						<div class="flow-number">{item.step}</div>
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Data sovereignty -->
+	<section class="section alt-bg">
+		<div class="container narrow">
+			<header class="section-header">
+				<h2>Your Data Stays Yours</h2>
+			</header>
+			<div class="sovereignty-card">
+				<p>
+					When you submit visa documents, identity records, or financial
+					information to F1Visa.Net, that data is processed through
+					WeOwnClaw — and stored on <strong>cooperative-owned
+					infrastructure</strong> (DigitalOcean + Cloudflare), not on
+					corporate servers owned by investors who could sell or shut
+					down the platform.
+				</p>
+				<p>
+					WeOwnClaw enforces data sovereignty through:
+				</p>
+				<ul class="sovereignty-list">
+					<li>Encrypted storage — all sensitive data encrypted at rest</li>
+					<li>Access controls — only you and authorized cooperative agents can access your records</li>
+					<li>No data selling — your information is never sold to third parties, data brokers, or advertisers</li>
+					<li>Portability — you can export your data at any time</li>
+					<li>Immutability — your membership certificate is on-chain and cannot be revoked by a corporate decision</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="section">
+		<div class="container">
+			<div class="cta-banner">
+				<h2>Ready to Own Your Legal Infrastructure?</h2>
+				<p>
+					WeOwnClaw is the legal layer of the F1Visa.Net cooperative.
+					Become a Founding Member and your legal relationship with the
+					platform is encoded, signed, and owned by you.
+				</p>
+				<a href="/join" class="btn btn-primary btn-lg">Become a Founding Member</a>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.claw-hero {
+		text-align: center;
+		padding-top: var(--spacing-5xl);
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.badge {
+		display: inline-block;
+		padding: var(--spacing-xs) var(--spacing-md);
+		margin-bottom: var(--spacing-md);
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.claw-hero h1 {
+		font-size: var(--font-size-5xl);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		margin-bottom: var(--spacing-lg);
+		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.claw-hero .lead {
+		font-size: var(--font-size-xl);
+		line-height: 1.6;
+		color: var(--color-muted);
+		max-width: 720px;
+		margin: 0 auto var(--spacing-2xl);
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: var(--spacing-md);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.section-header {
+		text-align: center;
+		max-width: var(--max-width);
+		margin: 0 auto var(--spacing-4xl);
+	}
+
+	.section-header h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.section-header p {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+	}
+
+	.alt-bg {
+		background: var(--color-surface);
+	}
+
+	.narrow {
+		max-width: 720px;
+	}
+
+	.powered-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--spacing-xl);
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.powered-card {
+		padding: var(--spacing-2xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		text-align: center;
+	}
+
+	.powered-icon {
+		font-size: 2.5rem;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.powered-card h3 {
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.powered-role {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-primary);
+		margin-bottom: var(--spacing-md);
+	}
+
+	.powered-card > p:last-child {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+	}
+
+	.feature-card {
+		padding: var(--spacing-xl);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.feature-icon {
+		font-size: 2rem;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.feature-card h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.feature-card p {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.flow-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: var(--spacing-lg);
+	}
+
+	.flow-card {
+		padding: var(--spacing-lg);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		text-align: center;
+	}
+
+	.flow-number {
+		width: 40px;
+		height: 40px;
+		margin: 0 auto var(--spacing-md);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-size-sm);
+		font-weight: 800;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.flow-card h3 {
+		font-size: var(--font-size-base);
+		font-weight: 700;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.flow-card p {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		line-height: 1.5;
+	}
+
+	.sovereignty-card {
+		padding: var(--spacing-2xl);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.sovereignty-card p {
+		font-size: var(--font-size-base);
+		line-height: 1.7;
+		color: var(--color-muted);
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.sovereignty-card strong {
+		color: var(--color-text);
+	}
+
+	.sovereignty-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.sovereignty-list li {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-sm);
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.sovereignty-list li::before {
+		content: "✓";
+		flex-shrink: 0;
+		color: var(--color-success);
+		font-weight: 700;
+	}
+
+	.cta-banner {
+		text-align: center;
+		padding: var(--spacing-3xl) var(--spacing-2xl);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		border-radius: var(--radius-lg);
+		color: white;
+	}
+
+	.cta-banner h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.cta-banner p {
+		font-size: var(--font-size-lg);
+		line-height: 1.6;
+		opacity: 0.9;
+		max-width: 600px;
+		margin: 0 auto var(--spacing-xl);
+	}
+
+	.cta-banner .btn {
+		background: white;
+		color: var(--color-primary);
+		border: none;
+	}
+
+	@media (max-width: 900px) {
+		.powered-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.features-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.flow-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.claw-hero h1 {
+			font-size: var(--font-size-4xl);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.flow-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

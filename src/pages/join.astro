@@ -1,0 +1,770 @@
+---
+import Base from "../layouts/Base.astro";
+
+const journey = [
+	{
+		stage: "1",
+		title: "Discover",
+		question: '"Wait, I can OWN the platform that helps me?"',
+		description: "You see F1Visa.Net content. You realize it's not just another visa resource — it's a cooperative you can own.",
+	},
+	{
+		stage: "2",
+		title: "Explore",
+		question: '"This looks legit. Cooperative? AI-guided?"',
+		description: "You visit F1Visa.Net. You see the cooperative model, the AI assistant, the community. It clicks.",
+	},
+	{
+		stage: "3",
+		title: "Experience",
+		question: '"Okay, this AI actually understands visas."',
+		description: "You take the free 5-minute AI Readiness Assessment. You get a personalized score, visa stage analysis, and a recommended path.",
+	},
+	{
+		stage: "4",
+		title: "Commit",
+		question: '"I\'m in. Now what\'s this Founding Member thing?"',
+		description: "You sign up as a Member. Full AI assistant, community access, mentor matching. You start using the platform for real.",
+	},
+	{
+		stage: "5",
+		title: "Own",
+		question: '"I don\'t just use F1Visa. I own it."',
+		description: "You become a Founding Cooperative Member. Voting rights. Profit-share. A tokenized certificate. You shape the platform's future.",
+	},
+];
+
+const tiers = [
+	{
+		name: "Explorer",
+		price: "Free",
+		cta: "Start Free",
+		href: "#explorer-form",
+		perks: [
+			"Basic AI visa assistant",
+			"Read-only community forums",
+			"Weekly newsletter",
+			"AI Readiness Assessment",
+		],
+	},
+	{
+		name: "Member",
+		price: "$9.99",
+		period: "/month",
+		cta: "Become a Member",
+		href: "#member-form",
+		highlighted: true,
+		perks: [
+			"Full AI visa assistant (unlimited)",
+			"Post + reply in forums",
+			"1 mentor session / month",
+			"Live chat (AI + human)",
+			"Weekly virtual events",
+			"SEVIS & CPT/OPT tracking",
+		],
+	},
+	{
+		name: "Owner",
+		price: "$99",
+		period: "one-time",
+		cta: "Become an Owner",
+		href: "#owner-form",
+		perks: [
+			"Everything in Member",
+			"Voting rights",
+			"Profit-share distributions",
+			"Unlimited mentor sessions",
+			"Founding Member badge",
+			"Exclusive events + retreats",
+		],
+	},
+];
+
+const adVariants = [
+	{ label: "A", hook: "What if the app helping you get your F-1 visa was YOURS?", angle: "Cooperative ownership", audience: "India — aspirational" },
+	{ label: "B", hook: "I got my F-1 visa without paying a lawyer $500/hour.", angle: "AI-guided, affordable", audience: "China — cost-conscious" },
+	{ label: "C", hook: "Arriving alone? 1.5M students just like you are already here.", angle: "Community", audience: "Southeast Asia" },
+	{ label: "D", hook: "AI that actually understands visa forms. Not ChatGPT — F1Visa.", angle: "AI capability", audience: "US-based (retargeting)" },
+];
+---
+
+<Base
+	title="Join F1Visa.Net"
+	description="Start free. Become a Member. Own the platform. Your F1 journey from discovery to cooperative ownership — AI-guided, community-powered, member-owned."
+>
+	<!-- Hero -->
+	<section class="join-hero section">
+		<div class="container">
+			<span class="badge">🚀 Join F1Visa.Net</span>
+			<h1>Start Free. Become a Member. Own the Platform.</h1>
+			<p class="lead">
+				Your F1 journey has five stages — from first discovery to
+				cooperative ownership. Start with a free AI Readiness Assessment.
+				Upgrade when you're ready. Become a Founding Owner and shape the
+				platform's future.
+			</p>
+			<div class="hero-actions">
+				<a href="#assessment" class="btn btn-primary btn-lg">Take the Free Assessment</a>
+				<a href="#tiers" class="btn btn-secondary btn-lg">Compare Tiers</a>
+			</div>
+			<div class="scarcity-counter">
+				<span class="counter-label">🔥 Founding Member slots remaining:</span>
+				<span class="counter-number">100</span>
+				<span class="counter-subtext">of 100 — one-time opportunity</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- Journey -->
+	<section class="section">
+		<div class="container">
+			<header class="section-header">
+				<h2>From Discovery to Ownership</h2>
+				<p>Five stages. Every step adds value while building trust.</p>
+			</header>
+			<div class="journey-grid">
+				{journey.map((stage) => (
+					<div class="journey-card">
+						<div class="journey-stage">{stage.stage}</div>
+						<h3>{stage.title}</h3>
+						<p class="journey-question">{stage.question}</p>
+						<p class="journey-desc">{stage.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Assessment CTA -->
+	<section id="assessment" class="section alt-bg">
+		<div class="container narrow">
+			<header class="section-header">
+				<h2>The AI Readiness Assessment</h2>
+				<p>5 minutes. Free. Personalized.</p>
+			</header>
+			<div class="assessment-card">
+				<p>
+					The assessment is your personalization engine. Every answer
+					feeds into your email sequence, community matching, AI
+					assistant configuration, and Founding Member pitch.
+				</p>
+				<div class="assessment-steps">
+					<div class="assess-step">
+						<span class="assess-num">1</span>
+						<span>What stage of your F-1 journey are you in?</span>
+					</div>
+					<div class="assess-step">
+						<span class="assess-num">2</span>
+						<span>How confident are you about the visa process? (1-5)</span>
+					</div>
+					<div class="assess-step">
+						<span class="assess-num">3</span>
+						<span>What worries you most? (Paperwork, Interview, Denial, Costs, Loneliness)</span>
+					</div>
+					<div class="assess-step">
+						<span class="assess-num">4</span>
+						<span>Have you used AI tools before?</span>
+					</div>
+					<div class="assess-step">
+						<span class="assess-num">5</span>
+						<span>How did you hear about F1Visa?</span>
+					</div>
+					<div class="assess-step">
+						<span class="assess-num">6</span>
+						<span>Email + Country → Get your personalized score</span>
+					</div>
+				</div>
+				<div class="assessment-result">
+					<p class="result-label">Your result:</p>
+					<p class="result-score">📊 Visa Stage · 🔑 Top Concern · 🤖 AI Literacy Level</p>
+					<p class="result-path">→ Recommended Path: Free Access → Member → Owner</p>
+				</div>
+				<a href="#tiers" class="btn btn-primary btn-lg">Get Started</a>
+				<p class="assessment-note">
+					Assessment powered by Formbricks. Coming soon — in the meantime,
+					join the community and we'll notify you when it launches.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Tiers -->
+	<section id="tiers" class="section">
+		<div class="container">
+			<header class="section-header">
+				<h2>Choose Your Path</h2>
+				<p>Everyone starts free. Everyone can become an owner.</p>
+			</header>
+			<div class="tiers-grid">
+				{tiers.map((tier) => (
+					<div class:list={["tier-card", { highlighted: tier.highlighted }]}>
+						{tier.highlighted && <div class="tier-badge">Most Popular</div>}
+						<div class="tier-header">
+							<h3>{tier.name}</h3>
+							<div class="tier-price">
+								<span class="tier-amount">{tier.price}</span>
+								{tier.period && <span class="tier-period">{tier.period}</span>}
+							</div>
+						</div>
+						<ul class="tier-perks">
+							{tier.perks.map((perk) => (
+								<li>
+									<svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+									</svg>
+									{perk}
+								</li>
+							))}
+						</ul>
+						<a href={tier.href} class:list={["btn", "btn-lg", "tier-cta", { "btn-primary": tier.highlighted, "btn-secondary": !tier.highlighted }]}>
+							{tier.cta}
+						</a>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Ad Variants (for campaign reference) -->
+	<section class="section alt-bg">
+		<div class="container">
+			<header class="section-header">
+				<h2>How You Might Have Found Us</h2>
+				<p>Four ad variants. Four audience segments. One platform.</p>
+			</header>
+			<div class="variants-grid">
+				{adVariants.map((ad) => (
+					<div class="variant-card">
+						<span class="variant-label">Variant {ad.label}</span>
+						<p class="variant-hook">"{ad.hook}"</p>
+						<div class="variant-meta">
+							<span class="variant-angle">{ad.angle}</span>
+							<span class="variant-audience">{ad.audience}</span>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Forms -->
+	<section id="explorer-form" class="section">
+		<div class="container narrow">
+			<h2>Start as Explorer (Free)</h2>
+			<p class="form-intro">
+				Join the community and get notified when the AI Readiness
+				Assessment launches. No credit card. No commitment.
+			</p>
+			<form class="join-form" method="POST" action="/join">
+				<div class="form-row">
+					<input type="text" name="name" placeholder="Your name" required />
+					<input type="email" name="email" placeholder="Email address" required />
+				</div>
+				<div class="form-row">
+					<select name="country" required>
+						<option value="">Select your country</option>
+						<option value="IN">India</option>
+						<option value="CN">China</option>
+						<option value="US">United States</option>
+						<option value="other">Other</option>
+					</select>
+					<select name="stage" required>
+						<option value="">Visa stage</option>
+						<option value="applying">Applying for F-1</option>
+						<option value="current">Current F-1 student</option>
+						<option value="opt">OPT / CPT</option>
+						<option value="h1b">H-1B transition</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary btn-lg">Start Free</button>
+			</form>
+		</div>
+	</section>
+
+	<!-- Final CTA -->
+	<section class="section">
+		<div class="container">
+			<div class="cta-banner">
+				<h2>100 Founding Members. One-time opportunity.</h2>
+				<p>
+					Once the slots are filled, the program closes. Founding Members
+					get voting rights, profit-share, and a permanent role in shaping
+					F1Visa.Net's future.
+				</p>
+				<a href="/oca" class="btn btn-primary btn-lg">Learn About .OCA</a>
+				<a href="https://community.f1visa.net" class="btn btn-secondary btn-lg" style="margin-left: var(--spacing-md)" target="_blank" rel="noopener noreferrer">Join the Community</a>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.join-hero {
+		text-align: center;
+		padding-top: var(--spacing-5xl);
+		padding-bottom: var(--spacing-3xl);
+	}
+
+	.badge {
+		display: inline-block;
+		padding: var(--spacing-xs) var(--spacing-md);
+		margin-bottom: var(--spacing-md);
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.join-hero h1 {
+		font-size: var(--font-size-5xl);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		margin-bottom: var(--spacing-lg);
+		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.join-hero .lead {
+		font-size: var(--font-size-xl);
+		line-height: 1.6;
+		color: var(--color-muted);
+		max-width: 720px;
+		margin: 0 auto var(--spacing-2xl);
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: var(--spacing-md);
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.scarcity-counter {
+		display: inline-flex;
+		align-items: baseline;
+		gap: var(--spacing-sm);
+		padding: var(--spacing-md) var(--spacing-xl);
+		background: var(--color-surface);
+		border: 2px solid var(--color-accent);
+		border-radius: var(--radius-lg);
+	}
+
+	.counter-label {
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-text);
+	}
+
+	.counter-number {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		color: var(--color-accent);
+	}
+
+	.counter-subtext {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+	}
+
+	.section-header {
+		text-align: center;
+		max-width: var(--max-width);
+		margin: 0 auto var(--spacing-4xl);
+	}
+
+	.section-header h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.section-header p {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+	}
+
+	.alt-bg {
+		background: var(--color-surface);
+	}
+
+	.narrow {
+		max-width: 720px;
+	}
+
+	/* Journey */
+	.journey-grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: var(--spacing-md);
+	}
+
+	.journey-card {
+		padding: var(--spacing-lg);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		text-align: center;
+	}
+
+	.journey-stage {
+		width: 40px;
+		height: 40px;
+		margin: 0 auto var(--spacing-md);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-size-lg);
+		font-weight: 800;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		border-radius: var(--radius-full);
+	}
+
+	.journey-card h3 {
+		font-size: var(--font-size-base);
+		font-weight: 700;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.journey-question {
+		font-size: var(--font-size-xs);
+		font-style: italic;
+		color: var(--color-primary);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.journey-desc {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		line-height: 1.5;
+	}
+
+	/* Assessment */
+	.assessment-card {
+		padding: var(--spacing-2xl);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		text-align: center;
+	}
+
+	.assessment-card > p:first-child {
+		font-size: var(--font-size-base);
+		color: var(--color-muted);
+		line-height: 1.6;
+		margin-bottom: var(--spacing-xl);
+	}
+
+	.assessment-steps {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+		text-align: left;
+		max-width: 480px;
+		margin: 0 auto var(--spacing-xl);
+	}
+
+	.assess-step {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-md);
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+	}
+
+	.assess-num {
+		flex-shrink: 0;
+		width: 28px;
+		height: 28px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		color: var(--color-primary);
+		background: var(--color-primary-light);
+		opacity: 0.15;
+		border-radius: var(--radius-full);
+	}
+
+	.assessment-result {
+		padding: var(--spacing-lg);
+		background: var(--color-surface);
+		border-radius: var(--radius);
+		margin-bottom: var(--spacing-xl);
+	}
+
+	.result-label {
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-muted);
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.result-score {
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.result-path {
+		font-size: var(--font-size-sm);
+		color: var(--color-primary);
+	}
+
+	.assessment-note {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		margin-top: var(--spacing-md);
+		font-style: italic;
+	}
+
+	/* Tiers */
+	.tiers-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+		align-items: start;
+	}
+
+	.tier-card {
+		position: relative;
+		padding: var(--spacing-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-lg);
+	}
+
+	.tier-card.highlighted {
+		background: var(--color-bg);
+		border-color: var(--color-primary);
+		box-shadow: var(--shadow-xl);
+		transform: scale(1.02);
+	}
+
+	.tier-badge {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: var(--spacing-xs) var(--spacing-md);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		border-radius: var(--radius-full);
+	}
+
+	.tier-header {
+		text-align: center;
+		padding-bottom: var(--spacing-lg);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.tier-header h3 {
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.tier-price {
+		display: flex;
+		align-items: baseline;
+		justify-content: center;
+		gap: var(--spacing-xs);
+	}
+
+	.tier-amount {
+		font-size: var(--font-size-4xl);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+	}
+
+	.tier-period {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.tier-perks {
+		list-style: none;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.tier-perks li {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-sm);
+		font-size: var(--font-size-sm);
+	}
+
+	.check-icon {
+		width: 18px;
+		height: 18px;
+		flex-shrink: 0;
+		color: var(--color-success);
+		margin-top: 2px;
+	}
+
+	.tier-cta {
+		width: 100%;
+		text-align: center;
+	}
+
+	/* Ad Variants */
+	.variants-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--spacing-lg);
+	}
+
+	.variant-card {
+		padding: var(--spacing-lg);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.variant-label {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-primary);
+	}
+
+	.variant-hook {
+		font-size: var(--font-size-base);
+		font-weight: 600;
+		margin: var(--spacing-sm) 0 var(--spacing-md);
+		line-height: 1.4;
+	}
+
+	.variant-meta {
+		display: flex;
+		gap: var(--spacing-md);
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+	}
+
+	.variant-angle {
+		font-weight: 600;
+	}
+
+	/* Form */
+	.form-intro {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+		margin-bottom: var(--spacing-xl);
+	}
+
+	.join-form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+	}
+
+	.form-row {
+		display: flex;
+		gap: var(--spacing-md);
+	}
+
+	.join-form input,
+	.join-form select {
+		flex: 1;
+		padding: var(--spacing-md);
+		font-size: var(--font-size-base);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background: var(--color-surface);
+		color: var(--color-text);
+	}
+
+	.join-form input:focus,
+	.join-form select:focus {
+		outline: none;
+		border-color: var(--color-primary);
+	}
+
+	.join-form .btn {
+		align-self: flex-start;
+	}
+
+	/* CTA Banner */
+	.cta-banner {
+		text-align: center;
+		padding: var(--spacing-3xl) var(--spacing-2xl);
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		border-radius: var(--radius-lg);
+		color: white;
+	}
+
+	.cta-banner h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 800;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.cta-banner p {
+		font-size: var(--font-size-lg);
+		line-height: 1.6;
+		opacity: 0.9;
+		max-width: 600px;
+		margin: 0 auto var(--spacing-xl);
+	}
+
+	.cta-banner .btn-primary {
+		background: white;
+		color: var(--color-primary);
+		border: none;
+	}
+
+	.cta-banner .btn-secondary {
+		background: transparent;
+		color: white;
+		border: 2px solid rgba(255, 255, 255, 0.4);
+	}
+
+	@media (max-width: 900px) {
+		.journey-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.tiers-grid {
+			grid-template-columns: 1fr;
+			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		.variants-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.join-hero h1 {
+			font-size: var(--font-size-4xl);
+		}
+
+		.form-row {
+			flex-direction: column;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.journey-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

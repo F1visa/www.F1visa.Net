@@ -28,6 +28,12 @@ uploads/
 # IDE
 .vscode/*
 !.vscode/mcp.json
+
+# Bundled Node binary (platform-specific, not for repo)
+node-bin/
+
+# Context window / planning docs (local only)
+contextwindow/
 .idea/
 *.swp
 *.swo
