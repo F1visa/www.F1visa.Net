@@ -1,24 +1,28 @@
 {
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "f1visa-www",
-	"main": "./src/worker.ts",
-	"compatibility_date": "2026-02-24",
-	"compatibility_flags": ["nodejs_compat"],
-	"d1_databases": [
-		{
-			"binding": "DB",
-			"database_name": "f1visa-www",
-			"database_id": "5208bf64-fc6d-42d1-b9f6-dc76c70812ac",
-		},
-	],
-	"kv_namespaces": [
-		{
-			"binding": "SESSION",
-			"id": "99e45407659445d59efb494b8d8b619b",
-		},
-	],
-	// Drives scheduled publishing, plugin cron, and maintenance (see src/worker.ts)
-	"triggers": {
-		"crons": ["* * * * *"],
-	},
+"$schema": "node_modules/wrangler/config-schema.json",
+"name": "f1visa-www",
+"main": "./src/worker.ts",
+"compatibility_date": "2026-02-24",
+"compatibility_flags": ["nodejs_compat"],
+"d1_databases": [
+{
+"binding": "DB",
+"database_name": "f1visa-www",
+"database_id": "f0045443-136f-471f-9086-c437fe3d858f",
+},
+],
+"kv_namespaces": [
+{
+"binding": "SESSION",
+"id": "9dc8acb1d19a4e4987c01e539eba7f9f",
+},
+],
+// Drives scheduled publishing, plugin cron, and maintenance (see src/worker.ts)
+"triggers": {
+"crons": ["* * * * *"],
+},
+"routes": [
+{ "pattern": "f1visa.net/*", "zone_name": "f1visa.net" },
+{ "pattern": "www.f1visa.net/*", "zone_name": "f1visa.net" }
+]
 }
