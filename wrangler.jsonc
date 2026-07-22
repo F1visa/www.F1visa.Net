@@ -2,19 +2,20 @@
 "$schema": "node_modules/wrangler/config-schema.json",
 "name": "f1visa-www",
 "main": "./src/worker.ts",
+"account_id": "871606695f4eece71d901a7a8f5565a9",
 "compatibility_date": "2026-02-24",
 "compatibility_flags": ["nodejs_compat"],
 "d1_databases": [
 {
 "binding": "DB",
 "database_name": "f1visa-www",
-"database_id": "f0045443-136f-471f-9086-c437fe3d858f",
+"database_id": "c26cb4eb-007e-4005-bb62-87f04f68672d",
 },
 ],
 "kv_namespaces": [
 {
 "binding": "SESSION",
-"id": "9dc8acb1d19a4e4987c01e539eba7f9f",
+"id": "1b40844eda954e23afcc1fe13024ffba",
 },
 ],
 // Drives scheduled publishing, plugin cron, and maintenance (see src/worker.ts)
