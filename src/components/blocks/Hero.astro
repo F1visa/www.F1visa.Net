@@ -1,10 +1,40 @@
 ---
+// Shared, prop-driven hero block. Two calling conventions:
+//  - CMS path: EmDash's PortableText renderer passes block content as `node`
+//    (see MarketingBlocks.astro) -- flat fields only, per Block Kit's schema
+//    constraints (see plugins/marketing-blocks/index.ts).
+//  - Direct path: pages import and render <Hero /> themselves, passing rich
+//    props (arrays/objects) straight through -- no Block Kit constraint
+//    applies here since it bypasses the admin editor entirely.
+// Every page hero should go through this component rather than hardcoding
+// its own markup, so there's exactly one implementation to maintain.
+
+interface Cta {
+	label: string;
+	url: string;
+	icon?: boolean;
+	external?: boolean;
+}
+
+interface Stat {
+	value: string;
+	label: string;
+}
+
+interface Card {
+	avatarSrc?: string;
+	avatarInitial?: string;
+	name: string;
+	meta: string;
+	line: string;
+	tag?: string;
+}
+
 interface Props {
-	node: {
+	// CMS path
+	node?: {
 		headline: string;
 		subheadline?: string;
-		// CTAs are flattened to sibling fields because Block Kit has no
-		// object-group element. Empty strings mean "no CTA".
 		primaryCtaLabel?: string;
 		primaryCtaUrl?: string;
 		secondaryCtaLabel?: string;
@@ -12,55 +42,187 @@ interface Props {
 		image?: { url: string; alt?: string };
 		centered?: boolean;
 	};
+	// Direct path
+	headline?: string;
+	headlineAccent?: string;
+	subheadline?: string;
+	eyebrow?: string;
+	primaryCta?: Cta;
+	secondaryCta?: Cta;
+	centered?: boolean;
+	variant?: "default" | "split-dark";
+	image?: { url: string; alt?: string };
+	stats?: Stat[];
+	card?: Card;
 }
 
-const { node } = Astro.props;
-const { headline, subheadline, image, centered } = node;
+const props = Astro.props;
+const node = props.node;
 
-const primaryCta =
-	node.primaryCtaLabel && node.primaryCtaUrl
+const headline = node?.headline ?? props.headline ?? "";
+const headlineAccent = props.headlineAccent;
+const subheadline = node?.subheadline ?? props.subheadline;
+const centered = node?.centered ?? props.centered ?? false;
+const image = node?.image ?? props.image;
+const variant = props.variant ?? "default";
+const eyebrow = props.eyebrow;
+const stats = props.stats;
+const card = props.card;
+
+const hasSubheadline = !!subheadline || Astro.slots.has("subheadline");
+
+const primaryCta = node
+	? node.primaryCtaLabel && node.primaryCtaUrl
 		? { label: node.primaryCtaLabel, url: node.primaryCtaUrl }
-		: undefined;
-const secondaryCta =
-	node.secondaryCtaLabel && node.secondaryCtaUrl
+		: undefined
+	: props.primaryCta;
+const secondaryCta = node
+	? node.secondaryCtaLabel && node.secondaryCtaUrl
 		? { label: node.secondaryCtaLabel, url: node.secondaryCtaUrl }
-		: undefined;
+		: undefined
+	: props.secondaryCta;
 ---
 
-<section class:list={["hero", { "hero-centered": centered, "hero-with-image": !!image }]}>
-	<div class="page-hero-bg" aria-hidden="true">
-		<div class="page-hero-glow page-hero-glow-1"></div>
-		<div class="page-hero-glow page-hero-glow-2"></div>
-		<div class="page-hero-grid"></div>
-	</div>
-	<div class="hero-content">
-		<h1 class="hero-headline">{headline}</h1>
-		{subheadline && <p class="hero-subheadline">{subheadline}</p>}
-		{(primaryCta || secondaryCta) && (
-			<div class="hero-actions">
-				{primaryCta && (
-					<a href={primaryCta.url} class="btn btn-primary btn-lg">
-						{primaryCta.label}
-					</a>
-				)}
-				{secondaryCta && (
-					<a href={secondaryCta.url} class="btn btn-secondary btn-lg">
-						{secondaryCta.label}
-					</a>
-				)}
+{variant === "split-dark" ? (
+	<section class="hero hero-split-dark">
+		<div class="hero-split-content">
+			{eyebrow && (
+				<span class="hero-badge">
+					<span class="hero-badge-dot"></span>
+					{eyebrow}
+				</span>
+			)}
+			<h1 class="hero-headline">{headline} {headlineAccent && <span class="hero-headline-accent">{headlineAccent}</span>}</h1>
+			{hasSubheadline && (
+				<p class="hero-subheadline"><slot name="subheadline">{subheadline}</slot></p>
+			)}
+			{(primaryCta || secondaryCta) && (
+				<div class="hero-actions">
+					{primaryCta && (
+						<a href={primaryCta.url} class="btn btn-primary btn-lg">
+							{primaryCta.label}
+							{primaryCta.icon && (
+								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+							)}
+						</a>
+					)}
+					{secondaryCta && (
+						<a
+							href={secondaryCta.url}
+							class="btn btn-secondary btn-lg"
+							target={secondaryCta.external ? "_blank" : undefined}
+							rel={secondaryCta.external ? "noopener noreferrer" : undefined}
+						>
+							{secondaryCta.label}
+						</a>
+					)}
+				</div>
+			)}
+			{stats && stats.length > 0 && (
+				<div class="hero-split-stats">
+					{stats.map((s) => (
+						<div class="hero-split-stat">
+							<span class="hero-split-stat-value">{s.value}</span>
+							<span class="hero-split-stat-label">{s.label}</span>
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+		<div class="hero-split-media">
+			{image && (
+				<img
+					src={image.url}
+					alt={image.alt || ""}
+					class="hero-split-image"
+					loading="eager"
+				/>
+			)}
+			{card && (
+				<div class="hero-split-card">
+					<div class="hero-split-card-top">
+						<div class="hero-split-card-avatar">
+							{card.avatarSrc ? (
+								<img src={card.avatarSrc} alt="" />
+							) : (
+								card.avatarInitial
+							)}
+						</div>
+						<div>
+							<div class="hero-split-card-name">{card.name}</div>
+							<div class="hero-split-card-meta">{card.meta}</div>
+						</div>
+					</div>
+					<div class="hero-split-card-bottom">
+						<span>{card.line}</span>
+						{card.tag && <span class="hero-split-card-tag">{card.tag}</span>}
+					</div>
+				</div>
+			)}
+		</div>
+	</section>
+) : (
+	<section class:list={["hero", { "hero-centered": centered, "hero-with-image": !!image }]}>
+		<div class="page-hero-bg" aria-hidden="true">
+			<div class="page-hero-glow page-hero-glow-1"></div>
+			<div class="page-hero-glow page-hero-glow-2"></div>
+			<div class="page-hero-grid"></div>
+		</div>
+		<div class="hero-content">
+			{eyebrow && (
+				<span class="hero-badge">
+					<span class="hero-badge-dot"></span>
+					{eyebrow}
+				</span>
+			)}
+			<h1 class="hero-headline">{headline} {headlineAccent && <span class="hero-headline-accent">{headlineAccent}</span>}</h1>
+			{hasSubheadline && (
+				<p class="hero-subheadline"><slot name="subheadline">{subheadline}</slot></p>
+			)}
+			{(primaryCta || secondaryCta) && (
+				<div class="hero-actions">
+					{primaryCta && (
+						<a href={primaryCta.url} class="btn btn-primary btn-lg">
+							{primaryCta.label}
+							{primaryCta.icon && (
+								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+							)}
+						</a>
+					)}
+					{secondaryCta && (
+						<a
+							href={secondaryCta.url}
+							class="btn btn-secondary btn-lg"
+							target={secondaryCta.external ? "_blank" : undefined}
+							rel={secondaryCta.external ? "noopener noreferrer" : undefined}
+						>
+							{secondaryCta.label}
+						</a>
+					)}
+				</div>
+			)}
+			{stats && stats.length > 0 && (
+				<div class="hero-split-stats hero-stats-light">
+					{stats.map((s) => (
+						<div class="hero-split-stat">
+							<span class="hero-split-stat-value">{s.value}</span>
+							<span class="hero-split-stat-label">{s.label}</span>
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+		{image ? (
+			<div class="hero-image">
+				<img src={image.url} alt={image.alt || ""} loading="eager" />
+			</div>
+		) : !centered && (
+			<div class="hero-visual" aria-hidden="true">
+				<img src="/hero-visual.svg" alt="" width="800" height="800" />
 			</div>
 		)}
-	</div>
-	{image ? (
-		<div class="hero-image">
-			<img src={image.url} alt={image.alt || ""} loading="eager" />
-		</div>
-	) : !centered && (
-		<div class="hero-visual" aria-hidden="true">
-			<img src="/hero-visual.svg" alt="" width="800" height="800" />
-		</div>
-	)}
-</section>
+	</section>
+)}
 
 <style>
 	.hero {
@@ -106,16 +268,57 @@ const secondaryCta =
 		color: var(--color-text);
 	}
 
+	.hero-headline-accent {
+		color: var(--color-primary);
+	}
+
 	.hero-subheadline {
 		font-size: var(--font-size-xl);
 		line-height: 1.6;
 		color: var(--color-muted);
 	}
 
+	.hero-subheadline strong {
+		color: var(--color-text);
+		font-weight: 700;
+	}
+
+	.hero-split-content .hero-subheadline strong {
+		color: var(--color-text-inverse);
+	}
+
 	.hero-actions {
 		display: flex;
 		gap: var(--spacing-md);
 		flex-wrap: wrap;
+	}
+
+	.hero-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-sm);
+		padding: var(--spacing-xs) var(--spacing-md);
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-text);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-full);
+		width: fit-content;
+	}
+
+	.hero-badge-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--color-success);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-success) 20%, transparent);
+		animation: hero-badge-pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes hero-badge-pulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.5; }
 	}
 
 	.hero-image {
@@ -143,6 +346,239 @@ const secondaryCta =
 		height: auto;
 	}
 
+	.hero-stats-light {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.hero-stats-light .hero-split-stat-value {
+		color: var(--color-primary);
+	}
+
+	.hero-stats-light .hero-split-stat-label {
+		color: var(--color-muted);
+	}
+
+	/* ============ SPLIT-DARK VARIANT ============ */
+	.hero-split-dark {
+		max-width: none;
+		margin: 0;
+		padding: 0;
+		gap: 0;
+		align-items: stretch;
+		min-height: 620px;
+		background: var(--color-bg-inverse);
+	}
+
+	.hero-split-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: var(--spacing-lg);
+		padding-top: var(--spacing-4xl);
+		padding-bottom: var(--spacing-4xl);
+		padding-right: var(--spacing-2xl);
+		/* Align with .nav's content edge: that's a max-width:var(--wide-width)
+		   column centered with margin:auto, plus its own --spacing-lg padding.
+		   Below that width there's no centering gap, so fall back to normal
+		   padding instead of going flush to the viewport edge. */
+		padding-left: max(
+			var(--spacing-2xl),
+			calc((100vw - var(--wide-width)) / 2 + var(--spacing-lg))
+		);
+	}
+
+	.hero-split-content .hero-headline {
+		color: var(--color-text-inverse);
+	}
+
+	.hero-split-content .hero-headline-accent {
+		color: var(--color-accent);
+	}
+
+	.hero-split-content .hero-subheadline {
+		color: var(--color-text-inverse-muted);
+	}
+
+	.hero-split-content .hero-badge {
+		background: rgba(245, 245, 247, 0.06);
+		border-color: var(--color-border-inverse);
+		color: var(--color-text-inverse);
+	}
+
+	.hero-split-content .btn-secondary {
+		color: var(--color-text-inverse);
+		border-color: var(--color-border-inverse);
+	}
+
+	.hero-split-content .btn-secondary:hover {
+		background: rgba(245, 245, 247, 0.08);
+		border-color: var(--color-text-inverse);
+	}
+
+	.hero-split-stats {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--spacing-lg);
+		padding-top: var(--spacing-lg);
+		margin-top: var(--spacing-sm);
+		border-top: 1px solid var(--color-border-inverse);
+	}
+
+	.hero-split-stat {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xs);
+	}
+
+	.hero-split-stat-value {
+		font-size: var(--font-size-2xl);
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		color: var(--color-text-inverse);
+	}
+
+	.hero-split-stat-label {
+		font-size: var(--font-size-xs);
+		color: var(--color-text-inverse-muted);
+		line-height: 1.4;
+	}
+
+	.hero-split-media {
+		position: relative;
+		overflow: hidden;
+		min-height: 420px;
+	}
+
+	.hero-split-image {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center bottom;
+	}
+
+	.hero-split-card {
+		position: absolute;
+		left: var(--spacing-2xl);
+		right: var(--spacing-2xl);
+		bottom: var(--spacing-3xl);
+		max-width: 380px;
+		background: var(--color-bg);
+		border-radius: var(--radius-lg);
+		border: 1px solid color-mix(in srgb, var(--color-primary) 15%, var(--color-border));
+		box-shadow:
+			0 30px 60px -15px color-mix(in srgb, var(--color-primary) 35%, transparent),
+			var(--shadow-lg);
+		overflow: hidden;
+	}
+
+	.hero-split-card-top {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-md);
+		padding: var(--spacing-lg);
+	}
+
+	.hero-split-card-avatar {
+		flex-shrink: 0;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		color: var(--color-text-inverse);
+		background: var(--color-primary);
+		overflow: hidden;
+	}
+
+	.hero-split-card-avatar img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.hero-split-card-name {
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-text);
+	}
+
+	.hero-split-card-meta {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+	}
+
+	.hero-split-card-bottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--spacing-md);
+		padding: var(--spacing-md) var(--spacing-lg);
+		border-top: 1px solid var(--color-border);
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+	}
+
+	.hero-split-card-tag {
+		flex-shrink: 0;
+		font-size: var(--font-size-sm);
+		color: var(--color-accent);
+		letter-spacing: 0.05em;
+	}
+
+	/* ============ MOTION (split-dark hero) ============ */
+	@media (prefers-reduced-motion: no-preference) {
+		/* Staggered entrance on load */
+		@keyframes hero-split-in-left {
+			from { opacity: 0; transform: translateY(16px); }
+			to { opacity: 1; transform: none; }
+		}
+
+		@keyframes hero-split-in-media {
+			from { opacity: 0; transform: scale(1.04); }
+			to { opacity: 1; transform: scale(1); }
+		}
+
+		@keyframes hero-split-in-card {
+			from { opacity: 0; transform: translateY(24px); }
+			to { opacity: 1; transform: none; }
+		}
+
+		.hero-split-content {
+			animation: hero-split-in-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+		}
+
+		.hero-split-media {
+			animation: hero-split-in-media 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+		}
+
+		.hero-split-card {
+			animation:
+				hero-split-in-card 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both,
+				hero-split-card-float 5s ease-in-out 1.2s infinite;
+		}
+
+		/* Living photo: slow continuous zoom, never resets/jumps */
+		.hero-split-image {
+			animation: hero-split-ken-burns 15s ease-in-out infinite alternate;
+		}
+
+		@keyframes hero-split-ken-burns {
+			from { transform: scale(1); }
+			to { transform: scale(1.16); }
+		}
+
+		/* Gentle float once the card has arrived */
+		@keyframes hero-split-card-float {
+			0%, 100% { transform: translateY(0); }
+			50% { transform: translateY(-8px); }
+		}
+	}
+
 	@media (max-width: 1024px) {
 		.hero {
 			grid-template-columns: 1fr;
@@ -166,9 +602,28 @@ const secondaryCta =
 			justify-content: center;
 		}
 
+		.hero-with-image .hero-badge {
+			margin: 0 auto;
+		}
+
 		.hero-image,
 		.hero-visual {
 			order: -1;
+		}
+
+		.hero-split-dark {
+			grid-template-columns: 1fr;
+			min-height: 0;
+			padding: 0;
+		}
+
+		.hero-split-media {
+			order: -1;
+			min-height: 320px;
+		}
+
+		.hero-split-content {
+			padding: var(--spacing-3xl) var(--spacing-lg);
 		}
 	}
 
@@ -186,6 +641,17 @@ const secondaryCta =
 			max-width: 100%;
 			max-height: 35vh;
 			margin: 0 auto;
+		}
+
+		.hero-split-stats {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.hero-split-card {
+			left: var(--spacing-lg);
+			right: var(--spacing-lg);
+			bottom: var(--spacing-lg);
+			max-width: none;
 		}
 	}
 </style>

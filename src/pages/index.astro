@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-iconset/components";
 import Base from "../layouts/Base.astro";
+import Hero from "../components/blocks/Hero.astro";
 
 const stats = [
 	{ value: "1.5M", label: "Active F-1 students in the US" },
@@ -243,46 +244,36 @@ const faqs = [
 	description="AI-guided. Community-powered. Member-owned. The platform that helps international students navigate the US F1 visa process — and own it together."
 >
 	<!-- ============ HERO ============ -->
-	<section class="hero">
-		<div class="hero-bg" aria-hidden="true">
-			<div class="hero-glow hero-glow-1"></div>
-			<div class="hero-glow hero-glow-2"></div>
-			<div class="hero-grid-pattern"></div>
-		</div>
-		<div class="hero-container">
-			<div class="hero-badge">
-				<span class="hero-badge-dot"></span>
-				Now accepting 100 Founding Cooperative Members
-			</div>
-			<h1 class="hero-title">
-				Your F1 Journey,
-				<span class="hero-title-accent">Together.</span>
-			</h1>
-			<p class="hero-subtitle">
-				<strong>AI-guided.</strong> <strong>Community-powered.</strong>
-				<strong>Member-owned.</strong> The platform that helps international
-				students navigate the US F1 visa process — transparently, affordably,
-				together. Not just a resource. A cooperative you can own.
-			</p>
-			<div class="hero-actions">
-				<a href="/join" class="btn btn-primary btn-lg">
-					Become a Member-Owner
-					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-				</a>
-				<a href="https://community.f1visa.net" class="btn btn-ghost btn-lg" target="_blank" rel="noopener noreferrer">
-					Join the Community
-				</a>
-			</div>
-			<div class="hero-stats">
-				{stats.map((s) => (
-					<div class="hero-stat">
-						<span class="hero-stat-value">{s.value}</span>
-						<span class="hero-stat-label">{s.label}</span>
-					</div>
-				))}
-			</div>
-		</div>
-	</section>
+	<Hero
+		variant="split-dark"
+		eyebrow="Now accepting 100 Founding Cooperative Members"
+		headline="Your F1 Journey,"
+		headlineAccent="Together."
+		primaryCta={{ label: "Become a Member-Owner", url: "/join", icon: true }}
+		secondaryCta={{
+			label: "Join the Community",
+			url: "https://community.f1visa.net",
+			external: true,
+		}}
+		stats={stats}
+		image={{
+			url: "/hero-nature.jpg",
+			alt: "Sunlit forest trail, symbolizing the F1 visa journey",
+		}}
+		card={{
+			name: "Priya S.",
+			meta: "University of Texas Austin",
+			line: "F-1 Visa approved",
+			tag: "★★★★★",
+		}}
+	>
+		<Fragment slot="subheadline">
+			<strong>AI-guided.</strong> <strong>Community-powered.</strong>
+			<strong>Member-owned.</strong> The platform that helps international
+			students navigate the US F1 visa process — transparently, affordably,
+			together. Not just a resource. A cooperative you can own.
+		</Fragment>
+	</Hero>
 
 	<!-- ============ PROBLEM ============ -->
 	<section class="section section-problem">
@@ -529,158 +520,6 @@ const faqs = [
 		text-align: center;
 		max-width: 640px;
 		margin: 0 auto var(--spacing-4xl);
-	}
-
-	/* ============ HERO ============ */
-	.hero {
-		position: relative;
-		overflow: hidden;
-		padding: var(--spacing-5xl) var(--spacing-lg) var(--spacing-4xl);
-	}
-
-	.hero-bg {
-		position: absolute;
-		inset: 0;
-		z-index: -1;
-	}
-
-	.hero-glow {
-		position: absolute;
-		border-radius: 50%;
-		filter: blur(90px);
-		opacity: 0.1;
-	}
-
-	.hero-glow-1 {
-		top: -10%;
-		left: -5%;
-		width: 500px;
-		height: 500px;
-		background: var(--color-primary);
-	}
-
-	.hero-glow-2 {
-		bottom: -10%;
-		right: -5%;
-		width: 400px;
-		height: 400px;
-		background: var(--color-accent);
-	}
-
-	.hero-grid-pattern {
-		position: absolute;
-		inset: 0;
-		background-image:
-			linear-gradient(var(--color-border) 1px, transparent 1px),
-			linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
-		background-size: 48px 48px;
-		mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 70%);
-		opacity: 0.4;
-	}
-
-	.hero-container {
-		max-width: 880px;
-		margin: 0 auto;
-		text-align: center;
-	}
-
-	.hero-badge {
-		display: inline-flex;
-		align-items: center;
-		gap: var(--spacing-sm);
-		padding: var(--spacing-xs) var(--spacing-md);
-		margin-bottom: var(--spacing-xl);
-		font-size: var(--font-size-sm);
-		font-weight: 600;
-		color: var(--color-text);
-		background: var(--color-surface);
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-full);
-	}
-
-	.hero-badge-dot {
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
-		background: var(--color-success);
-		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-success) 20%, transparent);
-		animation: pulse 2s ease-in-out infinite;
-	}
-
-	@keyframes pulse {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0.5; }
-	}
-
-	.hero-title {
-		font-size: clamp(2.5rem, 6vw, var(--font-size-6xl));
-		font-weight: 700;
-		letter-spacing: -0.035em;
-		line-height: 1.03;
-		margin-bottom: var(--spacing-lg);
-	}
-
-	.hero-title-accent {
-		color: var(--color-primary);
-	}
-
-	.hero-subtitle {
-		font-size: var(--font-size-xl);
-		line-height: 1.6;
-		color: var(--color-muted);
-		max-width: 680px;
-		margin: 0 auto var(--spacing-2xl);
-	}
-
-	.hero-subtitle strong {
-		color: var(--color-text);
-		font-weight: 700;
-	}
-
-	.hero-actions {
-		display: flex;
-		gap: var(--spacing-md);
-		justify-content: center;
-		flex-wrap: wrap;
-		margin-bottom: var(--spacing-4xl);
-	}
-
-	.btn-ghost {
-		background: transparent;
-		color: var(--color-text);
-		border: 1px solid var(--color-border-strong);
-	}
-
-	.btn-ghost:hover {
-		background: var(--color-surface);
-		border-color: var(--color-muted);
-	}
-
-	.hero-stats {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: var(--spacing-lg);
-		padding: var(--spacing-xl) 0;
-		border-top: 1px solid var(--color-border);
-	}
-
-	.hero-stat {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-xs);
-	}
-
-	.hero-stat-value {
-		font-size: var(--font-size-3xl);
-		font-weight: 700;
-		letter-spacing: -0.02em;
-		color: var(--color-primary);
-	}
-
-	.hero-stat-label {
-		font-size: var(--font-size-xs);
-		color: var(--color-muted);
-		line-height: 1.4;
 	}
 
 	/* ============ PROBLEM ============ */
