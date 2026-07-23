@@ -112,8 +112,8 @@ const plans = rawPlans.map((plan) => ({
 	.pricing-highlighted {
 		background: var(--color-bg);
 		border-color: var(--color-primary);
-		box-shadow: var(--shadow-xl);
-		transform: scale(1.02);
+		border-width: 2px;
+		box-shadow: var(--shadow-lg);
 	}
 
 	.pricing-badge {
@@ -124,8 +124,8 @@ const plans = rawPlans.map((plan) => ({
 		padding: var(--spacing-xs) var(--spacing-md);
 		font-size: var(--font-size-xs);
 		font-weight: 600;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		color: var(--color-text-inverse);
+		background: var(--color-primary);
 		border-radius: var(--radius-full);
 	}
 

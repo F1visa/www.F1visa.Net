@@ -1,24 +1,25 @@
 ---
+import { Icon } from "astro-iconset/components";
 import Base from "../layouts/Base.astro";
 
 const principles = [
 	{
-		icon: "🗳️",
+		icon: "check-square",
 		title: "One Member, One Vote",
 		description: "Every Founding Cooperative Member has an equal voice in platform direction, feature prioritization, and community fund allocation. No shareholder overrides.",
 	},
 	{
-		icon: "💰",
+		icon: "currency-dollar",
 		title: "Profit-Share Distributions",
 		description: "When the platform succeeds, members succeed. Revenue surplus is distributed quarterly to cooperative members — not extracted by investors.",
 	},
 	{
-		icon: "📜",
+		icon: "eye",
 		title: "Transparent Governance",
 		description: "All decisions, financials, and governance records are publicly auditable. Built on the #FedArch governance framework — verified by 9 independent AI agents.",
 	},
 	{
-		icon: "🔒",
+		icon: "lock",
 		title: "Student-Owned Infrastructure",
 		description: "Built on DigitalOcean and Cloudflare, not VC-funded servers. The platform cannot be sold to a competitor or shut down by investors. It belongs to the students.",
 	},
@@ -80,6 +81,11 @@ const timeline = [
 >
 	<!-- Hero -->
 	<section class="oca-hero section">
+		<div class="page-hero-bg" aria-hidden="true">
+			<div class="page-hero-glow page-hero-glow-1"></div>
+			<div class="page-hero-glow page-hero-glow-2"></div>
+			<div class="page-hero-grid"></div>
+		</div>
 		<div class="container">
 			<span class="badge">♾️ (.OCA)</span>
 			<h1>Onchain Cooperative Association</h1>
@@ -128,7 +134,7 @@ const timeline = [
 			<div class="principles-grid">
 				{principles.map((p) => (
 					<div class="principle-card">
-						<div class="principle-icon">{p.icon}</div>
+						<div class="principle-icon"><Icon name={`ph:${p.icon}`} aria-hidden="true" /></div>
 						<h3>{p.title}</h3>
 						<p>{p.description}</p>
 					</div>
@@ -200,7 +206,7 @@ const timeline = [
 					program closes. Early members get voting rights, profit-share,
 					and a permanent role in shaping F1Visa.Net's future.
 				</p>
-				<a href="/join" class="btn btn-primary btn-lg">Apply Now</a>
+				<a href="/join" class="btn btn-white btn-lg">Apply Now</a>
 			</div>
 		</div>
 	</section>
@@ -208,33 +214,34 @@ const timeline = [
 
 <style>
 	.oca-hero {
+		position: relative;
+		overflow: hidden;
 		text-align: center;
 		padding-top: var(--spacing-5xl);
 		padding-bottom: var(--spacing-3xl);
 	}
 
 	.badge {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-sm);
 		padding: var(--spacing-xs) var(--spacing-md);
 		margin-bottom: var(--spacing-md);
-		font-size: var(--font-size-xs);
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-text);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
 		border-radius: var(--radius-full);
 	}
 
 	.oca-hero h1 {
 		font-size: var(--font-size-5xl);
-		font-weight: 800;
-		letter-spacing: -0.03em;
+		font-weight: 700;
+		letter-spacing: -0.035em;
+		line-height: 1.05;
 		margin-bottom: var(--spacing-lg);
-		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		color: var(--color-text);
 	}
 
 	.oca-hero .lead {
@@ -258,7 +265,7 @@ const timeline = [
 
 	.narrow h2 {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-lg);
 	}
 
@@ -281,7 +288,7 @@ const timeline = [
 
 	.section-header h2 {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-md);
 	}
 
@@ -308,13 +315,15 @@ const timeline = [
 	}
 
 	.principle-icon {
-		font-size: 2rem;
+		width: 36px;
+		height: 36px;
+		color: var(--color-primary);
 		margin-bottom: var(--spacing-md);
 	}
 
 	.principle-card h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -345,8 +354,8 @@ const timeline = [
 	.tier-card.highlighted {
 		background: var(--color-bg);
 		border-color: var(--color-primary);
-		box-shadow: var(--shadow-xl);
-		transform: scale(1.02);
+		border-width: 2px;
+		box-shadow: var(--shadow-lg);
 	}
 
 	.tier-badge {
@@ -357,8 +366,8 @@ const timeline = [
 		padding: var(--spacing-xs) var(--spacing-md);
 		font-size: var(--font-size-xs);
 		font-weight: 600;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		color: var(--color-text-inverse);
+		background: var(--color-primary);
 		border-radius: var(--radius-full);
 	}
 
@@ -370,13 +379,13 @@ const timeline = [
 
 	.tier-header h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
 	.tier-price {
 		font-size: var(--font-size-4xl);
-		font-weight: 800;
+		font-weight: 700;
 		letter-spacing: -0.03em;
 		margin-bottom: var(--spacing-xs);
 	}
@@ -433,15 +442,15 @@ const timeline = [
 		align-items: center;
 		justify-content: center;
 		font-size: var(--font-size-sm);
-		font-weight: 800;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		font-weight: 700;
+		color: var(--color-text-inverse);
+		background: var(--color-primary);
 		border-radius: var(--radius-full);
 	}
 
 	.timeline-content h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-xs);
 	}
 
@@ -454,33 +463,33 @@ const timeline = [
 	.cta-banner {
 		text-align: center;
 		padding: var(--spacing-3xl) var(--spacing-2xl);
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		background: var(--color-bg-inverse);
 		border-radius: var(--radius-lg);
-		color: white;
+		color: var(--color-text-inverse);
 	}
 
 	.cta-banner h2 {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-md);
 	}
 
 	.cta-banner p {
 		font-size: var(--font-size-lg);
 		line-height: 1.6;
-		opacity: 0.9;
+		color: var(--color-text-inverse-muted);
 		max-width: 600px;
 		margin: 0 auto var(--spacing-xl);
 	}
 
-	.cta-banner .btn {
-		background: white;
+	.cta-banner .btn-white {
+		background: var(--color-text-inverse);
 		color: var(--color-primary);
 		border: none;
+		font-weight: 700;
 	}
 
-	.cta-banner .btn:hover {
-		transform: translateY(-2px);
+	.cta-banner .btn-white:hover {
 		box-shadow: var(--shadow-lg);
 	}
 

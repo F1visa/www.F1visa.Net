@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-iconset/components";
 import Base from "../layouts/Base.astro";
 
 const stats = [
@@ -10,19 +11,19 @@ const stats = [
 
 const problems = [
 	{
-		icon: "📄",
+		icon: "file-text",
 		title: "Complexity & Fear of Denial",
 		description:
 			"The visa process is opaque and high-stakes. One I-20 or DS-160 error triggers delays. Lawyers cost $300-500/hr. Forums give conflicting advice.",
 	},
 	{
-		icon: "🧍",
+		icon: "user",
 		title: "Isolation",
 		description:
 			"Students arrive without family or local networks. University international offices are understaffed — 1 advisor per 1,200 students.",
 	},
 	{
-		icon: "🤖",
+		icon: "robot",
 		title: "AI Literacy Gap",
 		description:
 			"The job market demands AI skills, but F-1 students face expensive bootcamps and work restrictions. No structured pathway to build AI readiness.",
@@ -31,15 +32,15 @@ const problems = [
 
 const solutions = [
 	{
-		icon: "⚡",
+		icon: "lightning",
 		title: "AI-Guided Visa Application",
 		description:
 			"A dedicated AI agent validates forms, tracks deadlines, and catches errors before submission. Trained specifically on F-1 regulations with real-time policy updates.",
-		tag: "Powered by WeOwnLLM",
+		tag: "Powered by WeOwnChat",
 		href: "/weownllm",
 	},
 	{
-		icon: "🤝",
+		icon: "handshake",
 		title: "Community-First Architecture",
 		description:
 			"Live chat, peer forums, and mentor matching. Students don't just use the platform — they own it. 100 Founding Cooperative Members shape our future.",
@@ -47,7 +48,7 @@ const solutions = [
 		href: "/oca",
 	},
 	{
-		icon: "🎓",
+		icon: "graduation-cap",
 		title: "AI Readiness Pathway",
 		description:
 			"Tiered membership with a proprietary AI Readiness Assessment. Students build career-ready AI skills while navigating their visa journey.",
@@ -144,32 +145,32 @@ const tiers = [
 
 const differentiators = [
 	{
-		icon: "🏛️",
+		icon: "bank",
 		title: "Cooperative Ownership",
 		description: "Not subscriptions. 100 Founding Members become owners — when the platform succeeds, they succeed.",
 	},
 	{
-		icon: "🧠",
+		icon: "brain",
 		title: "AI-First, Human-Enhanced",
 		description: "A dedicated F-1 AI agent paired with human mentors and peer forums. Not static guides. Not pure AI alone.",
 	},
 	{
-		icon: "🌐",
+		icon: "translate",
 		title: "Bilingual by Design",
 		description: "English and Chinese (Mandarin) via Z.ai GLM 5.2. No other F-1 platform offers native bilingual capability.",
 	},
 	{
-		icon: "📜",
+		icon: "certificate",
 		title: "AI Literacy Credential",
 		description: "Students earn certified AI readiness — transferable to careers, internships, and grad school applications.",
 	},
 	{
-		icon: "🔒",
+		icon: "lock",
 		title: "Decentralized Infrastructure",
 		description: "Built on DigitalOcean and Cloudflare. Student-owned, not VC-funded. Cannot be sold or shut down by investors.",
 	},
 	{
-		icon: "⚖️",
+		icon: "scales",
 		title: "Legal Infrastructure",
 		description: "WeOwnClaw handles KYC, digital signing, and cooperative governance. Powered by OpenClaw, hardened by Minimus.io.",
 	},
@@ -213,7 +214,7 @@ const faqs = [
 	{
 		question: "How does the AI assistant work?",
 		answer:
-			"Our AI is powered by WeOwnLLM — built on AnythingLLM.com and hardened by Minimus.io. It's trained specifically on F-1 visa regulations with real-time policy updates. Unlike generic AI tools, it understands visa forms, SEVIS compliance, and CPT/OPT guidance. It's also bilingual — English and Chinese (Mandarin).",
+			"Our AI is powered by WeOwnChat — built on AnythingLLM.com and hardened by Minimus.io. It's trained specifically on F-1 visa regulations with real-time policy updates. Unlike generic AI tools, it understands visa forms, SEVIS compliance, and CPT/OPT guidance. It's also bilingual — English and Chinese (Mandarin).",
 	},
 	{
 		question: "Who can join the community?",
@@ -295,7 +296,7 @@ const faqs = [
 			<div class="problem-grid">
 				{problems.map((p) => (
 					<div class="problem-card">
-						<div class="problem-icon">{p.icon}</div>
+						<div class="problem-icon"><Icon name={`ph:${p.icon}`} aria-hidden="true" /></div>
 						<h3>{p.title}</h3>
 						<p>{p.description}</p>
 					</div>
@@ -316,7 +317,7 @@ const faqs = [
 			<div class="solution-grid">
 				{solutions.map((s) => (
 					<a href={s.href} class="solution-card">
-						<div class="solution-icon">{s.icon}</div>
+						<div class="solution-icon"><Icon name={`ph:${s.icon}`} aria-hidden="true" /></div>
 						<h3>{s.title}</h3>
 						<p>{s.description}</p>
 						<span class="solution-tag">{s.tag} →</span>
@@ -362,7 +363,7 @@ const faqs = [
 			<div class="diff-grid">
 				{differentiators.map((d) => (
 					<div class="diff-card">
-						<div class="diff-icon">{d.icon}</div>
+						<div class="diff-icon"><Icon name={`ph:${d.icon}`} aria-hidden="true" /></div>
 						<h3>{d.title}</h3>
 						<p>{d.description}</p>
 					</div>
@@ -471,7 +472,6 @@ const faqs = [
 	<section class="section section-cta">
 		<div class="container">
 			<div class="cta-banner">
-				<div class="cta-glow" aria-hidden="true"></div>
 				<h2>100 Founding Members. One-time opportunity.</h2>
 				<p>
 					Once the 100 Founding Cooperative Member slots are filled, the program
@@ -507,7 +507,7 @@ const faqs = [
 		font-size: var(--font-size-xs);
 		font-weight: 700;
 		text-transform: uppercase;
-		letter-spacing: 0.12em;
+		letter-spacing: 0.1em;
 		color: var(--color-primary);
 		text-align: center;
 		margin-bottom: var(--spacing-md);
@@ -515,11 +515,11 @@ const faqs = [
 
 	.section-title {
 		font-size: var(--font-size-4xl);
-		font-weight: 800;
-		letter-spacing: -0.03em;
+		font-weight: 700;
+		letter-spacing: -0.025em;
 		text-align: center;
 		margin-bottom: var(--spacing-md);
-		line-height: 1.1;
+		line-height: 1.15;
 	}
 
 	.section-subtitle {
@@ -547,8 +547,8 @@ const faqs = [
 	.hero-glow {
 		position: absolute;
 		border-radius: 50%;
-		filter: blur(80px);
-		opacity: 0.15;
+		filter: blur(90px);
+		opacity: 0.1;
 	}
 
 	.hero-glow-1 {
@@ -614,18 +614,14 @@ const faqs = [
 
 	.hero-title {
 		font-size: clamp(2.5rem, 6vw, var(--font-size-6xl));
-		font-weight: 800;
-		letter-spacing: -0.04em;
-		line-height: 1.05;
+		font-weight: 700;
+		letter-spacing: -0.035em;
+		line-height: 1.03;
 		margin-bottom: var(--spacing-lg);
 	}
 
 	.hero-title-accent {
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		display: inline-block;
+		color: var(--color-primary);
 	}
 
 	.hero-subtitle {
@@ -652,7 +648,7 @@ const faqs = [
 	.btn-ghost {
 		background: transparent;
 		color: var(--color-text);
-		border: 1px solid var(--color-border);
+		border: 1px solid var(--color-border-strong);
 	}
 
 	.btn-ghost:hover {
@@ -676,12 +672,9 @@ const faqs = [
 
 	.hero-stat-value {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		letter-spacing: -0.02em;
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		color: var(--color-primary);
 	}
 
 	.hero-stat-label {
@@ -706,22 +699,29 @@ const faqs = [
 		background: var(--color-bg);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
-		transition: transform var(--transition-base), box-shadow var(--transition-base);
+		transition: box-shadow var(--transition-base), border-color var(--transition-base);
 	}
 
 	.problem-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-lg);
+		box-shadow: var(--shadow-sm);
+		border-color: var(--color-border-strong);
 	}
 
 	.problem-icon {
-		font-size: 2.5rem;
+		width: 40px;
+		height: 40px;
+		color: var(--color-primary);
 		margin-bottom: var(--spacing-md);
+	}
+
+	.problem-icon :global(svg) {
+		width: 100%;
+		height: 100%;
 	}
 
 	.problem-card h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -747,23 +747,29 @@ const faqs = [
 		border-radius: var(--radius-lg);
 		text-decoration: none;
 		color: inherit;
-		transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+		transition: box-shadow var(--transition-base), border-color var(--transition-base);
 	}
 
 	.solution-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-lg);
+		box-shadow: var(--shadow-sm);
 		border-color: var(--color-primary-light);
 	}
 
 	.solution-icon {
-		font-size: 2.5rem;
+		width: 40px;
+		height: 40px;
+		color: var(--color-primary);
 		margin-bottom: var(--spacing-md);
+	}
+
+	.solution-icon :global(svg) {
+		width: 100%;
+		height: 100%;
 	}
 
 	.solution-card h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -802,17 +808,16 @@ const faqs = [
 
 	.journey-number {
 		flex-shrink: 0;
-		width: 56px;
-		height: 56px;
+		width: 52px;
+		height: 52px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: var(--font-size-xl);
-		font-weight: 800;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		color: var(--color-text-inverse);
+		background: var(--color-primary);
 		border-radius: var(--radius-full);
-		box-shadow: var(--shadow);
 	}
 
 	.journey-content {
@@ -825,7 +830,7 @@ const faqs = [
 
 	.journey-content h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-xs);
 	}
 
@@ -862,22 +867,29 @@ const faqs = [
 		background: var(--color-surface);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
-		transition: transform var(--transition-base), box-shadow var(--transition-base);
+		transition: box-shadow var(--transition-base), border-color var(--transition-base);
 	}
 
 	.diff-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-lg);
+		box-shadow: var(--shadow-sm);
+		border-color: var(--color-border-strong);
 	}
 
 	.diff-icon {
-		font-size: 2rem;
+		width: 36px;
+		height: 36px;
+		color: var(--color-primary);
 		margin-bottom: var(--spacing-md);
+	}
+
+	.diff-icon :global(svg) {
+		width: 100%;
+		height: 100%;
 	}
 
 	.diff-card h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -908,23 +920,12 @@ const faqs = [
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing-lg);
-		transition: transform var(--transition-base), box-shadow var(--transition-base);
-	}
-
-	.pricing-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-lg);
 	}
 
 	.pricing-highlighted {
-		background: var(--color-bg);
 		border-color: var(--color-primary);
-		box-shadow: var(--shadow-xl);
-		transform: scale(1.02);
-	}
-
-	.pricing-highlighted:hover {
-		transform: scale(1.02) translateY(-4px);
+		border-width: 2px;
+		box-shadow: var(--shadow-lg);
 	}
 
 	.pricing-badge {
@@ -935,10 +936,9 @@ const faqs = [
 		padding: var(--spacing-xs) var(--spacing-md);
 		font-size: var(--font-size-xs);
 		font-weight: 600;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		color: var(--color-text-inverse);
+		background: var(--color-primary);
 		border-radius: var(--radius-full);
-		white-space: nowrap;
 	}
 
 	.pricing-header {
@@ -949,7 +949,7 @@ const faqs = [
 
 	.pricing-header h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -963,7 +963,7 @@ const faqs = [
 
 	.pricing-amount {
 		font-size: var(--font-size-5xl);
-		font-weight: 800;
+		font-weight: 700;
 		letter-spacing: -0.03em;
 	}
 
@@ -1049,8 +1049,8 @@ const faqs = [
 		justify-content: center;
 		font-size: var(--font-size-base);
 		font-weight: 700;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		color: var(--color-text-inverse);
+		background: var(--color-primary);
 		border-radius: var(--radius-full);
 	}
 
@@ -1144,28 +1144,15 @@ const faqs = [
 		overflow: hidden;
 		text-align: center;
 		padding: var(--spacing-4xl) var(--spacing-2xl);
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		background: var(--color-bg-inverse);
 		border-radius: var(--radius-lg);
-		color: white;
-	}
-
-	.cta-glow {
-		position: absolute;
-		top: -50%;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 600px;
-		height: 600px;
-		border-radius: 50%;
-		background: white;
-		opacity: 0.1;
-		filter: blur(60px);
+		color: var(--color-text-inverse);
 	}
 
 	.cta-banner h2 {
 		position: relative;
 		font-size: var(--font-size-4xl);
-		font-weight: 800;
+		font-weight: 700;
 		letter-spacing: -0.02em;
 		margin-bottom: var(--spacing-md);
 	}
@@ -1174,7 +1161,7 @@ const faqs = [
 		position: relative;
 		font-size: var(--font-size-lg);
 		line-height: 1.6;
-		opacity: 0.9;
+		color: var(--color-text-inverse-muted);
 		max-width: 560px;
 		margin: 0 auto var(--spacing-xl);
 	}
@@ -1188,26 +1175,25 @@ const faqs = [
 	}
 
 	.btn-white {
-		background: white;
+		background: var(--color-text-inverse);
 		color: var(--color-primary);
 		border: none;
 		font-weight: 700;
 	}
 
 	.btn-white:hover {
-		transform: translateY(-2px);
 		box-shadow: var(--shadow-lg);
 	}
 
 	.btn-outline-white {
 		background: transparent;
-		color: white;
-		border: 2px solid rgba(255, 255, 255, 0.4);
+		color: var(--color-text-inverse);
+		border: 1px solid var(--color-border-inverse);
 	}
 
 	.btn-outline-white:hover {
-		border-color: white;
-		background: rgba(255, 255, 255, 0.1);
+		border-color: var(--color-text-inverse);
+		background: rgba(255, 255, 255, 0.06);
 	}
 
 	/* ============ RESPONSIVE ============ */
@@ -1235,14 +1221,6 @@ const faqs = [
 			grid-template-columns: 1fr;
 			max-width: 480px;
 			margin: 0 auto;
-		}
-
-		.pricing-highlighted {
-			transform: none;
-		}
-
-		.pricing-highlighted:hover {
-			transform: translateY(-4px);
 		}
 
 		.journey-step {

@@ -1,24 +1,25 @@
 ---
+import { Icon } from "astro-iconset/components";
 import Base from "../layouts/Base.astro";
 
 const upcoming = [
 	{
-		icon: "📋",
+		icon: "list-checks",
 		title: "Visa Checklists",
 		description: "Step-by-step document checklists for every visa stage",
 	},
 	{
-		icon: "💬",
+		icon: "chats-circle",
 		title: "Interview Prep Guides",
 		description: "Real questions from real interviews, shared by the community",
 	},
 	{
-		icon: "🎓",
+		icon: "graduation-cap",
 		title: "University Guides",
 		description: "F1 experience at 100+ US universities",
 	},
 	{
-		icon: "🏆",
+		icon: "trophy",
 		title: "Success Stories",
 		description: "Approved students sharing their full journey",
 	},
@@ -30,10 +31,15 @@ const upcoming = [
 	description="Guides, checklists, visa timelines, and tools for every stage of your F1 journey. Being built by the community, for the community."
 >
 	<section class="resources-hero section">
+		<div class="page-hero-bg" aria-hidden="true">
+			<div class="page-hero-glow page-hero-glow-1"></div>
+			<div class="page-hero-glow page-hero-glow-2"></div>
+			<div class="page-hero-grid"></div>
+		</div>
 		<div class="container">
 			<span class="coming-soon-badge">Coming Soon</span>
 			<h1 class="resources-headline">
-				<span class="gradient-text">Resources — Coming Soon</span> <span aria-hidden="true">🛂</span>
+				Resources — Coming Soon
 			</h1>
 			<p class="resources-subheadline">
 				Guides, checklists, visa timelines, and tools for every stage of
@@ -51,7 +57,7 @@ const upcoming = [
 				{
 					upcoming.map((item) => (
 						<div class="upcoming-card">
-							<div class="upcoming-icon" aria-hidden="true">{item.icon}</div>
+							<div class="upcoming-icon" aria-hidden="true"><Icon name={`ph:${item.icon}`} /></div>
 							<h3 class="upcoming-title">{item.title}</h3>
 							<p class="upcoming-description">{item.description}</p>
 						</div>
@@ -79,6 +85,8 @@ const upcoming = [
 
 <style>
 	.resources-hero {
+		position: relative;
+		overflow: hidden;
 		text-align: center;
 		padding-top: var(--spacing-3xl);
 		padding-bottom: var(--spacing-2xl);
@@ -92,8 +100,8 @@ const upcoming = [
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		color: var(--color-primary);
+		background: var(--color-primary-wash);
 		border-radius: var(--radius-full);
 	}
 
@@ -101,16 +109,10 @@ const upcoming = [
 		max-width: var(--max-width);
 		margin: 0 auto var(--spacing-md);
 		font-size: var(--font-size-5xl);
-		font-weight: 800;
+		font-weight: 700;
 		line-height: 1.1;
 		letter-spacing: -0.03em;
-	}
-
-	.resources-headline .gradient-text {
-		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-muted) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		color: var(--color-text);
 	}
 
 	.resources-subheadline {
@@ -129,7 +131,7 @@ const upcoming = [
 
 	.section-headline {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 	}
 
 	.upcoming {
@@ -148,34 +150,30 @@ const upcoming = [
 		background: var(--color-surface);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
-		transition:
-			transform var(--transition-base),
-			box-shadow var(--transition-base),
-			border-color var(--transition-base);
+		transition: box-shadow var(--transition-base), border-color var(--transition-base);
 	}
 
 	.upcoming-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-lg);
-		border-color: var(--color-primary-light);
+		box-shadow: var(--shadow-sm);
+		border-color: var(--color-border-strong);
 	}
 
 	.upcoming-icon {
-		width: 48px;
-		height: 48px;
+		width: 44px;
+		height: 44px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 1.5rem;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		font-size: 1.375rem;
+		color: var(--color-primary);
+		background: var(--color-primary-wash);
 		border-radius: var(--radius);
 		margin-bottom: var(--spacing-lg);
 	}
 
 	.upcoming-title {
 		font-size: var(--font-size-xl);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -202,7 +200,7 @@ const upcoming = [
 
 	.cta-headline {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-lg);
 	}
 

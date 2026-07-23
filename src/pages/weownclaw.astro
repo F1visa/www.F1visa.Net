@@ -1,34 +1,35 @@
 ---
+import { Icon } from "astro-iconset/components";
 import Base from "../layouts/Base.astro";
 
 const capabilities = [
 	{
-		icon: "🪪",
+		icon: "identification-card",
 		title: "KYC & Identity Verification",
 		description: "Identity verification via Persona.com — a necessary compliance step for cooperative membership. Ensures every Founding Member is a real, verified person.",
 	},
 	{
-		icon: "✍️",
+		icon: "pen-nib",
 		title: "Digital Signing",
 		description: "Legally binding digital signatures via KeyCloak authentication + Supabase data layer. Your cooperative membership agreement is signed, stored, and verifiable.",
 	},
 	{
-		icon: "🔐",
+		icon: "lock",
 		title: "Data Sovereignty",
 		description: "Your personal data — visa documents, identity records, financial information — is stored on cooperative-owned infrastructure. Not on a corporate server. Not in a data broker's warehouse.",
 	},
 	{
-		icon: "⚖️",
+		icon: "scales",
 		title: "Cooperative Legal Framework",
 		description: "WeOwnClaw encodes the cooperative governance structure — voting rights, profit-share schedules, membership terms — into enforceable digital agreements.",
 	},
 	{
-		icon: "🛡️",
+		icon: "shield-check",
 		title: "Hardened by Minimus.io",
-		description: "Same security hardening as WeOwnLLM. Minimal attack surface, no unnecessary dependencies, no data leakage. Legal infrastructure that's as secure as it is enforceable.",
+		description: "Same security hardening as WeOwnChat. Minimal attack surface, no unnecessary dependencies, no data leakage. Legal infrastructure that's as secure as it is enforceable.",
 	},
 	{
-		icon: "🔗",
+		icon: "link",
 		title: "Powered by OpenClaw",
 		description: "Built on OpenClaw — an open-source legal tech framework for digital agreements and cooperative governance. No proprietary legal tech lock-in.",
 	},
@@ -47,6 +48,11 @@ const flow = [
 	description="WeOwnClaw handles KYC, digital signing, and cooperative legal framework for F1Visa.Net. Powered by OpenClaw, hardened by Minimus.io. Student data stays student-owned."
 >
 	<section class="claw-hero section">
+		<div class="page-hero-bg" aria-hidden="true">
+			<div class="page-hero-glow page-hero-glow-1"></div>
+			<div class="page-hero-glow page-hero-glow-2"></div>
+			<div class="page-hero-grid"></div>
+		</div>
 		<div class="container">
 			<span class="badge">⚖️ WeOwnClaw</span>
 			<h1>Legal Infrastructure for the Cooperative</h1>
@@ -72,7 +78,7 @@ const flow = [
 			</header>
 			<div class="powered-grid">
 				<div class="powered-card">
-					<div class="powered-icon">🔗</div>
+					<div class="powered-icon"><Icon name="ph:link" aria-hidden="true" /></div>
 					<h3>OpenClaw</h3>
 					<p class="powered-role">Framework</p>
 					<p>
@@ -83,7 +89,7 @@ const flow = [
 					</p>
 				</div>
 				<div class="powered-card">
-					<div class="powered-icon">🛡️</div>
+					<div class="powered-icon"><Icon name="ph:shield-check" aria-hidden="true" /></div>
 					<h3>Minimus.io</h3>
 					<p class="powered-role">Hardening</p>
 					<p>
@@ -107,7 +113,7 @@ const flow = [
 			<div class="features-grid">
 				{capabilities.map((c) => (
 					<div class="feature-card">
-						<div class="feature-icon">{c.icon}</div>
+						<div class="feature-icon"><Icon name={`ph:${c.icon}`} aria-hidden="true" /></div>
 						<h3>{c.title}</h3>
 						<p>{c.description}</p>
 					</div>
@@ -174,7 +180,7 @@ const flow = [
 					Become a Founding Member and your legal relationship with the
 					platform is encoded, signed, and owned by you.
 				</p>
-				<a href="/join" class="btn btn-primary btn-lg">Become a Founding Member</a>
+				<a href="/join" class="btn btn-white btn-lg">Become a Founding Member</a>
 			</div>
 		</div>
 	</section>
@@ -182,33 +188,34 @@ const flow = [
 
 <style>
 	.claw-hero {
+		position: relative;
+		overflow: hidden;
 		text-align: center;
 		padding-top: var(--spacing-5xl);
 		padding-bottom: var(--spacing-3xl);
 	}
 
 	.badge {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-sm);
 		padding: var(--spacing-xs) var(--spacing-md);
 		margin-bottom: var(--spacing-md);
-		font-size: var(--font-size-xs);
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-text);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
 		border-radius: var(--radius-full);
 	}
 
 	.claw-hero h1 {
 		font-size: var(--font-size-5xl);
-		font-weight: 800;
-		letter-spacing: -0.03em;
+		font-weight: 700;
+		letter-spacing: -0.035em;
+		line-height: 1.05;
 		margin-bottom: var(--spacing-lg);
-		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		color: var(--color-text);
 	}
 
 	.claw-hero .lead {
@@ -234,7 +241,7 @@ const flow = [
 
 	.section-header h2 {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-md);
 	}
 
@@ -268,13 +275,15 @@ const flow = [
 	}
 
 	.powered-icon {
-		font-size: 2.5rem;
-		margin-bottom: var(--spacing-md);
+		width: 40px;
+		height: 40px;
+		margin: 0 auto var(--spacing-md);
+		color: var(--color-primary);
 	}
 
 	.powered-card h3 {
 		font-size: var(--font-size-xl);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-xs);
 	}
 
@@ -307,13 +316,15 @@ const flow = [
 	}
 
 	.feature-icon {
-		font-size: 2rem;
+		width: 36px;
+		height: 36px;
+		color: var(--color-primary);
 		margin-bottom: var(--spacing-md);
 	}
 
 	.feature-card h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -345,15 +356,15 @@ const flow = [
 		align-items: center;
 		justify-content: center;
 		font-size: var(--font-size-sm);
-		font-weight: 800;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		font-weight: 700;
+		color: var(--color-text-inverse);
+		background: var(--color-primary);
 		border-radius: var(--radius-full);
 	}
 
 	.flow-card h3 {
 		font-size: var(--font-size-base);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-xs);
 	}
 
@@ -406,29 +417,34 @@ const flow = [
 	.cta-banner {
 		text-align: center;
 		padding: var(--spacing-3xl) var(--spacing-2xl);
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		background: var(--color-bg-inverse);
 		border-radius: var(--radius-lg);
-		color: white;
+		color: var(--color-text-inverse);
 	}
 
 	.cta-banner h2 {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-md);
 	}
 
 	.cta-banner p {
 		font-size: var(--font-size-lg);
 		line-height: 1.6;
-		opacity: 0.9;
+		color: var(--color-text-inverse-muted);
 		max-width: 600px;
 		margin: 0 auto var(--spacing-xl);
 	}
 
-	.cta-banner .btn {
-		background: white;
+	.cta-banner .btn-white {
+		background: var(--color-text-inverse);
 		color: var(--color-primary);
 		border: none;
+		font-weight: 700;
+	}
+
+	.cta-banner .btn-white:hover {
+		box-shadow: var(--shadow-lg);
 	}
 
 	@media (max-width: 900px) {

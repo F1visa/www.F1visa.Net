@@ -80,7 +80,7 @@
 			"items": [
 				{ "type": "custom", "label": "Community Forum", "url": "https://community.f1visa.net", "target": "_blank" },
 				{ "type": "custom", "label": ".OCA — Cooperative", "url": "/oca" },
-				{ "type": "custom", "label": "WeOwnLLM — AI Engine", "url": "/weownllm" },
+				{ "type": "custom", "label": "WeOwnChat — AI Engine", "url": "/weownllm" },
 				{ "type": "custom", "label": "WeOwnClaw — Legal", "url": "/weownclaw" },
 				{ "type": "custom", "label": "Resources", "url": "/resources" },
 				{ "type": "custom", "label": "FAQ", "url": "/#faq" }
@@ -283,7 +283,7 @@
 								},
 								{
 									"question": "How does the AI assistant work?",
-									"answer": "Our AI is powered by WeOwnLLM — built on AnythingLLM.com and hardened by Minimus.io. It's trained specifically on F-1 visa regulations with real-time policy updates. Unlike generic AI tools, it understands visa forms, SEVIS compliance, and CPT/OPT guidance. It's also bilingual — English and Chinese (Mandarin)."
+									"answer": "Our AI is powered by WeOwnChat — built on AnythingLLM.com and hardened by Minimus.io. It's trained specifically on F-1 visa regulations with real-time policy updates. Unlike generic AI tools, it understands visa forms, SEVIS compliance, and CPT/OPT guidance. It's also bilingual — English and Chinese (Mandarin)."
 								},
 								{
 									"question": "Who can join the community?",

@@ -1,36 +1,37 @@
 ---
+import { Icon } from "astro-iconset/components";
 import Base from "../layouts/Base.astro";
 
 const features = [
 	{
-		icon: "🧠",
+		icon: "brain",
 		title: "Trained on F-1 Visa Regulations",
-		description: "Not a generic chatbot. WeOwnLLM is fine-tuned specifically on F-1 visa rules, SEVIS compliance, CPT/OPT guidance, and real-time policy changes. It catches errors before submission.",
+		description: "Not a generic chatbot. WeOwnChat is fine-tuned specifically on F-1 visa rules, SEVIS compliance, CPT/OPT guidance, and real-time policy changes. It catches errors before submission.",
 	},
 	{
-		icon: "🌐",
+		icon: "translate",
 		title: "Bilingual by Design",
 		description: "Operates natively in English and Chinese (Mandarin) via Z.ai GLM 5.2 technology. The same engine that powers our verified bilingual governance agents — Sage 🪷 and DRP.bot 🌿 Sprout.",
 	},
 	{
-		icon: "🔒",
+		icon: "lock",
 		title: "Student-Owned, Not Corporate",
-		description: "Your data doesn't go to a Big Tech AI lab. WeOwnLLM runs on infrastructure owned by the cooperative — not OpenAI, not Google, not Anthropic. Your visa data stays yours.",
+		description: "Your data doesn't go to a Big Tech AI lab. WeOwnChat runs on infrastructure owned by the cooperative — not OpenAI, not Google, not Anthropic. Your visa data stays yours.",
 	},
 	{
-		icon: "⚡",
+		icon: "lightning",
 		title: "Hardened by Minimus.io",
 		description: "Security-hardened via Minimus.io — a minimal attack surface framework. No unnecessary dependencies, no data leakage, no prompt injection vulnerabilities left unpatched.",
 	},
 	{
-		icon: "🏗️",
+		icon: "stack",
 		title: "Powered by AnythingLLM",
 		description: "Built on AnythingLLM.com — an open-source, self-hosted LLM framework. This means full control over the model, the training data, and the deployment. No vendor lock-in.",
 	},
 	{
-		icon: "📊",
+		icon: "chart-bar",
 		title: "AI Readiness Certification",
-		description: "WeOwnLLM doesn't just answer visa questions — it builds your AI literacy. Complete the AI Readiness Assessment and earn a credential transferable to your career.",
+		description: "WeOwnChat doesn't just answer visa questions — it builds your AI literacy. Complete the AI Readiness Assessment and earn a credential transferable to your career.",
 	},
 ];
 
@@ -47,15 +48,20 @@ const comparison = [
 ---
 
 <Base
-	title="WeOwnLLM — AI Engine"
-	description="WeOwnLLM powers F1Visa.Net's AI assistant. Built on AnythingLLM.com, hardened by Minimus.io, and trained specifically on F-1 visa regulations. Bilingual. Student-owned. Not ChatGPT for visas."
+	title="WeOwnChat — AI Engine"
+	description="WeOwnChat powers F1Visa.Net's AI assistant. Built on AnythingLLM.com, hardened by Minimus.io, and trained specifically on F-1 visa regulations. Bilingual. Student-owned. Not ChatGPT for visas."
 >
 	<section class="llm-hero section">
+		<div class="page-hero-bg" aria-hidden="true">
+			<div class="page-hero-glow page-hero-glow-1"></div>
+			<div class="page-hero-glow page-hero-glow-2"></div>
+			<div class="page-hero-grid"></div>
+		</div>
 		<div class="container">
-			<span class="badge">🧠 WeOwnLLM</span>
+			<span class="badge">🧠 WeOwnChat</span>
 			<h1>The AI That Actually Understands Visas</h1>
 			<p class="lead">
-				Not ChatGPT for visas. Not a generic chatbot. WeOwnLLM is a
+				Not ChatGPT for visas. Not a generic chatbot. WeOwnChat is a
 				purpose-built AI engine — trained on F-1 regulations, hardened for
 				security, and owned by the students who use it.
 			</p>
@@ -75,7 +81,7 @@ const comparison = [
 			</header>
 			<div class="powered-grid">
 				<div class="powered-card">
-					<div class="powered-icon">🏗️</div>
+					<div class="powered-icon"><Icon name="ph:stack" aria-hidden="true" /></div>
 					<h3>AnythingLLM.com</h3>
 					<p class="powered-role">Engine</p>
 					<p>
@@ -85,7 +91,7 @@ const comparison = [
 					</p>
 				</div>
 				<div class="powered-card">
-					<div class="powered-icon">🛡️</div>
+					<div class="powered-icon"><Icon name="ph:shield-check" aria-hidden="true" /></div>
 					<h3>Minimus.io</h3>
 					<p class="powered-role">Hardening</p>
 					<p>
@@ -102,13 +108,13 @@ const comparison = [
 	<section id="how-it-works" class="section alt-bg">
 		<div class="container">
 			<header class="section-header">
-				<h2>What WeOwnLLM Does</h2>
+				<h2>What WeOwnChat Does</h2>
 				<p>Six capabilities that make it different from every other AI tool.</p>
 			</header>
 			<div class="features-grid">
 				{features.map((f) => (
 					<div class="feature-card">
-						<div class="feature-icon">{f.icon}</div>
+						<div class="feature-icon"><Icon name={`ph:${f.icon}`} aria-hidden="true" /></div>
 						<h3>{f.title}</h3>
 						<p>{f.description}</p>
 					</div>
@@ -121,14 +127,14 @@ const comparison = [
 	<section class="section">
 		<div class="container narrow">
 			<header class="section-header">
-				<h2>WeOwnLLM vs. Generic AI</h2>
+				<h2>WeOwnChat vs. Generic AI</h2>
 				<p>Why "just use ChatGPT" isn't enough for your visa journey.</p>
 			</header>
 			<table class="comparison-table">
 				<thead>
 					<tr>
 						<th>Capability</th>
-						<th class="col-weown">WeOwnLLM</th>
+						<th class="col-weown">WeOwnChat</th>
 						<th class="col-generic">Generic AI</th>
 					</tr>
 				</thead>
@@ -161,12 +167,12 @@ const comparison = [
 	<section class="section alt-bg">
 		<div class="container">
 			<div class="cta-banner">
-				<h2>Experience WeOwnLLM</h2>
+				<h2>Experience WeOwnChat</h2>
 				<p>
 					Start free with the Explorer tier. Get full unlimited access with
 					Member. Or own the platform as a Founding Cooperative Member.
 				</p>
-				<a href="/join" class="btn btn-primary btn-lg">Get Started</a>
+				<a href="/join" class="btn btn-white btn-lg">Get Started</a>
 			</div>
 		</div>
 	</section>
@@ -174,33 +180,34 @@ const comparison = [
 
 <style>
 	.llm-hero {
+		position: relative;
+		overflow: hidden;
 		text-align: center;
 		padding-top: var(--spacing-5xl);
 		padding-bottom: var(--spacing-3xl);
 	}
 
 	.badge {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-sm);
 		padding: var(--spacing-xs) var(--spacing-md);
 		margin-bottom: var(--spacing-md);
-		font-size: var(--font-size-xs);
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-text);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
 		border-radius: var(--radius-full);
 	}
 
 	.llm-hero h1 {
 		font-size: var(--font-size-5xl);
-		font-weight: 800;
-		letter-spacing: -0.03em;
+		font-weight: 700;
+		letter-spacing: -0.035em;
+		line-height: 1.05;
 		margin-bottom: var(--spacing-lg);
-		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		color: var(--color-text);
 	}
 
 	.llm-hero .lead {
@@ -226,7 +233,7 @@ const comparison = [
 
 	.section-header h2 {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-md);
 	}
 
@@ -260,13 +267,15 @@ const comparison = [
 	}
 
 	.powered-icon {
-		font-size: 2.5rem;
-		margin-bottom: var(--spacing-md);
+		width: 40px;
+		height: 40px;
+		margin: 0 auto var(--spacing-md);
+		color: var(--color-primary);
 	}
 
 	.powered-card h3 {
 		font-size: var(--font-size-xl);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-xs);
 	}
 
@@ -299,13 +308,15 @@ const comparison = [
 	}
 
 	.feature-icon {
-		font-size: 2rem;
+		width: 36px;
+		height: 36px;
+		color: var(--color-primary);
 		margin-bottom: var(--spacing-md);
 	}
 
 	.feature-card h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -319,6 +330,7 @@ const comparison = [
 		width: 100%;
 		border-collapse: collapse;
 		background: var(--color-surface);
+		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
 		overflow: hidden;
 	}
@@ -372,29 +384,34 @@ const comparison = [
 	.cta-banner {
 		text-align: center;
 		padding: var(--spacing-3xl) var(--spacing-2xl);
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		background: var(--color-bg-inverse);
 		border-radius: var(--radius-lg);
-		color: white;
+		color: var(--color-text-inverse);
 	}
 
 	.cta-banner h2 {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-md);
 	}
 
 	.cta-banner p {
 		font-size: var(--font-size-lg);
 		line-height: 1.6;
-		opacity: 0.9;
+		color: var(--color-text-inverse-muted);
 		max-width: 600px;
 		margin: 0 auto var(--spacing-xl);
 	}
 
-	.cta-banner .btn {
-		background: white;
+	.cta-banner .btn-white {
+		background: var(--color-text-inverse);
 		color: var(--color-primary);
 		border: none;
+		font-weight: 700;
+	}
+
+	.cta-banner .btn-white:hover {
+		box-shadow: var(--shadow-lg);
 	}
 
 	@media (max-width: 900px) {

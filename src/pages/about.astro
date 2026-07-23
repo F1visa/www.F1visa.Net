@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-iconset/components";
 import Base from "../layouts/Base.astro";
 
 const steps = [
@@ -21,17 +22,17 @@ const steps = [
 
 const values = [
 	{
-		icon: "🌍",
+		icon: "globe",
 		title: "Global Community",
 		description: "Built by and for international students worldwide",
 	},
 	{
-		icon: "🛡️",
+		icon: "shield-check",
 		title: "Trust & Accuracy",
 		description: "Every piece of information verified by students who've been there",
 	},
 	{
-		icon: "🤝",
+		icon: "handshake",
 		title: "Cooperative Ownership",
 		description: "Member-owned. Not a corporation. Not a consultancy.",
 	},
@@ -43,6 +44,11 @@ const values = [
 	description="F1visa.Net was built because the F1 visa process is confusing, expensive, and isolating. We believe the collective wisdom of students who've been through it is more valuable than any paid consultancy."
 >
 	<section class="about-hero section">
+		<div class="page-hero-bg" aria-hidden="true">
+			<div class="page-hero-glow page-hero-glow-1"></div>
+			<div class="page-hero-glow page-hero-glow-2"></div>
+			<div class="page-hero-grid"></div>
+		</div>
 		<div class="container">
 			<h1 class="about-headline">Built by Students, for Students</h1>
 			<p class="about-subheadline">
@@ -95,7 +101,7 @@ const values = [
 				{
 					values.map((value) => (
 						<div class="value-card">
-							<div class="value-icon" aria-hidden="true">{value.icon}</div>
+							<div class="value-icon" aria-hidden="true"><Icon name={`ph:${value.icon}`} /></div>
 							<h3 class="value-title">{value.title}</h3>
 							<p class="value-description">{value.description}</p>
 						</div>
@@ -123,6 +129,8 @@ const values = [
 
 <style>
 	.about-hero {
+		position: relative;
+		overflow: hidden;
 		text-align: center;
 		padding-top: var(--spacing-3xl);
 		padding-bottom: var(--spacing-2xl);
@@ -132,13 +140,10 @@ const values = [
 		max-width: var(--max-width);
 		margin: 0 auto var(--spacing-md);
 		font-size: var(--font-size-5xl);
-		font-weight: 800;
-		line-height: 1.1;
+		font-weight: 700;
+		line-height: 1.08;
 		letter-spacing: -0.03em;
-		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-muted) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		color: var(--color-text);
 	}
 
 	.about-subheadline {
@@ -160,8 +165,7 @@ const values = [
 		text-align: center;
 		padding: var(--spacing-2xl) var(--spacing-xl);
 		border-radius: var(--radius-lg);
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-		box-shadow: var(--shadow-lg);
+		background: var(--color-bg-inverse);
 	}
 
 	.mission-eyebrow {
@@ -177,7 +181,7 @@ const values = [
 		font-size: var(--font-size-base);
 		font-weight: 600;
 		line-height: 1.4;
-		color: white;
+		color: var(--color-text-inverse);
 	}
 
 	.section-header {
@@ -188,7 +192,7 @@ const values = [
 
 	.section-headline {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 	}
 
 	.how-it-works {
@@ -212,17 +216,14 @@ const values = [
 
 	.step-number {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		font-weight: 700;
+		color: var(--color-primary);
 		margin-bottom: var(--spacing-md);
 	}
 
 	.step-title {
 		font-size: var(--font-size-xl);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -248,34 +249,30 @@ const values = [
 		background: var(--color-surface);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
-		transition:
-			transform var(--transition-base),
-			box-shadow var(--transition-base),
-			border-color var(--transition-base);
+		transition: box-shadow var(--transition-base), border-color var(--transition-base);
 	}
 
 	.value-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-lg);
-		border-color: var(--color-primary-light);
+		box-shadow: var(--shadow-sm);
+		border-color: var(--color-border-strong);
 	}
 
 	.value-icon {
-		width: 48px;
-		height: 48px;
+		width: 44px;
+		height: 44px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 1.5rem;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		font-size: 1.375rem;
+		color: var(--color-primary);
+		background: var(--color-primary-wash);
 		border-radius: var(--radius);
 		margin-bottom: var(--spacing-lg);
 	}
 
 	.value-title {
 		font-size: var(--font-size-xl);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -302,7 +299,7 @@ const values = [
 
 	.cta-headline {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-lg);
 	}
 

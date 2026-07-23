@@ -65,6 +65,11 @@ const credentials = [
 	description="The founding stewards of F1Visa.Net — a team building a student-owned cooperative on proven governance infrastructure. Part of the ♾️ WeOwnNet 🌐 ecosystem."
 >
 	<section class="team-hero section">
+		<div class="page-hero-bg" aria-hidden="true">
+			<div class="page-hero-glow page-hero-glow-1"></div>
+			<div class="page-hero-glow page-hero-glow-2"></div>
+			<div class="page-hero-grid"></div>
+		</div>
 		<div class="container">
 			<span class="badge">🛂 F1Visa.Net ♾️ (.OCA)</span>
 			<h1>Founding Stewards</h1>
@@ -132,8 +137,8 @@ const credentials = [
 					Cooperative Members can grow into leadership roles — including
 					MetaCouncil and C-Suite positions.
 				</p>
-				<a href="/join" class="btn btn-primary btn-lg">Become a Founding Member</a>
-				<a href="/contact" class="btn btn-secondary btn-lg" style="margin-left: var(--spacing-md)">Contact the Team</a>
+				<a href="/join" class="btn btn-white btn-lg">Become a Founding Member</a>
+				<a href="/contact" class="btn btn-outline-white btn-lg" style="margin-left: var(--spacing-md)">Contact the Team</a>
 			</div>
 		</div>
 	</section>
@@ -141,33 +146,34 @@ const credentials = [
 
 <style>
 	.team-hero {
+		position: relative;
+		overflow: hidden;
 		text-align: center;
 		padding-top: var(--spacing-5xl);
 		padding-bottom: var(--spacing-3xl);
 	}
 
 	.badge {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-sm);
 		padding: var(--spacing-xs) var(--spacing-md);
 		margin-bottom: var(--spacing-md);
-		font-size: var(--font-size-xs);
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		color: var(--color-text);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
 		border-radius: var(--radius-full);
 	}
 
 	.team-hero h1 {
 		font-size: var(--font-size-5xl);
-		font-weight: 800;
-		letter-spacing: -0.03em;
+		font-weight: 700;
+		letter-spacing: -0.035em;
+		line-height: 1.05;
 		margin-bottom: var(--spacing-lg);
-		background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		color: var(--color-text);
 	}
 
 	.team-hero .lead {
@@ -190,7 +196,7 @@ const credentials = [
 
 	.section-header h2 {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-md);
 	}
 
@@ -220,21 +226,21 @@ const credentials = [
 	}
 
 	.steward-card:hover {
-		border-color: var(--color-primary-light);
-		box-shadow: var(--shadow-lg);
+		border-color: var(--color-border-strong);
+		box-shadow: var(--shadow-sm);
 	}
 
 	.steward-avatar {
 		flex-shrink: 0;
-		width: 64px;
-		height: 64px;
+		width: 60px;
+		height: 60px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: var(--font-size-xl);
-		font-weight: 800;
-		color: white;
-		background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+		font-size: var(--font-size-lg);
+		font-weight: 700;
+		color: var(--color-text-inverse);
+		background: var(--color-primary);
 		border-radius: var(--radius-full);
 	}
 
@@ -250,7 +256,7 @@ const credentials = [
 
 	.steward-info h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-xs);
 	}
 
@@ -279,8 +285,7 @@ const credentials = [
 		font-size: var(--font-size-xs);
 		font-weight: 500;
 		color: var(--color-primary);
-		background: var(--color-primary-light);
-		opacity: 0.15;
+		background: var(--color-primary-wash);
 		border-radius: var(--radius-full);
 	}
 
@@ -299,7 +304,7 @@ const credentials = [
 
 	.credential-card h3 {
 		font-size: var(--font-size-lg);
-		font-weight: 700;
+		font-weight: 600;
 		margin-bottom: var(--spacing-sm);
 	}
 
@@ -312,39 +317,45 @@ const credentials = [
 	.cta-banner {
 		text-align: center;
 		padding: var(--spacing-3xl) var(--spacing-2xl);
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		background: var(--color-bg-inverse);
 		border-radius: var(--radius-lg);
-		color: white;
+		color: var(--color-text-inverse);
 	}
 
 	.cta-banner h2 {
 		font-size: var(--font-size-3xl);
-		font-weight: 800;
+		font-weight: 700;
 		margin-bottom: var(--spacing-md);
 	}
 
 	.cta-banner p {
 		font-size: var(--font-size-lg);
 		line-height: 1.6;
-		opacity: 0.9;
+		color: var(--color-text-inverse-muted);
 		max-width: 600px;
 		margin: 0 auto var(--spacing-xl);
 	}
 
-	.cta-banner .btn-primary {
-		background: white;
+	.cta-banner .btn-white {
+		background: var(--color-text-inverse);
 		color: var(--color-primary);
 		border: none;
+		font-weight: 700;
 	}
 
-	.cta-banner .btn-secondary {
+	.cta-banner .btn-white:hover {
+		box-shadow: var(--shadow-lg);
+	}
+
+	.cta-banner .btn-outline-white {
 		background: transparent;
-		color: white;
-		border: 2px solid rgba(255, 255, 255, 0.4);
+		color: var(--color-text-inverse);
+		border: 1px solid var(--color-border-inverse);
 	}
 
-	.cta-banner .btn-secondary:hover {
-		border-color: white;
+	.cta-banner .btn-outline-white:hover {
+		border-color: var(--color-text-inverse);
+		background: rgba(255, 255, 255, 0.06);
 	}
 
 	@media (max-width: 900px) {
