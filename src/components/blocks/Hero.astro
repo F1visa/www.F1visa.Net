@@ -59,7 +59,10 @@ interface Props {
 const props = Astro.props;
 const node = props.node;
 
-const headline = node?.headline ?? props.headline ?? "";
+const headline = node?.headline ?? props.headline;
+if (!headline) {
+	throw new Error("Hero: a non-empty `headline` (or `node.headline`) prop is required.");
+}
 const headlineAccent = props.headlineAccent;
 const subheadline = node?.subheadline ?? props.subheadline;
 const centered = node?.centered ?? props.centered ?? false;
@@ -318,12 +321,17 @@ const secondaryCta = node
 		border-radius: 50%;
 		background: var(--color-success);
 		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-success) 20%, transparent);
-		animation: hero-badge-pulse 2s ease-in-out infinite;
 	}
 
-	@keyframes hero-badge-pulse {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0.5; }
+	@media (prefers-reduced-motion: no-preference) {
+		.hero-badge-dot {
+			animation: hero-badge-pulse 2s ease-in-out infinite;
+		}
+
+		@keyframes hero-badge-pulse {
+			0%, 100% { opacity: 1; }
+			50% { opacity: 0.5; }
+		}
 	}
 
 	.hero-image {
