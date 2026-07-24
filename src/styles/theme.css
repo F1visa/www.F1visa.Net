@@ -32,6 +32,7 @@
 	--color-primary-dark: #56308a;
 	--color-primary-light: #8b5fc7;
 	--color-primary-wash: rgba(108, 59, 170, 0.08);
+	--color-primary-on-wash: var(--color-primary-dark); /* accessible text/icon color for content on --color-primary-wash */
 
 	--color-accent: #f5a623; /* Warm Gold */
 	--color-accent-light: #f8c25e;
@@ -116,6 +117,7 @@
 		--color-primary-dark: #8b5fc7;
 		--color-primary-light: #c1a8e8;
 		--color-primary-wash: rgba(166, 131, 214, 0.14);
+		--color-primary-on-wash: var(--color-primary-light);
 
 		--color-accent-wash: rgba(245, 166, 35, 0.16);
 		--color-secondary-wash: rgba(69, 183, 170, 0.16);
@@ -142,6 +144,7 @@
 	--color-primary-dark: #8b5fc7;
 	--color-primary-light: #c1a8e8;
 	--color-primary-wash: rgba(166, 131, 214, 0.14);
+	--color-primary-on-wash: var(--color-primary-light);
 
 	--color-accent-wash: rgba(245, 166, 35, 0.16);
 	--color-secondary-wash: rgba(69, 183, 170, 0.16);
