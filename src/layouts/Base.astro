@@ -4,6 +4,7 @@ import { EmDashHead } from "emdash/ui";
 import { createPublicPageContext } from "emdash/page";
 import { Font } from "astro:assets";
 import "../styles/theme.css";
+import PostHog from "../components/PostHog.astro";
 
 interface Props {
 	title?: string;
@@ -57,6 +58,7 @@ const pageCtx = createPublicPageContext({
 		<title>{fullTitle}</title>
 		<EmDashHead page={pageCtx} />
 		<Font cssVariable="--font-sans" preload />
+		<PostHog />
 		<script is:inline>
 			// Apply theme immediately to prevent flash
 			(function () {

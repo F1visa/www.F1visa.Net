@@ -487,6 +487,52 @@ const faqs = [
 	</section>
 </Base>
 
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Hero primary CTA
+    var heroCta = document.querySelector('.hero-actions .btn-primary');
+    if (heroCta) {
+      heroCta.addEventListener('click', function () {
+        window.posthog?.capture('hero_cta_clicked', {
+          button_text: heroCta.textContent?.trim(),
+          destination: heroCta.getAttribute('href'),
+        });
+      });
+    }
+
+    // Community link
+    var communityLink = document.querySelector('.hero-actions .btn-ghost');
+    if (communityLink) {
+      communityLink.addEventListener('click', function () {
+        window.posthog?.capture('community_link_clicked', {
+          destination: communityLink.getAttribute('href'),
+        });
+      });
+    }
+
+    // Solution cards
+    document.querySelectorAll('.solution-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        window.posthog?.capture('solution_card_clicked', {
+          card_title: card.querySelector('h3')?.textContent?.trim(),
+          destination: card.getAttribute('href'),
+        });
+      });
+    });
+
+    // FAQ items (details/summary accordion)
+    document.querySelectorAll('.faq-item').forEach(function (item) {
+      item.addEventListener('toggle', function () {
+        if (item.open) {
+          window.posthog?.capture('faq_item_expanded', {
+            question: item.querySelector('.faq-question span')?.textContent?.trim(),
+          });
+        }
+      });
+    });
+  });
+</script>
+
 <style>
 	/* ============ BASE LAYOUT ============ */
 	.container {

@@ -206,6 +206,23 @@ const timeline = [
 	</section>
 </Base>
 
+<script is:inline>
+  // Track page view — top of the founding member conversion funnel
+  window.posthog?.capture('oca_page_viewed');
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // All CTAs linking to /join are founding-member intent signals
+    document.querySelectorAll('a[href="/join"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        window.posthog?.capture('founding_member_cta_clicked', {
+          button_text: btn.textContent?.trim(),
+          source: 'oca_page',
+        });
+      });
+    });
+  });
+</script>
+
 <style>
 	.oca-hero {
 		text-align: center;
