@@ -38,12 +38,6 @@
 			"items": [
 				{
 					"type": "custom",
-					"label": "Community",
-					"url": "https://community.f1visa.net",
-					"target": "_blank"
-				},
-				{
-					"type": "custom",
 					"label": ".OCA",
 					"url": "/oca"
 				},
