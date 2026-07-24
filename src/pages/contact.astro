@@ -3,6 +3,7 @@ import { Icon } from "astro-iconset/components";
 import { getEmDashEntry } from "emdash";
 import Base from "../layouts/Base.astro";
 import MarketingBlocks from "../components/MarketingBlocks.astro";
+import { getPostHogServer, getPhDistinctId } from "../lib/posthog-server";
 
 const { entry: page, cacheHint } = await getEmDashEntry("pages", "contact");
 
@@ -46,6 +47,27 @@ if (Astro.request.method === "POST") {
 			formStatus = "success";
 			formMessage =
 				"Thanks for reaching out! We'll get back to you within 24 hours.";
+
+			const posthog = getPostHogServer();
+			if (posthog) {
+				const token = import.meta.env.POSTHOG_PROJECT_TOKEN;
+				const distinctId = getPhDistinctId(Astro.request, token);
+				posthog.capture({
+					distinctId,
+					event: "contact_form_submitted",
+					properties: {
+						has_university: company.length > 0,
+					},
+				});
+				posthog.identify({
+					distinctId,
+					properties: {
+						email,
+						name,
+					},
+				});
+				await posthog.flush();
+			}
 		}
 	} catch {
 		formStatus = "error";

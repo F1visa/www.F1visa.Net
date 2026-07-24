@@ -298,6 +298,62 @@ const adVariants = [
 	</section>
 </Base>
 
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Assessment CTA ("Take the Free Assessment")
+    var assessmentBtn = document.querySelector('.hero-actions .btn-primary');
+    if (assessmentBtn) {
+      assessmentBtn.addEventListener('click', function () {
+        window.posthog?.capture('assessment_cta_clicked', {
+          button_text: assessmentBtn.textContent?.trim(),
+        });
+      });
+    }
+
+    // Membership tier CTAs
+    document.querySelectorAll('.tier-cta').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var card = btn.closest('.tier-card');
+        var tierName = card?.querySelector('h3')?.textContent?.trim();
+        var tierPrice = card?.querySelector('.tier-amount')?.textContent?.trim();
+        window.posthog?.capture('membership_tier_selected', {
+          tier_name: tierName,
+          tier_price: tierPrice,
+          button_text: btn.textContent?.trim(),
+          destination: btn.getAttribute('href'),
+        });
+      });
+    });
+
+    // Explorer free signup form
+    var joinForm = document.querySelector('.join-form');
+    if (joinForm) {
+      joinForm.addEventListener('submit', function () {
+        var emailInput = joinForm.querySelector('[name="email"]');
+        var nameInput = joinForm.querySelector('[name="name"]');
+        var countrySelect = joinForm.querySelector('[name="country"]');
+        var stageSelect = joinForm.querySelector('[name="stage"]');
+
+        // Capture event — no PII in properties
+        window.posthog?.capture('join_form_submitted', {
+          country: countrySelect?.value,
+          visa_stage: stageSelect?.value,
+        });
+
+        // Identify the user — PII goes here, not in capture()
+        if (emailInput?.value) {
+          window.posthog?.identify(emailInput.value, {
+            email: emailInput.value,
+            name: nameInput?.value || undefined,
+            visa_stage: stageSelect?.value,
+            country: countrySelect?.value,
+          });
+        }
+      });
+    }
+  });
+</script>
+
 <style>
 	.join-hero {
 		text-align: center;
