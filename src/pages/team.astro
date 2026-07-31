@@ -142,13 +142,18 @@ const credentials = [
 			</div>
 		</div>
 		<noscript>
+			<!-- Astro leaves this style inline (it only hoists/scopes top-level
+			     <style> blocks), so these selectors stay unscoped at 0,1,0 while
+			     the scoped rules above are 0,2,0 via [data-astro-cid-*].
+			     !important is required or these silently lose the cascade and
+			     the fallback does nothing. -->
 			<style>
 				.steward-bio {
-					max-height: none;
-					overflow: visible;
+					max-height: none !important;
+					overflow: visible !important;
 				}
 				.steward-bio-toggle {
-					display: none;
+					display: none !important;
 				}
 			</style>
 		</noscript>
@@ -497,16 +502,17 @@ const credentials = [
 </style>
 
 <style is:global>
-	/* .expanded is only ever added client-side (steward-bio-toggle click
-	   handler below), never written in this file's static markup, so
-	   Astro's scoped-style analysis treats it as unused and prunes it from
-	   the scoped block above. Global styles skip that pruning.
-	   !important is needed because this global stylesheet and the scoped
-	   one above tie on specificity (both 0,2,0) -- Vite/Astro dev mode
-	   doesn't guarantee this block injects after the scoped one, so cascade
-	   order alone isn't reliable for winning the override. */
-	.steward-bio.expanded {
-		max-height: 1200px !important;
+	/* .expanded/.collapsible are only ever added client-side (steward-bio
+	   script above), never written in this file's static markup, so Astro's
+	   scoped-style analysis treats them as unused and prunes them from the
+	   scoped block. Global styles skip that pruning.
+	   Both classes are matched here (rather than .expanded alone) so this
+	   rule scores 0,3,0 and outranks the scoped .steward-bio[data-astro-cid]
+	   rule at 0,2,0 -- otherwise the two would tie and the winner would
+	   depend on stylesheet order. The script always adds .collapsible before
+	   .expanded can be toggled, so they co-occur. */
+	.steward-bio.collapsible.expanded {
+		max-height: 1200px;
 	}
 
 	/* .collapsible is only added when JS detects the bio actually overflows
