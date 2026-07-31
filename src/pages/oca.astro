@@ -123,7 +123,7 @@ const timeline = [
 				platform — they govern it, profit from it, and shape its future.
 			</p>
 			<div class="hero-actions">
-				<a href="/join" class="btn btn-primary btn-lg">Become a Founding Member</a>
+				<a href="https://community.f1visa.net/join" class="btn btn-primary btn-lg">Join the Waitlist</a>
 				<a href="#how-it-works" class="btn btn-secondary btn-lg">How It Works</a>
 			</div>
 		</div>
@@ -268,7 +268,7 @@ const timeline = [
 	<section id="how-it-works" class="section alt-bg">
 		<div class="container">
 			<header class="section-header">
-				<h2>How to Become a Founding Member</h2>
+				<h2>How to Join the Waitlist</h2>
 				<p>Five steps from application to governance.</p>
 			</header>
 			<div class="timeline">
@@ -295,7 +295,7 @@ const timeline = [
 					this price. Founding Members get voting rights, profit-share,
 					and a permanent role in shaping F1Visa.Net's future.
 				</p>
-				<a href="/join" class="btn btn-primary btn-lg">Apply Now</a>
+				<a href="https://community.f1visa.net/join" class="btn btn-primary btn-lg">Apply Now</a>
 			</div>
 		</div>
 	</section>
@@ -307,7 +307,7 @@ const timeline = [
 
   document.addEventListener('DOMContentLoaded', function () {
     // All CTAs linking to /join are founding-member intent signals
-    document.querySelectorAll('a[href="/join"]').forEach(function (btn) {
+    document.querySelectorAll('a[href="https://community.f1visa.net/join"]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         window.posthog?.capture('founding_member_cta_clicked', {
           button_text: btn.textContent?.trim(),
