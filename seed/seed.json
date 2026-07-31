@@ -225,6 +225,7 @@
 									"name": "Member",
 									"price": "$9.99",
 									"period": "/month",
+									"billingNote": "or $48/yr, billed annually",
 									"description": "Full access to AI guidance + community + mentors.",
 									"features": "Full AI visa assistant (unlimited)\nPost + reply in forums\n1 mentor session per month\nLive chat (AI + human)\nWeekly virtual events\nSEVIS & CPT/OPT tracking",
 									"ctaLabel": "Become a Member",
@@ -234,7 +235,8 @@
 								{
 									"name": "Owner",
 									"price": "$99",
-									"period": "one-time",
+									"period": "for life",
+									"billingNote": "one-time payment — first 100 members only",
 									"description": "Founding Cooperative Member — own the platform.",
 									"features": "Everything in Member\nVoting rights on platform direction\nProfit-share distributions\nUnlimited mentor sessions\nFounding Member badge\nExclusive events + retreats\nEligible to become paid mentor",
 									"ctaLabel": "Become an Owner",
@@ -299,7 +301,7 @@
 								},
 								{
 									"question": "What are the 100 Founding Cooperative Members?",
-									"answer": "The first 100 members who join as Owners become Founding Cooperative Members. This is a limited, one-time opportunity. Founding Members get a tokenized membership certificate, voting rights, profit-share, and exclusive access to events and retreats. Learn more at /oca."
+									"answer": "The first 100 members who join as Owners become Founding Cooperative Members — a $99 one-time payment, for life. Founding Members get a tokenized membership certificate, voting rights, profit-share, and exclusive access to events and retreats. Membership (the $9.99/mo or $48/yr tier) is separate and does not include ownership. Learn more at /oca."
 								}
 							]
 						}

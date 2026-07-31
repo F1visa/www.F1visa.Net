@@ -39,12 +39,13 @@
 
 **F1Visa.Net is an AI-powered cooperative platform that helps international students navigate the F-1 visa journey with confidence, community, and ownership.**
 
-Students don't just use the platform — they become member-owners. For **$48/year**, students get:
+Students get full platform access as a **Member** — **$9.99/month, or $48/year paid upfront**:
 
 - **AI-guided visa application assistance** — form validation, deadline tracking, SEVIS compliance
 - **Community portal** — live chat, peer forums, mentor matching with current F-1 holders
 - **AI Readiness credential** — transferable AI literacy certification for careers
-- **Cooperative ownership** — voting rights, profit-share, and a stake in the platform's success
+
+Membership does not include ownership. The first 100 students to become **Owners** (Founding Cooperative Members — **$99, one-time, for life**) additionally get cooperative ownership: voting rights, profit-share, and a stake in the platform's success. See [§7 Membership Tiers](#7-membership-tiers) for the full Member vs. Owner breakdown.
 
 ### North Star
 
@@ -288,11 +289,11 @@ F-1 visa students face **three interconnected problems** that no single solution
    └─ Upgrade prompt after 3 interactions
 ```
 
-### Tier 2: Member ($48/yr) 💳
+### Tier 2: Member ($9.99/mo or $48/yr) 💳
 
 ```
 1. UPGRADE
-   └─ Pays $48/year (includes ♾️ We Own AI 🤖 BOOK 📚)
+   └─ Pays $9.99/month or $48/year (includes ♾️ We Own AI 🤖 BOOK 📚)
    └─ Completes KYC + CCC-ID registration (PRJ-036 + PRJ-039) + WeOwnChat onboarding too
        ↓
 2. FULL ACCESS UNLOCKED
@@ -339,7 +340,7 @@ F-1 visa students face **three interconnected problems** that no single solution
 ```
 ARRIVAL → FREE ASSESSMENT → EXPLORER (Free)
                                     ↓
-                           Upgrade to MEMBER ($48/yr)
+                           Upgrade to MEMBER ($9.99/mo or $48/yr)
                                     ↓
                            KYC + CCC-ID Registration
                                     ↓
@@ -361,8 +362,10 @@ ARRIVAL → FREE ASSESSMENT → EXPLORER (Free)
 | Tier | Price | Key Features | AI Access | Community | Ownership | Max Slots |
 |:----:|:-----:|:-------------|:---------:|:---------:|:---------:|:---------:|
 | 🆓 **Explorer** | **Free** | AI Readiness Assessment, Basic forum (read-only), Newsletter | ⚠️ Assessment only | ⚠️ Read-only | ❌ | Unlimited |
-| 💳 **Member** | **$48/yr** | Full AI Visa Assistant, Live chat, Full forum, AI certification, Weekly events | ✅ Full | ✅ Full | ❌ | Unlimited |
-| 👑 **Owner** | **TBD** | All Member features + Voting rights, Profit-share, Mentor eligibility, Certificate, Events | ✅ Full | ✅ Full + Mentor | ✅ YES | **100** |
+| 💳 **Member** | **$9.99/mo or $48/yr** | Full AI Visa Assistant, Live chat, Full forum, AI certification, Weekly events | ✅ Full | ✅ Full | ❌ | Unlimited |
+| 👑 **Owner** | **$99 one-time, for life** | All Member features + Voting rights, Profit-share, Mentor eligibility, Certificate, Events | ✅ Full | ✅ Full + Mentor | ✅ YES | **100** |
+
+> **🟡 Open question (owner: Tyler):** what happens to Owner pricing/availability once the first 100 Founding slots are filled? Options include closing the program permanently, reopening at a higher price, or something else — undecided. Until this is answered, site copy should describe only the confirmed 100-slot/$99 offer and should not assert what happens after it's filled.
 
 ### Revenue Model
 
@@ -370,7 +373,7 @@ ARRIVAL → FREE ASSESSMENT → EXPLORER (Free)
 |:---------------|:------------|:----------------:|
 | **Membership ($48/yr)** | Core subscription — Member tier | **$48 × students** |
 | **Book-included** | ♾️ We Own AI 🤖 BOOK 📚 included with membership | Included in $48 |
-| **Founding Membership** | One-time fee for Owner tier | **$TBD × 100** |
+| **Founding Membership** | One-time fee for Owner tier | **$99 × 100 = $9,900** |
 | **University Partnerships** | Bulk memberships for international offices | **$TBD/uni** |
 | **Mentor Revenue Share** | Platform takes % of mentor earnings | **TBD** |
 
