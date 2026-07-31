@@ -5,7 +5,7 @@ const stats = [
 	{ value: "1.5M", label: "Active F-1 students in the US" },
 	{ value: "$300+", label: "Lawyer cost per hour (we're free)" },
 	{ value: "1:1,200", label: "Advisor-to-student ratio at universities" },
-	{ value: "100", label: "Founding Member slots — one-time" },
+	{ value: "100", label: "Founding Member slots available" },
 ];
 
 const problems = [
@@ -110,6 +110,7 @@ const tiers = [
 		name: "Member",
 		price: "$9.99",
 		period: "/month",
+		billingNote: "or $48/yr, billed annually",
 		description: "Full access to AI guidance + community + mentors.",
 		features: [
 			"Full AI visa assistant (unlimited)",
@@ -126,7 +127,8 @@ const tiers = [
 	{
 		name: "Owner",
 		price: "$99",
-		period: "one-time",
+		period: "for life",
+		billingNote: "one-time payment — first 100 members only",
 		description: "Founding Cooperative Member — own the platform.",
 		features: [
 			"Everything in Member",
@@ -164,9 +166,9 @@ const differentiators = [
 		description: "Students earn certified AI readiness — transferable to careers, internships, and grad school applications.",
 	},
 	{
-		icon: "🔒",
-		title: "Decentralized Infrastructure",
-		description: "Built on DigitalOcean and Cloudflare. Student-owned, not VC-funded. Cannot be sold or shut down by investors.",
+		icon: "🗳️",
+		title: "Major Changes Require a Vote",
+		description: "As a cooperative, any major changes will be made by member vote unless required by law. As an owner, you have an important voice in the organization.",
 	},
 	{
 		icon: "⚖️",
@@ -203,7 +205,7 @@ const faqs = [
 	{
 		question: "Is F1visa.Net free?",
 		answer:
-			"Yes — completely free at point of need. F1visa.Net is a member-owned cooperative. No paywalls, no consultancy fees. The Explorer tier gives you basic AI assistance, forums, and resources at no cost.",
+			"Yes — completely free at point of need. The Explorer tier gives you basic AI assistance, forums, and resources at no cost, no credit card required. Paid Member and Owner tiers unlock more — see \"What is cooperative ownership?\" below for the difference.",
 	},
 	{
 		question: "What is cooperative ownership?",
@@ -233,7 +235,7 @@ const faqs = [
 	{
 		question: "What are the 100 Founding Cooperative Members?",
 		answer:
-			"The first 100 members who join as Owners become Founding Cooperative Members. This is a limited, one-time opportunity. Founding Members get a tokenized membership certificate, voting rights, profit-share, and exclusive access to events and retreats.",
+			"The first 100 members who join as Owners become Founding Cooperative Members — a $99 one-time payment, for life. Founding Members get a tokenized membership certificate, voting rights, profit-share, and exclusive access to events and retreats. Membership (the $9.99/mo or $48/yr tier) is separate and does not include ownership.",
 	},
 ];
 ---
@@ -389,6 +391,7 @@ const faqs = [
 								<span class="pricing-amount">{tier.price}</span>
 								{tier.period && <span class="pricing-period">{tier.period}</span>}
 							</div>
+							{tier.billingNote && <p class="pricing-billing-note">{tier.billingNote}</p>}
 							<p class="pricing-description">{tier.description}</p>
 						</div>
 						<ul class="pricing-features">
@@ -472,11 +475,11 @@ const faqs = [
 		<div class="container">
 			<div class="cta-banner">
 				<div class="cta-glow" aria-hidden="true"></div>
-				<h2>100 Founding Members. One-time opportunity.</h2>
+				<h2>100 Founding Member Slots. First Come, First Served.</h2>
 				<p>
-					Once the 100 Founding Cooperative Member slots are filled, the program
-					closes. Early members get voting rights, profit-share, and a permanent
-					role in shaping F1Visa.Net's future.
+					Only 100 Founding Cooperative Member slots are available at this
+					price. Founding Members get voting rights, profit-share, and a
+					permanent role in shaping F1Visa.Net's future.
 				</p>
 				<div class="cta-actions">
 					<a href="/join" class="btn btn-white btn-lg">Apply Now</a>
@@ -1015,6 +1018,11 @@ const faqs = [
 
 	.pricing-period {
 		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.pricing-billing-note {
+		font-size: var(--font-size-xs);
 		color: var(--color-muted);
 	}
 
