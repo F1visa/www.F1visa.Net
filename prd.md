@@ -371,8 +371,8 @@ ARRIVAL → FREE ASSESSMENT → EXPLORER (Free)
 
 | Revenue Stream | Description | Projected Annual |
 |:---------------|:------------|:----------------:|
-| **Membership ($48/yr)** | Core subscription — Member tier | **$48 × students** |
-| **Book-included** | ♾️ We Own AI 🤖 BOOK 📚 included with membership | Included in $48 |
+| **Membership ($9.99/mo or $48/yr)** | Core subscription — Member tier | **$9.99/mo or $48/yr × students** (blended rate TBD — depends on monthly/annual mix) |
+| **Book-included** | ♾️ We Own AI 🤖 BOOK 📚 included with membership | Included with either billing option |
 | **Founding Membership** | One-time fee for Owner tier | **$99 × 100 = $9,900** |
 | **University Partnerships** | Bulk memberships for international offices | **$TBD/uni** |
 | **Mentor Revenue Share** | Platform takes % of mentor earnings | **TBD** |

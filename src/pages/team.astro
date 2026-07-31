@@ -141,6 +141,17 @@ const credentials = [
 				))}
 			</div>
 		</div>
+		<noscript>
+			<style>
+				.steward-bio {
+					max-height: none;
+					overflow: visible;
+				}
+				.steward-bio-toggle {
+					display: none;
+				}
+			</style>
+		</noscript>
 	</section>
 
 	<!-- Ecosystem Credentials -->
@@ -192,6 +203,7 @@ const credentials = [
 			toggle.remove();
 			return;
 		}
+		bio.classList.add("collapsible");
 		toggle.addEventListener("click", () => {
 			const expanded = bio.classList.toggle("expanded");
 			toggle.textContent = expanded ? "See less" : "See more";
@@ -488,12 +500,19 @@ const credentials = [
 	/* .expanded is only ever added client-side (steward-bio-toggle click
 	   handler below), never written in this file's static markup, so
 	   Astro's scoped-style analysis treats it as unused and prunes it from
-	   the scoped block above. Global styles skip that pruning. */
+	   the scoped block above. Global styles skip that pruning.
+	   !important is needed because this global stylesheet and the scoped
+	   one above tie on specificity (both 0,2,0) -- Vite/Astro dev mode
+	   doesn't guarantee this block injects after the scoped one, so cascade
+	   order alone isn't reliable for winning the override. */
 	.steward-bio.expanded {
-		max-height: 1200px;
+		max-height: 1200px !important;
 	}
 
-	.steward-bio:not(.expanded)::after {
+	/* .collapsible is only added when JS detects the bio actually overflows
+	   its collapsed height, so the fade-out doesn't render on short bios that
+	   never got a toggle button. */
+	.steward-bio.collapsible:not(.expanded)::after {
 		content: "";
 		position: absolute;
 		bottom: 0;

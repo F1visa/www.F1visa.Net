@@ -95,7 +95,10 @@ const pageCtx = createPublicPageContext({
 					<div class="nav-links">
 						{
 							menu?.items.map((item) => (
-								<a href={item.url} target={item.target}>
+								<a
+									href={item.url}
+									target={item.target}
+									rel={item.target ? "noopener noreferrer" : undefined}>
 									{item.label}
 								</a>
 							))
