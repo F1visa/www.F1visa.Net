@@ -3,6 +3,7 @@ interface RawPlan {
 	name: string;
 	price: string;
 	period?: string;
+	billingNote?: string;
 	description?: string;
 	// Features are stored as a newline-separated string (Block Kit has no
 	// list-of-strings element, so a multiline text input is the closest fit).
@@ -54,6 +55,9 @@ const plans = rawPlans.map((plan) => ({
 							<span class="pricing-amount">{plan.price}</span>
 							{plan.period && <span class="pricing-period">{plan.period}</span>}
 						</div>
+						{plan.billingNote && (
+							<p class="pricing-billing-note">{plan.billingNote}</p>
+						)}
 						{plan.description && (
 							<p class="pricing-description">{plan.description}</p>
 						)}
@@ -157,6 +161,11 @@ const plans = rawPlans.map((plan) => ({
 
 	.pricing-period {
 		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.pricing-billing-note {
+		font-size: var(--font-size-xs);
 		color: var(--color-muted);
 	}
 

@@ -18,11 +18,43 @@ const principles = [
 		description: "All decisions, financials, and governance records are publicly auditable. Built on the #FedArch governance framework — verified by 9 independent AI agents.",
 	},
 	{
-		icon: "🔒",
-		title: "Student-Owned Infrastructure",
-		description: "Built on DigitalOcean and Cloudflare, not VC-funded servers. The platform cannot be sold to a competitor or shut down by investors. It belongs to the students.",
+		icon: "⚖️",
+		title: "Major Changes Require a Vote",
+		description: "As a cooperative, any major changes will be made by member vote unless required by law. As an owner, you have an important voice in the organization.",
 	},
 ];
+
+const comparison = {
+	member: {
+		name: "Member",
+		price: "$9.99/mo or $48/yr",
+		summary: "A paying subscriber. Full access to the platform — not a stake in it.",
+		gets: [
+			"Full AI visa assistant, unlimited",
+			"Full community access — post, reply, live chat",
+			"Mentor sessions",
+			"Weekly virtual events",
+		],
+		doesNotGet: [
+			"No voting rights",
+			"No profit-share",
+			"No ownership stake in F1Visa.Net",
+		],
+	},
+	owner: {
+		name: "Owner",
+		price: "$99 one-time, for life",
+		badge: "First 100 only",
+		summary: "A Founding Cooperative Member. Everything in Member, plus real ownership.",
+		gets: [
+			"Voting rights — you help decide platform direction, features, and how the community fund is spent",
+			"Profit-share — a cut of platform revenue, distributed quarterly",
+			"Founding Member badge — permanent recognition as one of the first 100",
+			"Eligible to become a paid mentor",
+			"A tokenized membership certificate — proof of your ownership stake",
+		],
+	},
+};
 
 const tiers = [
 	{
@@ -39,6 +71,7 @@ const tiers = [
 	{
 		name: "Member",
 		price: "$9.99/mo",
+		billingNote: "or $48/yr, billed annually",
 		role: "Contributor",
 		perks: [
 			"Full AI visa assistant (unlimited)",
@@ -50,7 +83,8 @@ const tiers = [
 	},
 	{
 		name: "Owner",
-		price: "$99 one-time",
+		price: "$99 for life",
+		billingNote: "one-time payment — first 100 Owners only",
 		role: "Governance",
 		perks: [
 			"Everything in Member",
@@ -68,7 +102,7 @@ const tiers = [
 const timeline = [
 	{ step: "01", title: "Apply", description: "Submit a short application — what excites you about F1Visa, what you'd build for the community." },
 	{ step: "02", title: "KYC", description: "Complete identity verification via Persona.com — a necessary compliance step for cooperative membership." },
-	{ step: "03", title: "Deposit", description: "Pay the $99 founding deposit. This signals commitment and funds the cooperative treasury." },
+	{ step: "03", title: "Pay", description: "Pay the $99 one-time founding fee. This funds the cooperative treasury and secures your lifetime Owner seat." },
 	{ step: "04", title: "Sign", description: "Digital signing via KeyCloak + Supabase. Receive your tokenized membership certificate." },
 	{ step: "05", title: "Govern", description: "Vote on the Q3 roadmap. Join monthly cooperative calls. Start shaping the ecosystem." },
 ];
@@ -137,6 +171,66 @@ const timeline = [
 		</div>
 	</section>
 
+	<!-- Member vs Owner -->
+	<section class="section alt-bg">
+		<div class="container">
+			<header class="section-header">
+				<h2>Member vs. Owner: What's the Difference?</h2>
+				<p>Paying for Membership does not make you an Owner. They're two separate things.</p>
+			</header>
+			<div class="compare-grid">
+				<div class="compare-card">
+					<div class="compare-header">
+						<h3>{comparison.member.name}</h3>
+						<span class="compare-price">{comparison.member.price}</span>
+					</div>
+					<p class="compare-summary">{comparison.member.summary}</p>
+					<p class="compare-list-label">You get:</p>
+					<ul class="compare-list">
+						{comparison.member.gets.map((item) => (
+							<li>
+								<svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+								</svg>
+								{item}
+							</li>
+						))}
+					</ul>
+					<p class="compare-list-label">You do not get:</p>
+					<ul class="compare-list compare-list-negative">
+						{comparison.member.doesNotGet.map((item) => (
+							<li>
+								<svg class="x-icon" viewBox="0 0 20 20" fill="currentColor">
+									<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+								</svg>
+								{item}
+							</li>
+						))}
+					</ul>
+				</div>
+				<div class="compare-card compare-highlighted">
+					<div class="compare-badge">{comparison.owner.badge}</div>
+					<div class="compare-header">
+						<h3>{comparison.owner.name}</h3>
+						<span class="compare-price">{comparison.owner.price}</span>
+					</div>
+					<p class="compare-summary">{comparison.owner.summary}</p>
+					<p class="compare-list-label">You get everything in Member, plus:</p>
+					<ul class="compare-list">
+						{comparison.owner.gets.map((item) => (
+							<li>
+								<svg class="check-icon" viewBox="0 0 20 20" fill="currentColor">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+								</svg>
+								{item}
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- Membership Tiers -->
 	<section class="section">
 		<div class="container">
@@ -151,6 +245,7 @@ const timeline = [
 						<div class="tier-header">
 							<h3>{tier.name}</h3>
 							<div class="tier-price">{tier.price}</div>
+							{tier.billingNote && <p class="tier-billing-note">{tier.billingNote}</p>}
 							<span class="tier-role">{tier.role}</span>
 						</div>
 						<ul class="tier-perks">
@@ -194,10 +289,10 @@ const timeline = [
 	<section class="section">
 		<div class="container">
 			<div class="cta-banner">
-				<h2>100 Founding Members. One-time opportunity.</h2>
+				<h2>100 Founding Owner Slots. First Come, First Served.</h2>
 				<p>
-					Once the 100 Founding Cooperative Member slots are filled, the
-					program closes. Early members get voting rights, profit-share,
+					Only 100 Founding Cooperative Member slots are available at
+					this price. Founding Members get voting rights, profit-share,
 					and a permanent role in shaping F1Visa.Net's future.
 				</p>
 				<a href="https://community.f1visa.net/join" class="btn btn-primary btn-lg">Apply Now</a>
@@ -398,6 +493,12 @@ const timeline = [
 		margin-bottom: var(--spacing-xs);
 	}
 
+	.tier-billing-note {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		margin-bottom: var(--spacing-sm);
+	}
+
 	.tier-role {
 		font-size: var(--font-size-xs);
 		font-weight: 600;
@@ -426,6 +527,103 @@ const timeline = [
 		flex-shrink: 0;
 		color: var(--color-success);
 		margin-top: 2px;
+	}
+
+	.compare-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--spacing-xl);
+		align-items: start;
+	}
+
+	.compare-card {
+		position: relative;
+		padding: var(--spacing-xl);
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+	}
+
+	.compare-highlighted {
+		border-color: var(--color-primary);
+		box-shadow: var(--shadow-xl);
+	}
+
+	.compare-badge {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: var(--spacing-xs) var(--spacing-md);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		color: white;
+		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+		border-radius: var(--radius-full);
+	}
+
+	.compare-header {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: var(--spacing-sm);
+		flex-wrap: wrap;
+	}
+
+	.compare-header h3 {
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+	}
+
+	.compare-price {
+		font-size: var(--font-size-sm);
+		font-weight: 700;
+		color: var(--color-primary);
+	}
+
+	.compare-summary {
+		font-size: var(--font-size-base);
+		color: var(--color-muted);
+		line-height: 1.5;
+	}
+
+	.compare-list-label {
+		font-size: var(--font-size-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--color-muted);
+		margin-top: var(--spacing-sm);
+	}
+
+	.compare-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.compare-list li {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-sm);
+		font-size: var(--font-size-sm);
+		line-height: 1.4;
+	}
+
+	.x-icon {
+		width: 18px;
+		height: 18px;
+		flex-shrink: 0;
+		color: var(--color-muted);
+		margin-top: 2px;
+	}
+
+	.compare-list-negative {
+		color: var(--color-muted);
 	}
 
 	.timeline {
@@ -509,6 +707,12 @@ const timeline = [
 		.tiers-grid {
 			grid-template-columns: 1fr;
 			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		.compare-grid {
+			grid-template-columns: 1fr;
+			max-width: 480px;
 			margin: 0 auto;
 		}
 

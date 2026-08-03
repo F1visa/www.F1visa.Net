@@ -51,6 +51,7 @@ const tiers = [
 		name: "Member",
 		price: "$9.99",
 		period: "/month",
+		billingNote: "or $48/yr, billed annually",
 		cta: "Join the Waitlist",
 		href: "#member-form",
 		highlighted: true,
@@ -66,7 +67,8 @@ const tiers = [
 	{
 		name: "Owner",
 		price: "$99",
-		period: "one-time",
+		period: "for life",
+		billingNote: "one-time payment — first 100 Owners only",
 		cta: "Become an Owner",
 		href: "#owner-form",
 		perks: [
@@ -108,9 +110,9 @@ const adVariants = [
 				<a href="#tiers" class="btn btn-secondary btn-lg">Compare Tiers</a>
 			</div>
 			<div class="scarcity-counter">
-				<span class="counter-label">🔥 Founding Member slots remaining:</span>
+				<span class="counter-label">🔥 Founding Owner slots remaining:</span>
 				<span class="counter-number">100</span>
-				<span class="counter-subtext">of 100 — one-time opportunity</span>
+				<span class="counter-subtext">of 100 — first come, first served</span>
 			</div>
 		</div>
 	</section>
@@ -205,6 +207,7 @@ const adVariants = [
 								<span class="tier-amount">{tier.price}</span>
 								{tier.period && <span class="tier-period">{tier.period}</span>}
 							</div>
+							{tier.billingNote && <p class="tier-billing-note">{tier.billingNote}</p>}
 						</div>
 						<ul class="tier-perks">
 							{tier.perks.map((perk) => (
@@ -222,6 +225,13 @@ const adVariants = [
 					</div>
 				))}
 			</div>
+			<p class="tiers-clarify">
+				Note: paying for <strong>Membership</strong> does not make you an
+				<strong>Owner</strong> — Membership is a subscription, Ownership is a
+				separate, one-time step with voting rights and profit-share, limited
+				to the first 100 people who take it.
+				<a href="/oca">See the full breakdown on the .OCA page →</a>
+			</p>
 		</div>
 	</section>
 
@@ -285,11 +295,11 @@ const adVariants = [
 	<section class="section">
 		<div class="container">
 			<div class="cta-banner">
-				<h2>100 Founding Members. One-time opportunity.</h2>
+				<h2>100 Founding Owner Slots. First Come, First Served.</h2>
 				<p>
-					Once the slots are filled, the program closes. Founding Members
-					get voting rights, profit-share, and a permanent role in shaping
-					F1Visa.Net's future.
+					Only 100 Founding Cooperative Member slots are available at this
+					price. Founding Members get voting rights, profit-share, and a
+					permanent role in shaping F1Visa.Net's future.
 				</p>
 				<a href="/oca" class="btn btn-primary btn-lg">Learn About .OCA</a>
 				<a href="https://community.f1visa.net" class="btn btn-secondary btn-lg" style="margin-left: var(--spacing-md)" target="_blank" rel="noopener noreferrer">Join the Community</a>
@@ -591,6 +601,26 @@ const adVariants = [
 		align-items: start;
 	}
 
+	.tiers-clarify {
+		max-width: var(--max-width);
+		margin: var(--spacing-2xl) auto 0;
+		text-align: center;
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.tiers-clarify strong {
+		color: var(--color-text);
+	}
+
+	.tiers-clarify a {
+		display: block;
+		margin-top: var(--spacing-xs);
+		font-weight: 600;
+		color: var(--color-primary);
+	}
+
 	.tier-card {
 		position: relative;
 		padding: var(--spacing-xl);
@@ -649,6 +679,11 @@ const adVariants = [
 
 	.tier-period {
 		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.tier-billing-note {
+		font-size: var(--font-size-xs);
 		color: var(--color-muted);
 	}
 

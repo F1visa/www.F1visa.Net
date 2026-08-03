@@ -82,17 +82,31 @@ const pageCtx = createPublicPageContext({
 						: <>🛂 {siteTitle}</>
 					}
 				</a>
-				<div class="nav-links">
-					{
-						menu?.items.map((item) => (
-							<a href={item.url} target={item.target}>
-								{item.label}
-							</a>
-						))
-					}
-				</div>
-				<div class="nav-actions">
-					<a href="https://community.f1visa.net/join" class="nav-cta">Join the Waitlist</a>
+				<button
+					type="button"
+					class="nav-toggle"
+					aria-expanded="false"
+					aria-controls="nav-panel"
+					aria-label="Toggle menu">
+					<svg class="nav-toggle-icon nav-toggle-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+					<svg class="nav-toggle-icon nav-toggle-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+				</button>
+				<div class="nav-panel" id="nav-panel">
+					<div class="nav-links">
+						{
+							menu?.items.map((item) => (
+								<a
+									href={item.url}
+									target={item.target}
+									rel={item.target ? "noopener noreferrer" : undefined}>
+									{item.label}
+								</a>
+							))
+						}
+					</div>
+					<div class="nav-actions">
+						<a href="https://community.f1visa.net/join" class="nav-cta">Join the Waitlist</a>
+					</div>
 				</div>
 			</nav>
 		</header>
@@ -214,6 +228,28 @@ const pageCtx = createPublicPageContext({
 						root.classList.toggle("dark", e.matches);
 					}
 				});
+
+			// Mobile nav toggle
+			const navToggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+			const navEl = document.querySelector(".nav");
+
+			function closeNav() {
+				navEl?.classList.remove("nav-open");
+				navToggle?.setAttribute("aria-expanded", "false");
+			}
+
+			navToggle?.addEventListener("click", () => {
+				const isOpen = navEl?.classList.toggle("nav-open") ?? false;
+				navToggle.setAttribute("aria-expanded", String(isOpen));
+			});
+
+			document.querySelectorAll(".nav-panel a").forEach((link) => {
+				link.addEventListener("click", closeNav);
+			});
+
+			document.addEventListener("keydown", (e) => {
+				if (e.key === "Escape") closeNav();
+			});
 		</script>
 
 		<style is:global>
@@ -540,6 +576,41 @@ const pageCtx = createPublicPageContext({
 				transform: translateY(-1px);
 			}
 
+			/* .nav-panel wraps .nav-links + .nav-actions so both can collapse
+			   together behind the toggle on mobile. display:contents makes the
+			   wrapper invisible to layout on desktop, so .nav-links/.nav-actions
+			   keep behaving exactly as if they were direct flex children of
+			   .nav -- no desktop styling changes needed. */
+			.nav-panel {
+				display: contents;
+			}
+
+			.nav-toggle {
+				display: none;
+				align-items: center;
+				justify-content: center;
+				width: 40px;
+				height: 40px;
+				margin-left: auto;
+				padding: 0;
+				background: transparent;
+				border: none;
+				color: var(--color-text);
+				cursor: pointer;
+			}
+
+			.nav-toggle-icon-close {
+				display: none;
+			}
+
+			.nav.nav-open .nav-toggle-icon-open {
+				display: none;
+			}
+
+			.nav.nav-open .nav-toggle-icon-close {
+				display: block;
+			}
+
 			main {
 				min-height: calc(100vh - 200px);
 			}
@@ -671,18 +742,62 @@ const pageCtx = createPublicPageContext({
 				}
 			}
 
-			@media (max-width: 540px) {
+			@media (max-width: 900px) {
 				.nav {
-					flex-wrap: wrap;
-					row-gap: var(--spacing-md);
-					justify-content: space-between;
+					position: relative;
+				}
+
+				.nav-toggle {
+					display: flex;
+				}
+
+				.nav-panel {
+					display: flex;
+					position: absolute;
+					top: 100%;
+					left: 0;
+					right: 0;
+					flex-direction: column;
+					align-items: stretch;
+					gap: 0;
+					background: var(--color-bg);
+					border-bottom: 1px solid var(--color-border);
+					box-shadow: var(--shadow-lg);
+					max-height: 0;
+					overflow: hidden;
+					visibility: hidden;
+					transition:
+						max-height var(--transition-slow),
+						visibility 0s var(--transition-slow);
+				}
+
+				.nav.nav-open .nav-panel {
+					max-height: 70vh;
+					overflow-y: auto;
+					visibility: visible;
+					transition: max-height var(--transition-slow), visibility 0s;
 				}
 
 				.nav-links {
-					order: 3;
-					width: 100%;
-					justify-content: flex-end;
+					flex-direction: column;
+					flex-wrap: nowrap;
+					gap: 0;
 					margin-left: 0;
+					padding: var(--spacing-sm) var(--spacing-lg) 0;
+				}
+
+				.nav-links a {
+					padding: var(--spacing-md) 0;
+					border-bottom: 1px solid var(--color-border);
+				}
+
+				.nav-actions {
+					padding: var(--spacing-lg);
+				}
+
+				.nav-cta {
+					display: block;
+					text-align: center;
 				}
 			}
 

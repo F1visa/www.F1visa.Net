@@ -1,62 +1,91 @@
 ---
 import Base from "../layouts/Base.astro";
 
+// bio: array of blocks -- a string renders as a paragraph, a string[] renders
+// as a bulleted list. These are self-submitted by each steward verbatim; do
+// not paraphrase or shorten them.
 const stewards = [
 	{
 		initials: "JY",
 		handle: "@GTM 🎯",
-		name: "Jason Younker",
-		role: "Founder & Go-To-Market",
-		bio: "StoryBrand Certified Guide. Serial entrepreneur. Architect of the #FedArch governance framework. Leads growth, brand, and cooperative strategy for F1Visa.Net.",
-		tags: ["StoryBrand Certified", "#FedArch Architect", "GTM"],
+		name: "Jason “yonks” Younker",
+		role: "Founder",
+		bio: [
+			"A serial entrepreneur and #buildinpublic advocate by practice, I bring experience across real estate, decentralized systems, and cooperative governance. I’m a lifelong technologist with 20 years’ of network engineering before starting a business renting houses and cars and developing a passion for opening up community and ownership for more people. I love building sustainable systems from the ground up, co-founding REtoken | The Real Estate DAO, a decentralized investment club designed to make real estate investing accessible beyond accredited investors and the Triple Win Foundation. I’ve proudly served as co-founder and Chief Digital Alchemist to several web3 and cooperative ventures, designing governance frameworks and community infrastructure.",
+			"Today I am the founder of ♾️ WeOwnNet 🌐, a federated multi-agent AI cooperative that I co-founded with my wife, Tyler Younker (MrsYonks). Under my leadership, ♾️ WeOwnNet has grown from a governance experiment into a living ecosystem of 15+ AI instances and a growing co-op community. I authored the #FedArch governance framework, pioneered the #FELG culture (Fun, Earning, Learning, Giving), and launched the #ZeroTo100 initiative — a blueprint to scale to 500+ cooperative members through 5 revenue buckets. In addition to leading the ecosystem, I speak at conferences, mentor builders, and continue proving that transparent, cooperative-owned, human-first AI is not just possible — it’s already here.",
+		],
+		tags: ["WeOwnNet Founder", "#FedArch Author", "REtoken Co-Founder"],
 	},
 	{
-		initials: "CT",
+		initials: "NC",
 		handle: "@CTO 🏛️",
-		name: "Chief Technology Officer",
-		role: "Technology & Infrastructure",
-		bio: "Leads the technical architecture — KeyCloak auth, Supabase data layer, Cloudflare deployment. Ensures the platform is built on decentralized, student-owned infrastructure.",
-		tags: ["KeyCloak", "Supabase", "Cloudflare"],
+		name: "Nik Cimino",
+		role: "Chief Technology Officer",
+		bio: [
+			"An electrical engineer by training and a software engineer by practice, I bring more than twenty years of experience across the high-tech sector. My career began at Xilinx (now AMD), where I contributed to the Hardware Accelerator SDK, FPGA Editor, and core internal frameworks.",
+			"In the years since, my work has centered on blockchain and decentralized systems: smart wallets, Web3 analytics platforms, governance and voting contracts, decentralized exchanges, NFT and token systems, and DAO tooling — alongside more specialized efforts including a password-based private-key derivation algorithm, a domain-specific language for generating user interfaces directly from smart contracts, and the release of an EVM-based blockchain as a testnet. Throughout this period, I served as CTO and Fractional CTO to several Web3 technology companies.",
+			"Today I am the founder of Perpetuator LLC, an agentic AI company delivering consulting services and a growing product portfolio, including CapitalCopilot.io.",
+		],
+		tags: ["Xilinx / AMD Alum", "Web3 & DAO Tooling", "Perpetuator LLC Founder"],
 	},
 	{
-		initials: "PL",
+		initials: "DM",
 		handle: "@PLT 🛠️",
-		name: "Platform Lead",
-		role: "Platform & Data",
-		bio: "Owns the Supabase.WeOwn.Tools data layer. Ensures student data sovereignty, API integrations, and the technical foundation of the cooperative.",
-		tags: ["Supabase", "Data Layer", "APIs"],
+		name: "Dilonne Muchingami",
+		role: "Platform Engineer",
+		bio: [
+			"I studied software engineering. I’ve got 8 years of experience across fintech, AI/ML, Web3/DeFi, and platform infrastructure. I got into machine learning before the LLM boom, delivering an MLaaS platform and was core to a project that curbed the spread of COVID-19 at Kenyatta National Hospital, one of Africa's largest, where we used IoT + on-edge AI for people-count and face-mask detection to enforce compliance.",
+			"Huge fan of emerging technologies, I love continuously discovering better ways of doing things and AI has opened up so many opportunities. My goal through AI Directed engineering is to help others do more with AI by building the resilient, highly-available systems that quietly power the digital world we all love.",
+		],
+		tags: ["MLaaS Platforms", "AI-Directed Engineering", "Fintech & Web3"],
 	},
 	{
-		initials: "MW",
+		initials: "MK",
 		handle: "@MWK 💻",
-		name: "Member Experience Lead",
-		role: "Community & Platform",
-		bio: "Bridges community and technology. Manages the F1Visa platform dashboard, community integration, and the member experience from signup to governance.",
-		tags: ["Community", "Dashboard", "Member Experience"],
+		name: "Mohammed Waseem Khan",
+		role: "Platform Engineer, MS in Computer Science, Westcliff University",
+		bio: [
+			"I'm the one keeping the lights on deploying the infrastructure, managing the servers, and making sure everything from the website to the community platform runs smoothly. My stack includes Kubernetes, Docker, Cloudflare Workers, GitHub Actions, and a lot of terminal windows.",
+			"I came to the US from Hyderabad, India on an F1 visa, so this project is personal. I've been through the visa confusion, the paperwork, the uncertainty and I want to help build something that makes that journey less stressful for others.",
+			"Ask me about cloud infrastructure, the F1 visa process, or the best biryani spots in Hyderabad.",
+		],
+		tags: ["Kubernetes & Cloudflare", "F-1 Visa Alum", "Hyderabad, India"],
 	},
 	{
-		initials: "SH",
+		initials: "MS",
 		handle: "@SHD ⚡",
-		name: "Infrastructure & Observability",
-		role: "DevOps & Monitoring",
-		bio: "Runs SigNoz observability, infrastructure monitoring, and platform reliability. Ensures the cooperative's infrastructure stays up, fast, and transparent.",
-		tags: ["SigNoz", "Observability", "DevOps"],
+		name: "Muhammad Shahid",
+		role: "Platform Engineer, PhD candidate",
+		bio: [
+			"I'm Muhammad Shahid, a passionate and experienced Senior Software Engineer & DevOps proficient in Full-Stack, AI Development, Generative AI, Agents & Tooling and specialized in cutting-edge technologies like AI, Machine Learning, Large Language Models (LLMs), GPTs, OpenAI, Gemini, and DeepSeek. I’m dedicated to building intelligent solutions that simplify and enhance human life.",
+			"I specialize in:",
+			[
+				"AI Development: Building intelligent systems using LLMs, GPTs, OpenAI, and Gemini.",
+				"Machine Learning: Creating predictive models and data-driven solutions.",
+				"Full-Stack Development: Designing and developing scalable Frontend and Backend applications.",
+				"AI RAGs & Embeddings: Leveraging Retrieval-Augmented Generation (RAG) and embeddings for advanced AI applications.",
+				"Responsible AI: Ensuring ethical and responsible AI practices in all projects.",
+			],
+			"When I’m not coding, I love exploring the latest advancements in AI and sharing my knowledge with the tech community. I believe in the power of technology to transform lives and make the world a better place.",
+		],
+		tags: ["AI & LLM Development", "Full-Stack & DevOps", "Responsible AI"],
 	},
 	{
 		initials: "NM",
 		handle: "@NIK 🛂",
-		name: "Nikhil Mahana",
-		role: "Product & KYC Integration",
-		bio: "Leads Persona.com KYC integration and product development. Ensures the cooperative membership flow is compliant, smooth, and student-friendly.",
-		tags: ["Persona.com", "KYC", "Product"],
+		name: "Nikhil M",
+		role: "Product Manager, MS in CS, New York University",
+		bio: [
+			"Ask me anything about Finance / Compliance / Navigating through the United States as an International Student.",
+		],
+		tags: ["Finance", "Compliance", "Int'l Student Support"],
 	},
 ];
 
 const credentials = [
-	{ label: "9-Agent MetaCouncil", value: "Verified across 6 model families with 100% VSA pass rates" },
-	{ label: "Bilingual AI Governance", value: "Sage 🪷 + Sprout 🌿 — 28 ZH/EN terms verified" },
-	{ label: "D-468 Canonical Glossary", value: "Passed 9-agent VSA at 92.6/100 average" },
-	{ label: "Public Auditability", value: "All governance docs on GitHub under s004_fedarch" },
+	{ label: "Multi-AI Governance Review", value: "Every governance decision is independently checked by 9 AI systems from 6 different companies before it's published — so no single AI's blind spot goes unnoticed." },
+	{ label: "Bilingual Terms, Verified", value: "Our English and Chinese (Mandarin) terminology is cross-checked for accuracy, so bilingual students get consistent guidance in both languages." },
+	{ label: "Public, Not Private", value: "Every governance decision and financial record we publish is on GitHub, open for anyone to read — not locked away in private company files." },
 ];
 ---
 
@@ -90,7 +119,18 @@ const credentials = [
 							<span class="steward-handle">{s.handle}</span>
 							<h3>{s.name}</h3>
 							<p class="steward-role">{s.role}</p>
-							<p class="steward-bio">{s.bio}</p>
+							<div class="steward-bio">
+								{s.bio.map((block) =>
+									Array.isArray(block) ? (
+										<ul>
+											{block.map((item) => <li>{item}</li>)}
+										</ul>
+									) : (
+										<p>{block}</p>
+									)
+								)}
+							</div>
+							<button type="button" class="steward-bio-toggle" aria-expanded="false">See more</button>
 							<div class="steward-tags">
 								{s.tags.map((tag) => (
 									<span class="tag">{tag}</span>
@@ -101,6 +141,22 @@ const credentials = [
 				))}
 			</div>
 		</div>
+		<noscript>
+			<!-- Astro leaves this style inline (it only hoists/scopes top-level
+			     <style> blocks), so these selectors stay unscoped at 0,1,0 while
+			     the scoped rules above are 0,2,0 via [data-astro-cid-*].
+			     !important is required or these silently lose the cascade and
+			     the fallback does nothing. -->
+			<style>
+				.steward-bio {
+					max-height: none !important;
+					overflow: visible !important;
+				}
+				.steward-bio-toggle {
+					display: none !important;
+				}
+			</style>
+		</noscript>
 	</section>
 
 	<!-- Ecosystem Credentials -->
@@ -138,6 +194,28 @@ const credentials = [
 		</div>
 	</section>
 </Base>
+
+<script>
+	// Steward bios collapse to a fixed height so cards with very different
+	// bio lengths still form a consistent grid; only show "See more" when a
+	// bio actually overflows that collapsed height.
+	document.querySelectorAll<HTMLElement>(".steward-bio").forEach((bio) => {
+		const toggle = bio.nextElementSibling;
+		if (!(toggle instanceof HTMLButtonElement) || !toggle.classList.contains("steward-bio-toggle")) {
+			return;
+		}
+		if (bio.scrollHeight <= bio.clientHeight + 1) {
+			toggle.remove();
+			return;
+		}
+		bio.classList.add("collapsible");
+		toggle.addEventListener("click", () => {
+			const expanded = bio.classList.toggle("expanded");
+			toggle.textContent = expanded ? "See less" : "See more";
+			toggle.setAttribute("aria-expanded", String(expanded));
+		});
+	});
+</script>
 
 <style>
 	.team-hero {
@@ -262,10 +340,55 @@ const credentials = [
 	}
 
 	.steward-bio {
+		position: relative;
 		font-size: var(--font-size-sm);
 		color: var(--color-muted);
 		line-height: 1.6;
 		margin-bottom: var(--spacing-md);
+		/* Collapsed by default so cards with wildly different bio lengths
+		   (a one-line bio next to a multi-paragraph one) still read as a
+		   consistent grid instead of some cards towering over others. */
+		max-height: 7.5em;
+		overflow: hidden;
+		transition: max-height var(--transition-base);
+	}
+
+	.steward-bio-toggle {
+		display: inline-block;
+		margin-bottom: var(--spacing-md);
+		padding: 0;
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		color: var(--color-primary);
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+
+	.steward-bio-toggle:hover {
+		text-decoration: underline;
+	}
+
+	.steward-bio p,
+	.steward-bio ul {
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.steward-bio p:last-child,
+	.steward-bio ul:last-child {
+		margin-bottom: 0;
+	}
+
+	.steward-bio ul {
+		padding-left: var(--spacing-lg);
+	}
+
+	.steward-bio li {
+		margin-bottom: var(--spacing-xs);
+	}
+
+	.steward-bio li:last-child {
+		margin-bottom: 0;
 	}
 
 	.steward-tags {
@@ -278,10 +401,26 @@ const credentials = [
 		padding: var(--spacing-xs) var(--spacing-sm);
 		font-size: var(--font-size-xs);
 		font-weight: 500;
-		color: var(--color-primary);
-		background: var(--color-primary-light);
-		opacity: 0.15;
+		color: var(--color-primary-dark);
+		background: color-mix(in srgb, var(--color-primary) 15%, transparent);
 		border-radius: var(--radius-full);
+	}
+
+	/* opacity on the whole element faded text and background toward the same
+	   color, so text/background contrast collapsed almost to zero -- tint
+	   only the background instead, and use a higher-contrast text variant
+	   per theme (dark mode's own --color-primary is too close in luminance
+	   to its own wash to read clearly). */
+	@media (prefers-color-scheme: dark) {
+		:root:not(.light) .tag {
+			color: var(--color-primary-light);
+			background: color-mix(in srgb, var(--color-primary-dark) 15%, transparent);
+		}
+	}
+
+	:root.dark .tag {
+		color: var(--color-primary-light);
+		background: color-mix(in srgb, var(--color-primary-dark) 15%, transparent);
 	}
 
 	.credentials-grid {
@@ -359,5 +498,34 @@ const credentials = [
 		.team-hero h1 {
 			font-size: var(--font-size-4xl);
 		}
+	}
+</style>
+
+<style is:global>
+	/* .expanded/.collapsible are only ever added client-side (steward-bio
+	   script above), never written in this file's static markup, so Astro's
+	   scoped-style analysis treats them as unused and prunes them from the
+	   scoped block. Global styles skip that pruning.
+	   Both classes are matched here (rather than .expanded alone) so this
+	   rule scores 0,3,0 and outranks the scoped .steward-bio[data-astro-cid]
+	   rule at 0,2,0 -- otherwise the two would tie and the winner would
+	   depend on stylesheet order. The script always adds .collapsible before
+	   .expanded can be toggled, so they co-occur. */
+	.steward-bio.collapsible.expanded {
+		max-height: 1200px;
+	}
+
+	/* .collapsible is only added when JS detects the bio actually overflows
+	   its collapsed height, so the fade-out doesn't render on short bios that
+	   never got a toggle button. */
+	.steward-bio.collapsible:not(.expanded)::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 2.4em;
+		background: linear-gradient(to bottom, transparent, var(--color-surface));
+		pointer-events: none;
 	}
 </style>
