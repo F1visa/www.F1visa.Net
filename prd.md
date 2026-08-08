@@ -3,7 +3,7 @@
 | Field | Value |
 |:------|:-------|
 | **Document** | PRJ-F1V.md |
-| **Version** | **v1.0.0-r1** |
+| **Version** | **v1.0.1-r2** |
 | **Project** | 🛂 F1Visa.Net ♾️ |
 | **Category** | 🚀 **PRODUCT** — Digital Product Development |
 | **Bucket** | #ZeroTo100 — **Bucket 4** ($48/yr — includes book) |
@@ -26,6 +26,7 @@
 6. [User Journey & Onboarding Flow](#6-user-journey--onboarding-flow)
 7. [Membership Tiers](#7-membership-tiers)
 8. [Technical Requirements](#8-technical-requirements)
+   - 8.4 [Product Analytics — PostHog Integration](#84-product-analytics--posthog-integration)
 9. [Success Metrics & KPIs](#9-success-metrics--kpis)
 10. [Release Plan & Roadmap](#10-release-plan--roadmap)
 11. [Out of Scope (v1.0)](#11-out-of-scope-v10)
@@ -202,9 +203,13 @@ F-1 visa students face **three interconnected problems** that no single solution
 | **Instance** | INT-B002 — WeOwnLLM.F1visa.Net | ✅ LIVE |
 | **LLM Backend** | WeOwnLLM (forked AnythingLLM, hardened by Minimus.io) | ✅ Available |
 | **Bilingual AI** | Z.ai GLM 5.2 (English + Chinese/Mandarin) | ✅ Verified |
+| **Marketing site** | Astro 7 + EmDash CMS + Cloudflare Workers (D1 + KV) | ✅ LIVE |
+| **Analytics** | PostHog (client + `posthog-node` server) | 🟡 Code-complete, env pending — see [§8.4](#84-product-analytics--posthog-integration) |
 | **Community** | WordPress + live chat plugin + forum | 📋 PENDING |
-| **Hosting** | DigitalOcean + Cloudflare | ✅ Active |
-| **Payments** | Stripe ($48/yr) | 📋 PENDING |
+| **Hosting** | Cloudflare Workers + Pages (marketing site) | ✅ Active |
+| **Payments** | Stripe ($9.99/mo or $48/yr; $99 lifetime founding) | 📋 PENDING |
+| **Auth** | TBD (no auth implemented) | 📋 PENDING |
+| **KYC** | Persona.com | 📋 PENDING |
 | **Governance** | ♾️ WeOwnNet #FedArch (CCC-ID system) | ✅ Active |
 
 ---
@@ -413,6 +418,70 @@ ARRIVAL → FREE ASSESSMENT → EXPLORER (Free)
 | **GDPR/FERPA** | Compliance with student data protection laws | P1 |
 | **KYC/AML** | Persona identity verification for all paying members | P1 |
 | **Encryption** | TLS 1.3 + database encryption at rest | P0 |
+
+### 8.4 Product Analytics — PostHog Integration
+
+**Status:** 🟡 **Code-complete, blocked on env config**
+
+The PostHog SDK is integrated site-wide via the `Base` layout. All 10 pages load the client snippet; custom events are wired on the homepage, `/join`, `/oca`, and `/contact` (server-side). The integration is dormant until the PostHog project token is provided.
+
+#### Implementation Status
+
+| Component | File | Status |
+|:----------|:-----|:------:|
+| Client SDK loader | `src/components/PostHog.astro` | ✅ Merged |
+| Layout injection | `src/layouts/Base.astro` (line 61) | ✅ All 10 pages |
+| Server-side client | `src/lib/posthog-server.ts` (`posthog-node`) | ✅ Merged |
+| Server capture (contact form) | `src/pages/contact.astro` | ✅ Merged |
+| Custom events — homepage | `src/pages/index.astro` | ✅ Merged |
+| Custom events — join | `src/pages/join.astro` | ✅ Merged |
+| Custom events — OCA | `src/pages/oca.astro` | ✅ Merged |
+| Env vars (`.env`) | `PUBLIC_POSTHOG_PROJECT_TOKEN`, `POSTHOG_PROJECT_TOKEN`, hosts | ❌ **Pending** |
+| Live event verification | Browser DevTools + PostHog dashboard | ❌ **Pending** |
+
+#### Required Environment Variables
+
+| Variable | Scope | Used by | Notes |
+|:---------|:------|:--------|:------|
+| `PUBLIC_POSTHOG_PROJECT_TOKEN` | Client (browser) | `PostHog.astro` | Public key, starts with `phc_`. Inlined at build time. |
+| `PUBLIC_POSTHOG_HOST` | Client (browser) | `PostHog.astro` | Defaults to `https://us.i.posthog.com` if unset. |
+| `POSTHOG_PROJECT_TOKEN` | Server (Worker) | `posthog-server.ts` | Same project token; used for server-side capture. |
+| `POSTHOG_HOST` | Server (Worker) | `posthog-server.ts` | Defaults to `https://us.i.posthog.com` if unset. |
+
+> **Deployment note:** `PUBLIC_*` vars are inlined at build time, so for Cloudflare they must be set as **build environment variables** in the Cloudflare dashboard (not `wrangler secret`). Server-side vars may use `wrangler secret put`.
+
+#### Custom Events (beyond PostHog auto-capture)
+
+| Event | Trigger | Page | Properties |
+|:------|:--------|:-----|:-----------|
+| `hero_cta_clicked` | Hero CTA click | `/` | `location` |
+| `community_link_clicked` | Community nav link | `/` | — |
+| `solution_card_clicked` | Solution card | `/` | `card` |
+| `faq_item_expanded` | FAQ accordion | `/` | `item` |
+| `assessment_cta_clicked` | Assessment CTA | `/join` | `location` |
+| `membership_tier_selected` | Tier selection | `/join` | `tier` |
+| `join_form_submitted` | Waitlist form submit | `/join` | `email` (via `posthog.identify`) |
+| `oca_page_viewed` | Page load | `/oca` | — |
+| `founding_member_cta_clicked` | Founding CTA | `/oca` | — |
+| `contact_form_submitted` | Contact form (server) | `/contact` | `email`, `name` (via `posthog.identify`) |
+
+#### Privacy Configuration (per §8.3)
+
+| Setting | Value | Rationale |
+|:--------|:------|:----------|
+| IP capture | ❌ Disabled | F-1 students cross borders; GDPR applies |
+| Person profiles | Anonymous by default | Cheaper, privacy-first; `identify()` only after signup |
+| Cookie consent | Required (separate task) | Add consent banner before paid social launch |
+| Data retention | 90 days | Sufficient for analytics without over-retention |
+
+#### Verification Checklist (run after env vars are set)
+
+1. DevTools → Network → filter `posthog` → `array.js` loads 200
+2. DevTools → Network → `batch` POST to `us.i.posthog.com/e/` contains `$pageview`
+3. Navigate pages → additional `$pageview` events fire
+4. Click hero CTA → `hero_cta_clicked` in batch payload
+5. PostHog dashboard → "Waiting for events" clears within ~30s
+6. PostHog → Web Analytics → Pageviews graph shows visits
 
 ---
 
