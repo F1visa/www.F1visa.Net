@@ -5,12 +5,12 @@ const capabilities = [
 	{
 		icon: "🪪",
 		title: "KYC & Identity Verification",
-		description: "Identity verification via Persona.com — a necessary compliance step for cooperative membership. Ensures every Founding Member is a real, verified person.",
+		description: "KYC and digital signing capabilities are in development — a planned compliance step for cooperative membership.",
 	},
 	{
 		icon: "✍️",
 		title: "Digital Signing",
-		description: "Legally binding digital signatures via KeyCloak authentication + Supabase data layer. Your cooperative membership agreement is signed, stored, and verifiable.",
+		description: "Digital signing is part of the in-development KYC & compliance stack. Membership agreements will be signed, stored, and verifiable once launched.",
 	},
 	{
 		icon: "🔐",
@@ -35,25 +35,25 @@ const capabilities = [
 ];
 
 const flow = [
-	{ step: "01", title: "Identity", description: "Persona.com verifies your identity — name, date of birth, government ID. Required for cooperative membership compliance." },
+	{ step: "01", title: "Identity", description: "Persona.com identity verification — name, date of birth, government ID (capability in development)." },
 	{ step: "02", title: "Agreement", description: "WeOwnClaw generates your cooperative membership agreement — voting rights, profit-share terms, governance obligations." },
-	{ step: "03", title: "Signing", description: "Digital signing via KeyCloak auth. Your signature is cryptographically verified and stored in Supabase." },
+	{ step: "03", title: "Signing", description: "Digital signing via KeyCloak auth (capability in development). Your signature would be cryptographically verified and stored in Supabase." },
 	{ step: "04", title: "Certificate", description: "Receive your tokenized membership certificate — on-chain proof of cooperative ownership. Portable, verifiable, immutable." },
 ];
 ---
 
 <Base
 	title="WeOwnClaw — Legal & Compliance"
-	description="WeOwnClaw handles KYC, digital signing, and cooperative legal framework for F1Visa.Net. Powered by OpenClaw, hardened by Minimus.io. Student data stays student-owned."
+	description="WeOwnClaw provides cooperative governance infrastructure for F1Visa.Net. KYC and digital signing capabilities are in development. Powered by OpenClaw, hardened by Minimus.io. Student data stays student-owned."
 >
 	<section class="claw-hero section">
 		<div class="container">
 			<span class="badge">⚖️ WeOwnClaw</span>
 			<h1>Legal Infrastructure for the Cooperative</h1>
 			<p class="lead">
-				WeOwnClaw handles the legal and compliance layer of F1Visa.Net —
-				KYC verification, digital signing, cooperative governance
-				agreements, and data sovereignty. Powered by OpenClaw. Hardened by
+				WeOwnClaw provides the cooperative governance layer of F1Visa.Net —
+				agreements and data sovereignty, with KYC and digital signing
+				capabilities in development. Powered by OpenClaw. Hardened by
 				Minimus.io. Owned by you.
 			</p>
 			<div class="hero-actions">
