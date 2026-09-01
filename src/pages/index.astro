@@ -2,10 +2,10 @@
 import Base from "../layouts/Base.astro";
 
 const stats = [
-	{ value: "1.5M", label: "Active F-1 students in the US" },
-	{ value: "$300+", label: "Lawyer cost per hour (we're free)" },
+	{ value: "1.5M", label: "F-1 students in the US need better support" },
+	{ value: "$300+", label: "Lawyer cost per hour — with F1Visa.Net you don't have to pay $300/hr for answers" },
 	{ value: "1:1,200", label: "Advisor-to-student ratio at universities" },
-	{ value: "100", label: "Founding Owner slots available" },
+	{ value: "100", label: "Founding Owner slots available (coming soon)" },
 ];
 
 const problems = [
@@ -34,7 +34,7 @@ const solutions = [
 		icon: "⚡",
 		title: "AI-Guided Visa Application",
 		description:
-			"A dedicated AI agent validates forms, tracks deadlines, and catches errors before submission. Trained specifically on F-1 regulations with real-time policy updates.",
+			"A dedicated AI agent validates forms, tracks deadlines, and catches errors before submission. Trained specifically on F-1 regulations and regularly updated with current F-1 regulations.",
 		tag: "Powered by WeOwnChat",
 		href: "/weownchat",
 	},
@@ -51,7 +51,7 @@ const solutions = [
 		title: "AI Readiness Pathway",
 		description:
 			"Tiered membership with a proprietary AI Readiness Assessment. Students build career-ready AI skills while navigating their visa journey.",
-		tag: "Career-Transferable Credential",
+		tag: "Career-Transferable Credential (coming soon)",
 		href: "/join",
 	},
 ];
@@ -73,7 +73,7 @@ const journey = [
 		num: "3",
 		title: "Experience",
 		quote: '"This AI actually understands visas."',
-		desc: "Take the free 5-minute AI Readiness Assessment. Get a personalized score and path.",
+		desc: "Take the free 5-minute AI Readiness Assessment (coming soon). Get a personalized score and path.",
 	},
 	{
 		num: "4",
@@ -99,7 +99,7 @@ const tiers = [
 			"Basic AI visa assistant",
 			"Read-only community forums",
 			"Weekly newsletter with visa tips",
-			"AI Readiness Assessment",
+			"AI Readiness Assessment (coming soon)",
 			"Resource library access",
 		],
 		cta: "Start Free",
@@ -115,10 +115,9 @@ const tiers = [
 		features: [
 			"Full AI visa assistant (unlimited)",
 			"Post + reply in forums",
-			"1 mentor session per month",
+			"1 mentor session per month (coming soon)",
 			"Live chat (AI + human)",
 			"Weekly virtual events",
-			"SEVIS & CPT/OPT tracking",
 		],
 		cta: "Join the Waitlist",
 		href: "/join",
@@ -133,8 +132,8 @@ const tiers = [
 		features: [
 			"Everything in Member",
 			"Voting rights on platform direction",
-			"Profit-share distributions",
-			"Unlimited mentor sessions",
+			"Profit-share distributions (future benefit)",
+			"Unlimited mentor sessions (coming soon)",
 			"Founding Member badge",
 			"Exclusive events + retreats",
 		],
@@ -158,11 +157,11 @@ const differentiators = [
 	{
 		icon: "🌐",
 		title: "Bilingual by Design",
-		description: "English and Chinese (Mandarin) via Z.ai GLM 5.2. No other F-1 platform offers native bilingual capability.",
+		description: "English and Chinese.",
 	},
 	{
 		icon: "📜",
-		title: "AI Literacy Credential",
+		title: "AI Literacy Credential (coming soon)",
 		description: "Students earn certified AI readiness — transferable to careers, internships, and grad school applications.",
 	},
 	{
@@ -173,49 +172,26 @@ const differentiators = [
 	{
 		icon: "⚖️",
 		title: "Legal Infrastructure",
-		description: "WeOwnClaw handles KYC, digital signing, and cooperative governance. Powered by OpenClaw, hardened by Minimus.io.",
+		description: "WeOwnClaw provides cooperative governance infrastructure. KYC and digital signing capabilities are in development.",
 	},
 ];
 
-const testimonials = [
-	{
-		quote:
-			"The community helped me prepare for my visa interview in ways no lawyer could. Real students, real experiences.",
-		author: "Priya S.",
-		role: "F1 Student",
-		company: "University of Texas Austin",
-	},
-	{
-		quote:
-			"I was terrified about the SEVIS process. Someone in the community walked me through it step by step. Got approved!",
-		author: "Carlos M.",
-		role: "F1 Student",
-		company: "Georgia Tech",
-	},
-	{
-		quote:
-			"Finally a free resource that actually understands what international students go through. This community is gold.",
-		author: "Aisha K.",
-		role: "F1 Student",
-		company: "UCLA",
-	},
-];
 
 const faqs = [
 	{
 		question: "Is F1visa.Net free?",
 		answer:
-			"Yes — completely free at point of need. The Explorer tier gives you basic AI assistance, forums, and resources at no cost, no credit card required. Paid Member and Owner tiers unlock more — see \"What is cooperative ownership?\" below for the difference.",
+			"Yes. The Explorer tier gives you basic AI assistance, forums, and resources at no cost, no credit card required. Paid Member and Owner tiers unlock more — see \"What is cooperative ownership?\" below for the difference.",
 	},
 	{
 		question: "What is cooperative ownership?",
 		answer:
-			"F1Visa.Net operates as an Onchain Cooperative Association (.OCA). Our 100 Founding Cooperative Members become member-owners — not just customers. They get voting rights on platform direction, profit-share distributions, and a say in what we build next.",
+			"F1Visa.Net operates as an Onchain Cooperative Association (.OCA). Our 100 Founding Cooperative Members become member-owners — not just customers. They get voting rights on platform direction, profit-share distributions (future benefit), and a say in what we build next.",
 	},
 	{
 		question: "How does the AI assistant work?",
 		answer:
-			"Our AI is powered by WeOwnChat — built on AnythingLLM.com and hardened by Minimus.io. It's trained specifically on F-1 visa regulations with real-time policy updates. Unlike generic AI tools, it understands visa forms, SEVIS compliance, and CPT/OPT guidance. It's also bilingual — English and Chinese (Mandarin).",
+			"Our AI is powered by WeOwnChat — built on AnythingLLM.com and hardened by Minimus.io. It's trained specifically on F-1 visa regulations and regularly updated with current F-1 regulations. Unlike generic AI tools, it understands visa forms, SEVIS compliance, and CPT/OPT guidance. It's also bilingual — English and Chinese (Mandarin).",
 	},
 	{
 		question: "Who can join the community?",
@@ -225,7 +201,7 @@ const faqs = [
 	{
 		question: "How is the information verified?",
 		answer:
-			"Every guide and resource is reviewed by students who have successfully completed the F1 visa process. Community-sourced, peer-reviewed. Our AI assistant is also trained on verified, up-to-date visa regulations.",
+			"Resources curated by students who've navigated the F1 process. Community-sourced, peer-reviewed. Our AI assistant is also trained on verified, up-to-date visa regulations.",
 	},
 	{
 		question: "Is this a replacement for an immigration lawyer?",
@@ -235,7 +211,7 @@ const faqs = [
 	{
 		question: "What are the 100 Founding Cooperative Members?",
 		answer:
-			"The first 100 members who join as Owners become Founding Cooperative Members — a $99 one-time payment, for life. Founding Members get a tokenized membership certificate, voting rights, profit-share, and exclusive access to events and retreats. Membership (the $9.99/mo or $48/yr tier) is separate and does not include ownership.",
+			"The first 100 members who join as Owners become Founding Cooperative Members — a $99 one-time payment, for life. Founding Members get a tokenized membership certificate, voting rights, profit-share (a future benefit), and exclusive access to events and retreats. Membership (the $9.99/mo or $48/yr tier) is separate and does not include ownership.",
 	},
 ];
 ---
@@ -253,7 +229,7 @@ const faqs = [
 		<div class="hero-container">
 			<div class="hero-badge">
 				<span class="hero-badge-dot"></span>
-				Now accepting 100 Founding Cooperative Members
+				Now accepting 100 Founding Cooperative Members (coming soon)
 			</div>
 			<h1 class="hero-title">
 				Your F1 Journey,
@@ -416,33 +392,7 @@ const faqs = [
 		</div>
 	</section>
 
-	<!-- ============ TESTIMONIALS ============ -->
-	<section class="section section-testimonials">
-		<div class="container">
-			<div class="section-eyebrow">Social Proof</div>
-			<h2 class="section-title">Students Helping Students</h2>
-			<p class="section-subtitle">
-				Real students. Real experiences. Real visa approvals.
-			</p>
-			<div class="testimonials-grid">
-				{testimonials.map((t) => (
-					<div class="testimonial-card">
-						<div class="testimonial-stars">★★★★★</div>
-						<blockquote>"{t.quote}"</blockquote>
-						<div class="testimonial-author">
-							<div class="testimonial-avatar">{t.author.charAt(0)}</div>
-							<div class="testimonial-info">
-								<span class="testimonial-name">{t.author}</span>
-								<span class="testimonial-role">
-									{t.role}{t.company && ` · ${t.company}`}
-								</span>
-							</div>
-						</div>
-					</div>
-				))}
-			</div>
-		</div>
-	</section>
+
 
 	<!-- ============ FAQ ============ -->
 	<section class="section section-faq" id="faq">
@@ -475,11 +425,11 @@ const faqs = [
 		<div class="container">
 			<div class="cta-banner">
 				<div class="cta-glow" aria-hidden="true"></div>
-				<h2>100 Founding Owner Slots. First Come, First Served.</h2>
+				<h2>100 Founding Owner Slots. First Come, First Served. (coming soon)</h2>
 				<p>
 					Only 100 Founding Cooperative Member slots are available at this
-					price. Founding Members get voting rights, profit-share, and a
-					permanent role in shaping F1Visa.Net's future.
+					price (coming soon). Founding Members get voting rights, profit-share,
+					and a permanent role in shaping F1Visa.Net's future.
 				</p>
 				<div class="cta-actions">
 					<a href="https://community.f1visa.net/join" class="btn btn-white btn-lg">Apply Now</a>
