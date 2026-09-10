@@ -10,8 +10,8 @@ The marketing/community site for [F1visa.Net](https://f1visa.net) — "Your F1 J
 | About | `/about` | Live — mission, how it works, core values |
 | Resources | `/resources` | Live — "coming soon" placeholder for guides/checklists |
 | Contact | `/contact` | Live — working contact form (name, email, university, message) |
-| Privacy Policy | `/privacy` | Live — data collection, KYC, third parties, user rights |
-| Terms of Service | `/terms` | Live — terms, payments, AI disclaimers, governing law |
+| Privacy Policy | `/privacy` | Live — data collected, Matomo analytics, user rights |
+| Terms of Service | `/terms` | Live — terms of use, Ai disclaimers, governing law |
 | 404 | fallback | Live |
 
 `/#faq` and `/#features` are anchors into homepage sections and work correctly.
