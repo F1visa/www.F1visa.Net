@@ -10,6 +10,8 @@ The marketing/community site for [F1visa.Net](https://f1visa.net) — "Your F1 J
 | About | `/about` | Live — mission, how it works, core values |
 | Resources | `/resources` | Live — "coming soon" placeholder for guides/checklists |
 | Contact | `/contact` | Live — working contact form (name, email, university, message) |
+| Privacy Policy | `/privacy` | Live — data collected, Matomo analytics, user rights |
+| Terms of Service | `/terms` | Live — terms of use, Ai disclaimers, governing law |
 | 404 | fallback | Live |
 
 `/#faq` and `/#features` are anchors into homepage sections and work correctly.
@@ -20,7 +22,7 @@ The marketing/community site for [F1visa.Net](https://f1visa.net) — "Your F1 J
 - **"Join the Community" CTA:** links out to [community.f1visa.net](https://community.f1visa.net), a separate FluentCommunity-powered forum (membership, social feed, discussion spaces)
 - **Footer columns:** Community (Forum, Resources, FAQ), About (Our Mission, How It Works, Contact)
 
-Links to `/success-stories`, `/privacy`, `/terms`, and `/disclaimer` were removed from the footer menus until those pages are built — see `seed/seed.json`.
+The footer **Legal** menu (`footer_support`) contains **Privacy Policy** (`/privacy`) and **Terms of Service** (`/terms`). Links to `/success-stories` and `/disclaimer` remain out until those pages are built — see `seed/seed.json`. Note: seed changes apply to fresh environments; for an existing database, add or edit menu items in the EmDash admin panel (`/_emdash/admin` → Menus).
 
 Nav and footer menus are content-managed (EmDash `menus`), not hardcoded in `src/layouts/Base.astro` — edit them via the admin panel or `seed/seed.json`.
 

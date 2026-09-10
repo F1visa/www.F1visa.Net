@@ -1,0 +1,153 @@
+---
+interface Props {
+	eyebrow?: string;
+	title: string;
+	lead: string;
+	updated: string;
+}
+
+const { eyebrow, title, lead, updated } = Astro.props;
+---
+
+<section class="legal-hero section">
+	<div class="container">
+		{eyebrow && <span class="legal-badge">{eyebrow}</span>}
+		<h1>{title}</h1>
+		<p class="legal-lead">{lead}</p>
+		<p class="legal-updated">Last updated: {updated}</p>
+	</div>
+</section>
+
+<section class="legal-body section">
+	<div class="container legal-container">
+		<article class="legal-prose">
+			<slot />
+		</article>
+	</div>
+</section>
+
+<style>
+	.legal-hero {
+		padding: var(--spacing-3xl) 0 var(--spacing-xl);
+	}
+
+	.legal-badge {
+		display: inline-block;
+		padding: 0.3rem 0.85rem;
+		border-radius: var(--radius-full);
+		background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+		color: var(--color-primary-light);
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.legal-hero h1 {
+		font-size: var(--font-size-4xl);
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		margin-bottom: var(--spacing-md);
+	}
+
+	.legal-lead {
+		font-size: var(--font-size-lg);
+		color: var(--color-muted);
+		max-width: 44rem;
+		line-height: 1.6;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.legal-updated {
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.legal-body {
+		padding: var(--spacing-lg) 0 var(--spacing-4xl);
+	}
+
+	.legal-container {
+		max-width: 800px;
+	}
+
+	.legal-prose {
+		color: var(--color-text);
+		font-size: var(--font-size-base);
+		line-height: 1.7;
+	}
+
+	.legal-prose h2 {
+		font-size: var(--font-size-2xl);
+		margin: var(--spacing-3xl) 0 var(--spacing-lg);
+		padding-bottom: var(--spacing-sm);
+		border-bottom: 1px solid var(--color-border);
+		letter-spacing: -0.01em;
+	}
+
+	.legal-prose h3 {
+		font-size: var(--font-size-xl);
+		margin: var(--spacing-2xl) 0 var(--spacing-md);
+	}
+
+	.legal-prose p {
+		margin: 0 0 var(--spacing-lg);
+	}
+
+	.legal-prose ul,
+	.legal-prose ol {
+		margin: 0 0 var(--spacing-lg);
+		padding-left: var(--spacing-xl);
+	}
+
+	.legal-prose li {
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.legal-prose li::marker {
+		color: var(--color-primary-light);
+	}
+
+	.legal-prose a {
+		color: var(--color-primary-light);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.legal-prose strong {
+		font-weight: 600;
+	}
+
+	.legal-prose .legal-notice {
+		border-left: 4px solid var(--color-accent);
+		background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
+		padding: var(--spacing-lg) var(--spacing-xl);
+		border-radius: 0 var(--radius) var(--radius) 0;
+		margin: var(--spacing-xl) 0;
+	}
+
+	.legal-prose .legal-notice p:last-child {
+		margin-bottom: 0;
+	}
+
+	.legal-prose table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 0 0 var(--spacing-lg);
+		font-size: var(--font-size-sm);
+	}
+
+	.legal-prose th,
+	.legal-prose td {
+		text-align: left;
+		padding: var(--spacing-sm) var(--spacing-md);
+		border-bottom: 1px solid var(--color-border);
+		vertical-align: top;
+	}
+
+	.legal-prose th {
+		font-weight: 600;
+		color: var(--color-muted);
+	}
+</style>

@@ -100,7 +100,10 @@
 		{
 			"name": "footer_support",
 			"label": "Footer: Legal",
-			"items": []
+			"items": [
+				{ "type": "custom", "label": "Privacy Policy", "url": "/privacy" },
+				{ "type": "custom", "label": "Terms of Service", "url": "/terms" }
+			]
 		}
 	],
 	"content": {
