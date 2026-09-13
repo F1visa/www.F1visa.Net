@@ -1,0 +1,35 @@
+---
+// Matomo web analytics — self-hosted at matomo.weown.tools, site ID 4.
+// Only loaded in production: dev/preview traffic would pollute the
+// analytics with localhost noise. Everything needed is hardcoded from
+// the embed code provided by the Matomo dashboard.
+const enabled = import.meta.env.PROD;
+---
+{
+	enabled && (
+		<>
+			<script is:inline>
+				var _paq = (window._paq = window._paq || []);
+				/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+				_paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+				_paq.push(["setCookieDomain", "*.f1visa.net"]);
+				_paq.push(["setDomains", ["*.f1visa.net"]]);
+				_paq.push(["setDoNotTrack", true]);
+				_paq.push(["trackPageView"]);
+				_paq.push(["enableLinkTracking"]);
+				(function () {
+					var u = "https://matomo.weown.tools/";
+					_paq.push(["setTrackerUrl", u + "matomo.php"]);
+					_paq.push(["setSiteId", "4"]);
+					var d = document,
+						g = d.createElement("script"),
+						s = d.getElementsByTagName("script")[0];
+					g.async = true;
+					g.src = u + "matomo.js";
+					s.parentNode.insertBefore(g, s);
+				})();
+			</script>
+			{/* noscript fallback pixel is rendered in the document body (see Base.astro) */}
+		</>
+	)
+}
